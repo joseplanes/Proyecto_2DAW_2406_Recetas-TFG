@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
+
 @Component({
-  selector: 'app-header',
+  selector: 'app-sign-in',
   standalone: true,
   imports: [RouterModule],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  templateUrl: './sign-in.component.html',
+  styleUrl: './sign-in.component.css'
 })
-export class HeaderComponent {
+export class SignInComponent {
 
 }
