@@ -1,0 +1,10 @@
+.recipe:hover{
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.04);
+    border: 0.2px solid #2c313a;
+}
+
+/* Estilo cuando data-theme es 'light' */
+/* html[data-theme='light'] .recipe:hover {
+    border: 1px solid   
+} */
