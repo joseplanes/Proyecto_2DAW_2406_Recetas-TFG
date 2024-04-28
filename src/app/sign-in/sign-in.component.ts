@@ -14,7 +14,7 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 })
 export class SignInComponent {
   constructor() { }
-  private google_service = inject(AuthGoogleService);
+  // private google_service = inject(AuthGoogleService);
 
   // login() {
   //   this.google_service.login();
