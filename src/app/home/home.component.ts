@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CardsRecetasComponent } from '../cards-recetas/cards-recetas.component';
 import { RouterLink, RouterModule } from '@angular/router';
+import { AuthGoogleService } from '../auth-google.service';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -9,5 +10,5 @@ import { RouterLink, RouterModule } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-
+  
 }
