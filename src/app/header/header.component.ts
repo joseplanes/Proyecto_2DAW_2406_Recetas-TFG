@@ -9,10 +9,21 @@ import { AuthGoogleService } from '../auth-google.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  auth = inject(AuthGoogleService);
-  name = JSON.parse(sessionStorage.getItem('user')!).name;
-  image = JSON.parse(sessionStorage.getItem('user')!).picture;
-  email = JSON.parse(sessionStorage.getItem('user')!).email;
+  name: string = '';
+  image: string = '';
+  email: string = '';
+  // auth = inject(AuthGoogleService);
+  constructor(private auth: AuthGoogleService) {
+    let user = sessionStorage.getItem('user');
+    if (user) {
+      let parsedUser = JSON.parse(user);
+      if (parsedUser) {
+        this.name = parsedUser.name;
+        this.image = parsedUser.picture;
+        this.email = parsedUser.email;
+      }
+    }
+  }
   
   singOut(){
     sessionStorage.removeItem('user');
