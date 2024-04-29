@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
-import { AuthGoogleService } from '../auth-google.service';
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -12,8 +12,8 @@ export class HeaderComponent {
   name: string = '';
   image: string = '';
   email: string = '';
-  // auth = inject(AuthGoogleService);
-  constructor(private auth: AuthGoogleService) {
+  // auth = inject(AuthService);
+  constructor(private auth: AuthService) {
     let user = sessionStorage.getItem('user');
     if (user) {
       let parsedUser = JSON.parse(user);
