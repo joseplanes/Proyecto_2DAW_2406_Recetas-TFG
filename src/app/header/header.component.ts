@@ -10,9 +10,9 @@ import { AuthGoogleService } from '../auth-google.service';
 })
 export class HeaderComponent {
   auth = inject(AuthGoogleService);
-  name = JSON.parse(sessionStorage.getItem('user')!).name;
-  image = JSON.parse(sessionStorage.getItem('user')!).picture;
-  email = JSON.parse(sessionStorage.getItem('user')!).email;
+  // name = JSON.parse(sessionStorage.getItem('user')!).name;
+  // image = JSON.parse(sessionStorage.getItem('user')!).picture;
+  // email = JSON.parse(sessionStorage.getItem('user')!).email;
   
   singOut(){
     sessionStorage.removeItem('user');
