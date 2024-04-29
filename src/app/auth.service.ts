@@ -7,7 +7,7 @@ import { AuthConfig, OAuthService, OAuthModule } from 'angular-oauth2-oidc';
   providedIn: 'root'
 })
 
-export class AuthGoogleService {
+export class AuthService {
   router = inject(Router);
   constructor() {}
 
