@@ -1,9 +1,35 @@
-<div class="rounded-lg shadow-md p-3 w-90 h-90 flex flex-col items-center justify-center ml-20 mb-8 recipe">
-    <!-- Este div esta alineado bien encima de la imgen porque esta puesto a pelo el ml-5 que queda bien -->
-    <div class="flex items-center justify-left mb-4 self-start ml-9">
-        <img class="w-8 h-8 rounded-full" src="assets/foto_perfil.jpg" alt="user photo">
-        <h2 class="ml-2">Paella de conejo</h2>
-    </div>
+<div class="rounded-lg shadow-md p-3 w-90 h-90 flex flex-col items-center justify-center ml-20 mb-8 recipe shadow-md border-gray-100  light:border-black-100">
+    <div class="grid grid-cols-2 mb-4  w-3/4">
+        <div class="flex items-center justify-start">
+            <img class="w-8 h-8 rounded-full" src="assets/foto_perfil.jpg" alt="user photo">
+            <h2 class="ml-2">Paella de conejo</h2>
+        </div>
+        <div class="flex items-center justify-end">
+            <span class="mr-1">
+                @if(getLikes() != 0){
+                    {{ getLikes() }}
+                }
+            </span>
+
+            @if(isLogged()){
+                @if(getSave() == false){
+                    <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 256 256" (click)="likeRecipe()">
+                        <path fill="#ff0000" d="M178 42c-21 0-39.26 9.47-50 25.34C117.26 51.47 99 42 78 42a60.07 60.07 0 0 0-60 60c0 29.2 18.2 59.59 54.1 90.31a334.68 334.68 0 0 0 53.06 37a6 6 0 0 0 5.68 0a334.68 334.68 0 0 0 53.06-37C219.8 161.59 238 131.2 238 102a60.07 60.07 0 0 0-60-60m-50 175.11c-16.41-9.47-98-59.39-98-115.11a48.05 48.05 0 0 1 48-48c20.28 0 37.31 10.83 44.45 28.27a6 6 0 0 0 11.1 0C140.69 64.83 157.72 54 178 54a48.05 48.05 0 0 1 48 48c0 55.72-81.59 105.64-98 115.11" />
+                    </svg>
+                }
+                @else{
+                    <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 256 256" (click)="likeRecipe()">
+                        <path fill="#ff0000" d="M240 102c0 70-103.79 126.66-108.21 129a8 8 0 0 1-7.58 0C119.79 228.66 16 172 16 102a62.07 62.07 0 0 1 62-62c20.65 0 38.73 8.88 50 23.89C139.27 48.88 157.35 40 178 40a62.07 62.07 0 0 1 62 62" />
+                    </svg>
+                }
+            }
+            @else{
+                <!-- modal para que inicie sesion -->
+            }
+        </div>
+    </div> 
+
+
     <!-- <div class="carousel">
         <div id="slide1" class="carousel-item relative w-full">
             <img src="../../assets/paella_conejo.jpg" class="w-full" />

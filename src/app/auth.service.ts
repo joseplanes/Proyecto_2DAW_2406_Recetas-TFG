@@ -1,7 +1,6 @@
 declare var google: any;
 import { Injectable , inject} from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthConfig, OAuthService, OAuthModule } from 'angular-oauth2-oidc';
 import { createDirectus, authentication } from '@directus/sdk';
 
 @Injectable({
@@ -18,7 +17,6 @@ export class AuthService {
     google.accounts.id.disableAutoSelect();
     this.router.navigate(['']);
   }
-
 
   public async login(email: string, password: string, options?: any) {
     return this.client.login(email, password, options);
