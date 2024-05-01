@@ -1,0 +1,4 @@
+/* apply para aplicar reglas de tailwind en css */
+.btn_profile{
+    @apply flex items-center justify-center border-b border-[#F6836B] font-medium py-2 space-x-2 px-3 ml-2;
+}
