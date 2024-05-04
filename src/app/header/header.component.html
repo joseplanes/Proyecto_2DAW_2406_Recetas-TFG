@@ -27,8 +27,13 @@
       <details class="dropdown">
         <summary class="m-1 btn_profile">
           <p>Mi Perfil</p>
-          <img class="w-8 h-8 rounded-full" src="assets/foto_perfil.jpg" alt="user photo">
-          <!-- open or close -->
+          @if(getImageProfile()){
+            <img class="w-7 h-7 rounded-full" src={{getImageProfile()}} alt="user photo">  
+          }
+          @else{
+            <img class="w-7 h-7 rounded-full" src="../../assets/profile_default.png" alt="user photo">  
+          }
+        <!-- open or close -->
         </summary>
         <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-36">
           <li >
@@ -37,12 +42,10 @@
           <li><a>Nueva Receta</a></li>
           <li><a>Configuracion</a></li>
           <li><a [routerLink]="['/sign-in']" >Iniciar Sesion</a></li>
-          <li><a (click)="singOut()" >Cerrar Sesion</a></li>
+          <li><a (click)="signOut()" >Cerrar Sesion</a></li>
         </ul>
       </details>
     </div>
-
-    
 
     <label class="swap swap-rotate">
       <!-- this hidden checkbox controls the state -->

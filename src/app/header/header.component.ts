@@ -24,9 +24,19 @@ export class HeaderComponent {
       }
     }
   }
+
+  consolelog(){
+    // console.log('i');
+    console.log('dentro del else');
+  }
+
+  getImageProfile(){
+    return this.image;
+  }
   
-  singOut(){
+  signOut(){
     sessionStorage.removeItem('user');
     this.auth.signOut();
+    location.reload();
   }
 }
