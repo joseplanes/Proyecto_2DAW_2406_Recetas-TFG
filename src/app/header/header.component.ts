@@ -12,7 +12,7 @@ export class HeaderComponent {
   name: string = '';
   image: string = '';
   email: string = '';
-  // auth = inject(AuthService);
+
   constructor(private auth: AuthService) {
     let user = sessionStorage.getItem('user');
     if (user) {
@@ -23,11 +23,6 @@ export class HeaderComponent {
         this.email = parsedUser.email;
       }
     }
-  }
-
-  consolelog(){
-    // console.log('i');
-    console.log('dentro del else');
   }
 
   getImageProfile(){
