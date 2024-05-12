@@ -44,7 +44,6 @@ export class HeaderComponent {
     return this.router.url === route;
   }
 
-
   toggleNav() {
     this.hideNav = !this.hideNav;
   } 
