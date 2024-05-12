@@ -1,16 +1,31 @@
 declare var google: any;
-import { Component,  OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, ReactiveFormsModule],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
-export class SignInComponent implements OnInit {
-  private router = inject(Router);
+export class SignInComponent {
+  // private router = inject(Router);
+
+  signInForm = this.formBuilder.group({
+    email: '',
+    password: ''
+  });
+
+  constructor(
+    private formBuilder : FormBuilder,
+    private authService : AuthService,
+    private router : Router
+  ) {}
+
+
   ngOnInit(): void {
     // Inicializo la cuenta de google, el callback es la función que se ejecuta al loguearse
     google.accounts.id.initialize({
@@ -22,6 +37,16 @@ export class SignInComponent implements OnInit {
       type: "icon",
       shape: 'circle',
     });
+  }
+
+
+  
+
+  signIn() {
+    const email = this.signInForm.value.email as string;
+    const password = this.signInForm.value.password as string
+    this.authService.login(email, password);
+    this.router.navigate(['']);
   }
 
   private decodeToken(token: string){ // Decodeo token JWT

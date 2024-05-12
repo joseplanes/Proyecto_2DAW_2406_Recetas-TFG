@@ -58,6 +58,9 @@
 
       <li class="font-medium group cursor-pointer">
         <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+
+          <!-- Si el usuario no esta logeado le ocultamos el dropdown de Perfil -->
+          @if (!isAuthenticated()) {
           <details class="dropdown">
               <summary class="m-1 btn_profile">
                   <p>Mi Perfil</p>
@@ -75,18 +78,23 @@
                   </li>
                   <li><a>Nueva Receta</a></li>
                   <li><a>Configuracion</a></li>
-                  <li><a [routerLink]="['/sign-in']">Iniciar Sesion</a></li>
+                  <!--<li><a [routerLink]="['/sign-in']">Iniciar Sesion</a></li>-->
                   <li><a (click)="signOut()">Cerrar Sesion</a></li>
               </ul>
           </details>
+        }
         </div>
         <div class="subrayado"></div>  
       </li>
     </ul>
-    <button class="flex justify-center items-center h-12 px-7 font-medium text-white bg-primary-500 rounded-xl hover:shadow-lg transition-shadow duration-300"
+    <!-- Si el usuario esta logeado le ocultamos el botón de "Empezar" -->
+    @if (isAuthenticated()) {
+    <button class="flex justify-center items-center h-12 px-7 font-medium text-white bg-primary rounded-xl hover:shadow-lg transition-shadow duration-300"
     [routerLink]="['/sign-in']">
     EMPEZAR
     </button>
+  }
   </div>
 </nav>
 
+<!-- class="flex justify-center items-center h-12 px-7 font-medium text-white bg-primary-500 rounded-xl hover:shadow-lg transition-shadow duration-300" -->
