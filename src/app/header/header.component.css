@@ -1,4 +1,19 @@
 /* apply para aplicar reglas de tailwind en css */
 .btn_profile{
-    @apply flex items-center justify-center border-b border-primary font-medium py-2 space-x-2 px-3 ml-2;
+    @apply flex items-center justify-center font-medium py-2 space-x-2 px-3 ml-2;
+}
+/* border-b border-primary */
+.subrayado{
+    @apply h-0.5 bg-primary-500 scale-x-0 group-hover:scale-100 transition-transform origin-left rounded-full
+    duration-300 ease-out;
+}
+
+.active {
+    @apply h-0.5 bg-primary-500 scale-x-100 transition-transform origin-left rounded-full
+    duration-300 ease-out;
+}
+
+.logo_text{
+    font-size: clamp(0.5rem, 12vw, 1.8rem);
+    /* minimo, default, maximo */
 }
