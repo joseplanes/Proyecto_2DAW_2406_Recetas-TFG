@@ -34,4 +34,8 @@ export class HeaderComponent {
     this.auth.signOut();
     location.reload();
   }
+
+  isAuthenticated() {
+    return this.auth.isTokenExpired();
+  }
 }
