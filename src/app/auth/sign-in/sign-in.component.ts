@@ -1,8 +1,9 @@
 declare var google: any;
-import { Component, inject } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../auth.service';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-sign-in',
@@ -13,7 +14,6 @@ import { AuthService } from '../../auth.service';
 })
 export class SignInComponent {
   // private router = inject(Router);
-
   signInForm = this.formBuilder.group({
     email: '',
     password: ''
@@ -22,11 +22,15 @@ export class SignInComponent {
   constructor(
     private formBuilder : FormBuilder,
     private authService : AuthService,
-    private router : Router
+    private router : Router,
+    @Inject(AppComponent) private appComponent: AppComponent
   ) {}
 
 
   ngOnInit(): void {
+    // Oculto el header y footer
+    this.appComponent.isShowHeaderFooter = false; 
+
     // Inicializo la cuenta de google, el callback es la función que se ejecuta al loguearse
     google.accounts.id.initialize({
       client_id: '249396934092-clsig1b44dv940ml8469utkgesrf8ke9.apps.googleusercontent.com',
@@ -39,8 +43,6 @@ export class SignInComponent {
     });
   }
 
-
-  
 
   signIn() {
     const email = this.signInForm.value.email as string;

@@ -5,6 +5,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -16,4 +17,5 @@ import { SignInComponent } from './auth/sign-in/sign-in.component';
 
 export class AppComponent {
   title = 'Recetas_TFG';
+  isShowHeaderFooter = true;
 }
