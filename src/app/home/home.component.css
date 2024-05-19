@@ -1,12 +1,1 @@
 
-aside {
-    width: 100%;
-    max-width: 300px; /* Cambia esto al ancho que desees */
-}
-
-/* Estilo para pantallas mayores a 745px */
-@media (max-width: 600px) {
-    aside {
-        width: 200px; /* Cambia esto al ancho que desees */
-    }
-}

@@ -1,74 +1,62 @@
-<div class="flex flex-row">
-    <!-- Aside -->
-    <aside class=" bg-gray-200 p-4 ml-12 rounded-md">
-        <h1>Filtrar por Categorias</h1>
-        <h2>Principales filtros</h2>
-        <ul class="list-disc ml-6">   
-            <li>Tiempo 
-                <input type="range" min="0" max="100" value="0" class="range range-xs" step="25" />
-            </li>
-            <li>Dificultad</li>
-            <li>Nº Personas
-                <select class="select select-ghost select-xs w-full max-w-xs">
-                    <option disabled selected></option>
-                    <option>2 personas</option>
-                    <option>3 personas</option>
-                    <option>4 personas</option>
-                </select>
-            </li>
-        </ul>
-    </aside>
-
-    <!-- Contenido principal -->
-    <main class=" dark:bg-dark p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full ml-3 rounded-md">
-        <app-cards-recetas />
-        <app-cards-recetas />
-        <app-cards-recetas />
-
-        <app-cards-recetas />
-        <app-cards-recetas />
-        <app-cards-recetas />
-
-        <app-cards-recetas />
-        <app-cards-recetas />
-        <app-cards-recetas />
-
-        <app-cards-recetas />
-        <app-cards-recetas />
-        <app-cards-recetas />
-
-        <app-cards-recetas />
-        <app-cards-recetas />
-        <app-cards-recetas />
-
-        <app-cards-recetas />
-        <app-cards-recetas />
-        <app-cards-recetas />
-
-        <app-cards-recetas />
-        <app-cards-recetas />
-        <app-cards-recetas />
-
-        <app-cards-recetas />
-        <app-cards-recetas />
-        <app-cards-recetas />
-
-        <app-cards-recetas />
-        <app-cards-recetas />
-        <app-cards-recetas />
-
-        <app-cards-recetas />
-        <app-cards-recetas />
-        <app-cards-recetas />
-
-        <app-cards-recetas />
-        <app-cards-recetas />
-        <app-cards-recetas />
-
-        <app-cards-recetas />
-        <app-cards-recetas />
-        <app-cards-recetas />
-
-
-    </main>
+<div class="w-full min-h-screen font-sans text-gray-900 bg-gradient-to-br from-transparent to-orange-100">
+    <div class="flex justify-between px-24 py-8 max-w-screen-xl mx-auto">
+        <div class="max-w-md relative">
+            <img class="absolute -top-4 -right-8 w-2/4 h-auto"
+                src="https://github.com/tailwindcollections/tailwind-organic/blob/main/public/img/leaf.png?raw=true"
+                alt="">
+            <span class="flex items-start flex-col px-1 text-xl text-green">
+                <span class="font-medium">Descubre un mundo de sabores,</span>
+                <span class="font-medium">tu comunidad de recetas favorita.</span>
+                <img src="" alt="">
+            </span>
+            <h1 class="pt-4 text-6xl font-bold tracking-tighter leading-tight">Explora, comparte y disfruta</h1>
+            <p class="pt-8 text-lg font-normal text-gray-600 leading-relaxed">
+                Con nuestra red social GASTROMIC, podrás encontrar inspiración culinaria, compartir tus propias recetas y conectar con una comunidad apasionada por la cocina. Únete a nosotros y forma parte de esta experiencia única.
+            </p>
+            <div class="flex pt-8 space-x-6">
+                <button class="flex justify-center items-center h-12 px-8 font-medium bg-primary-500 text-white rounded-xl hover:shadow-lg transition-shadow duration-300" [routerLink]="['/sign-in']">
+                    Empezar
+                </button>
+                <button class="flex justify-center items-center h-12 px-8 font-medium text-gray-900 border border-gray-900 rounded-xl hover:shadow-lg transition-shadow duration-300" [routerLink]="['/browse-recipes']">Explorar
+                    Recetas
+                </button>
+            </div>
+            <div class="flex pt-28">
+                <img src="https://github.com/tailwindcollections/tailwind-organic/blob/main/public/img/chef.png?raw=true"
+                    alt="chef" class="h-24 w-24 object-cover">
+                <div class="pt-5 pl-3">
+                    <div class="text-xl font-bold leading-relaxed">Chef del mes</div>
+                    <div class="inline-flex text-gray-600 leading-relaxed">¡La gente ama su cocina! 🍳</div>
+                    <div class="font-bold text-green leading-relaxed">Más de 80 platos famosos</div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-1 flex flex-col relative">
+            <img class="max-w-xl drop-shadow-2xl self-end" src="https://raw.githubusercontent.com/tailwindcollections/tailwind-organic/main/public/img/dish.png" alt="dishes">
+            <div class="absolute -right-6 top-32 flex flex-col py-5 px-7 rounded-xl shadow-xl bg-white/80 backdrop-blur-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
+                <div class="flex -space-x-3">
+                    <img src="https://raw.githubusercontent.com/tailwindcollections/tailwind-organic/main/public/img/avatar-1.jpeg"
+                        alt="" class="w-12 h-12 rounded-full border-4 border-white object-cover overflow-hidden">
+                    <img src="https://raw.githubusercontent.com/tailwindcollections/tailwind-organic/main/public/img/avatar-1.jpeg"
+                        alt="" class="w-12 h-12 rounded-full border-4 border-white object-cover overflow-hidden">
+                    <img src="https://raw.githubusercontent.com/tailwindcollections/tailwind-organic/main/public/img/avatar-1.jpeg"
+                        alt="" class="w-12 h-12 rounded-full border-4 border-white object-cover overflow-hidden">
+                </div>
+                <div class="pt-3 font-bold">Clientes felices</div>
+                <div class="flex items-center text-gray leading-relaxed">
+                    <!-- ⭐<span class="pl-1">4.9 (+2.4kOpiniones)</span> -->
+                    Las mejores recetas de la <br> comunidad.
+                </div>
+            </div>
+            <!-- <div class="absolute left-0 bottom-16 flex rounded-xl shadow-xl bg-white/80 backdrop-blur-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
+                <img class="w-auto h-20 self-end"
+                    src="https://raw.githubusercontent.com/tailwindcollections/tailwind-organic/main/public/img/driver.png"
+                    alt="">
+                <div class="pr-6 pl-5 py-5">
+                    <div class="font-bold">Entrega rápida</div>
+                    <div class="text-gray-600 leading-relaxed">¡Entrega en 30 minutos! 🚀</div>
+                </div>
+            </div> -->
+        </div>
+    </div>
 </div>

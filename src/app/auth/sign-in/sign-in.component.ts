@@ -1,17 +1,36 @@
 declare var google: any;
-import { Component,  OnInit, inject } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../auth.service';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, ReactiveFormsModule],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
-export class SignInComponent implements OnInit {
-  private router = inject(Router);
+export class SignInComponent {
+  // private router = inject(Router);
+  signInForm = this.formBuilder.group({
+    email: '',
+    password: ''
+  });
+
+  constructor(
+    private formBuilder : FormBuilder,
+    private authService : AuthService,
+    private router : Router,
+    @Inject(AppComponent) private appComponent: AppComponent
+  ) {}
+
+
   ngOnInit(): void {
+    // Oculto el header y footer
+    this.appComponent.isShowHeaderFooter = false; 
+
     // Inicializo la cuenta de google, el callback es la función que se ejecuta al loguearse
     google.accounts.id.initialize({
       client_id: '249396934092-clsig1b44dv940ml8469utkgesrf8ke9.apps.googleusercontent.com',
@@ -22,6 +41,14 @@ export class SignInComponent implements OnInit {
       type: "icon",
       shape: 'circle',
     });
+  }
+
+
+  signIn() {
+    const email = this.signInForm.value.email as string;
+    const password = this.signInForm.value.password as string
+    this.authService.login(email, password);
+    this.router.navigate(['']);
   }
 
   private decodeToken(token: string){ // Decodeo token JWT
