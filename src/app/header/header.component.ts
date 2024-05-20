@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [RouterModule, CommonModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css', './header.hamburguer.css']
 })
 export class HeaderComponent {
   name: string = '';
@@ -29,7 +29,9 @@ export class HeaderComponent {
   }
 
   getImageProfile(){
+    console.log(this.image);
     return this.image;
+    
   }
   
   signOut(){
