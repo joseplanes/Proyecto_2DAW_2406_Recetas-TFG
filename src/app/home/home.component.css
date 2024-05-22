@@ -1,1 +1,22 @@
 
+@media screen and (max-width: 400px) {
+    .img-query{
+        width: 350px;
+        /* @apply absolute -right-6 top-5; */
+    }
+}
+
+/* Estilos para tablets */
+@media screen and (min-width: 301px) and (max-width: 400px) {
+    /* Tus estilos aquí */
+}
+
+/* Estilos para desktop */
+@media screen and (min-width: 401px) and (max-width: 570px) {
+    /* Tus estilos aquí */
+}
+
+/* Estilos para pantallas más grandes que 570px */
+@media screen and (min-width: 571px) {
+    /* Tus estilos aquí */
+}

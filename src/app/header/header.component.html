@@ -1,10 +1,10 @@
 
-<nav class="flex items-center justify-between font-sans px-24 py-5 max-w-screen-xl mx-auto">
+<nav class="flex items-center justify-between font-sans px-24 py-5  mx-auto width-resposive">
   <a [routerLink]="['']" class="font-bold tracking-wide flex items-center space-x-3 rtl:space-x-reverse">
     <img src="../../favicon.ico" class="h-14" alt="Gastromic Logo" />
     <span class="logo_text">Gastro<span class="text-primary-500">mic</span></span>
   </a>
-  <div class="flex items-center space-x-6">
+  <div class="flex items-center space-x-6 hidden sm:block">
     <ul class="flex items-center justify-center space-x-4">
       <li class="font-medium group">
         <div class=" p-2">
@@ -82,16 +82,17 @@
         </div>
         <div class="subrayado"></div>  
       </li>
+
+      <li>
+        @if (isAuthenticated()) {
+          <button class="flex justify-center items-center h-12 px-7 font-medium text-white bg-primary-500 rounded-xl hover:shadow-lg transition-shadow duration-300"
+          [routerLink]="['/sign-in']">
+          EMPEZAR
+          </button>
+        }
+      </li>
     </ul>
     <!-- Si el usuario esta logeado le ocultamos el botón de "Empezar" -->
-    @if (isAuthenticated()) {
-      <button class="flex justify-center items-center h-12 px-7 font-medium text-white bg-primary-500 rounded-xl hover:shadow-lg transition-shadow duration-300"
-      [routerLink]="['/sign-in']">
-      EMPEZAR
-      </button>
-    }
-
-   
   </div>
 </nav>
 

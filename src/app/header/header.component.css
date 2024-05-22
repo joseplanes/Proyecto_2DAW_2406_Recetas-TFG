@@ -17,3 +17,29 @@
     font-size: clamp(0.5rem, 12vw, 1.8rem);
     /* minimo, default, maximo */
 }
+
+
+
+@media screen and (max-width: 400px) {
+    .width-resposive{
+        width: 100vw;
+    }
+}
+
+/* Estilos para tablets */
+@media screen and (min-width: 301px) and (max-width: 400px) {
+    
+}
+
+/* Estilos para desktop */
+@media screen and (min-width: 401px) and (max-width: 570px) {
+    /* Tus estilos aquí */
+}
+
+/* Estilos para pantallas más grandes que 570px */
+@media screen and (min-width: 1000px) {
+    .width-resposive{
+        width: 1280px;
+    }
+}
+    
