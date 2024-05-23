@@ -60,7 +60,7 @@
       <li class="font-medium group cursor-pointer">
         <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <!-- Si el usuario no esta logeado le ocultamos el dropdown de Perfil -->
-          @if (!isAuthenticated()) {
+          @if (isAuthenticated()) {
             <details class="dropdown">
                 <summary class="m-1 btn_profile">
                     <p>Mi Perfil</p>
