@@ -36,7 +36,7 @@
     /* Tus estilos aquí */
 }
 
-/* Estilos para pantallas más grandes que 570px */
+/* Estilos para pantallas más grandes que 1000px */
 @media screen and (min-width: 1000px) {
     .width-resposive{
         width: 1280px;

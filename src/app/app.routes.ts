@@ -4,6 +4,7 @@ import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { RecipeCreateComponent } from './recipe-create/recipe-create.component';
 import { BrowseRecipesComponent } from './browse-recipes/browse-recipes.component';
 import { PasswordRecoveryComponent } from './auth/password-recovery/password-recovery.component';
+import { UserViewComponent } from './user-view/user-view.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent }, // Cuando la ruta es vacía, se carga el componente HomeComponent
@@ -11,4 +12,5 @@ export const routes: Routes = [
     { path: 'recipe-create', component: RecipeCreateComponent },
     { path: "browse-recipes", component: BrowseRecipesComponent},
     { path: "sign-in/password-recovery", component: PasswordRecoveryComponent},
+    { path: 'user-view', component: UserViewComponent } ,
 ];
