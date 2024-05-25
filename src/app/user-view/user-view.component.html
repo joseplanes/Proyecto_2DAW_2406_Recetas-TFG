@@ -1,7 +1,7 @@
 <div class="container mx-auto p-4 h-screen">
     <div class="grid grid-cols-[40%,60%] gap-4">
         <div class="col-span-1 bg-gray-100 rounded p-4 flex items-center justify-center ">
-            <img src="../../assets/foto_perfil.jpg" alt="User profile" class="w-75 h-75 mx-auto rounded-full">
+            <img src="../../assets/foto_perfil.jpg" alt="User profile" class="w-100 h-100 mx-auto rounded-full">
         </div>
         <div class="col-span-1">
             <div class="grid grid-rows-3 gap-4 h-full">
@@ -9,24 +9,31 @@
                     <div class="col-span-1 bg-gray-100 rounded p-4 flex items-center justify-center">
                         <p class="text-2xl">Username</p>
                     </div>
-                    <div class="col-span-1 bg-gray-100 rounded p-4 flex items-center justify-center">
+                    <div class="col-span-1 bg-gray-100 rounded p-4 flex items-center justify-center" >
                         <button class="flex justify-center items-center h-8 px-7 font-medium text-white bg-primary-500 rounded-full hover:shadow-lg transition-shadow duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16">
-                            <path fill="white" d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5z" />
-                        </svg>
-                        <span class="ml-1">Seguir</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16">
+                                <path fill="white" d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5z" />
+                            </svg>
+                            <label for="modalLogin" class="ml-1 cursor-pointer">Seguir</label>
                         </button>
                     </div>
+                    @if(isLoged()==false){
+                        <app-modal-access-prohibited></app-modal-access-prohibited>
+                    }
+                    
                 </div>
                 <div class="row-span-1 grid grid-cols-3 gap-4">
-                    <div class="col-span-1 bg-gray-100 rounded p-4 flex items-center justify-center">
-                        <p class="text-xl">10 Publicaciones</p>
+                    <div class="col-span-1 bg-gray-100 rounded p-4 flex items-center justify-center tocol sm:gap-1">
+                        <p class="text-xl">10 </p>
+                        <p class="text-xl">Publicaciones</p>
                     </div>
-                    <div class="col-span-1 bg-gray-100 rounded p-4 flex items-center justify-center">
-                        <p class="text-xl">10 Seguidores</p>
+                    <div class="col-span-1 bg-gray-100 rounded p-4 flex items-center justify-center tocol sm:gap-1">
+                        <p class="text-xl">10 </p>
+                        <p class="text-xl">Seguidores</p>
                     </div>
-                    <div class="col-span-1 bg-gray-100 rounded p-4 flex items-center justify-center">
-                        <p class="text-xl">10 Seguidos</p>
+                    <div class="col-span-1 bg-gray-100 rounded p-4 flex items-center justify-center tocol sm:gap-1" >
+                        <p class="text-xl">10 </p>
+                        <p class="text-xl">Seguidos</p>
                     </div>
                 </div>
                 <div class="row-span-1 bg-gray-100 rounded p-4">
