@@ -1,7 +1,7 @@
 declare var google: any;
 import { Injectable , inject} from '@angular/core';
 import { Router } from '@angular/router';
-import { createDirectus, authentication } from '@directus/sdk';
+import { createDirectus, authentication, rest, createUser } from '@directus/sdk';
 import { jwtDecode } from "jwt-decode";
 
 @Injectable({
@@ -11,7 +11,7 @@ import { jwtDecode } from "jwt-decode";
 export class AuthService {
   // https://yhydf2awm25r.share.zrok.io
   // http://localhost:8055/
-  private client = createDirectus('http://localhost:8055/').with(authentication());
+  private client = createDirectus('http://localhost:8055/').with(authentication()).with(rest());
   router = inject(Router);
   constructor() {}
 
@@ -41,6 +41,10 @@ export class AuthService {
 
   public async logOut() {
     return this.client.logout();
+  }
+
+  public createAccount(userObject:any) {
+    this.client.request(createUser(userObject));
   }
 
   isTokenExpired() {
