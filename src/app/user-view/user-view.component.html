@@ -1,45 +1,66 @@
-<div class="container mx-auto p-4 h-screen">
-    <div class="grid grid-cols-[40%,60%] gap-4">
-        <div class="col-span-1 bg-gray-100 rounded p-4 flex items-center justify-center ">
-            <img src="../../assets/foto_perfil.jpg" alt="User profile" class="w-100 h-100 mx-auto rounded-full">
+<div class="container mx-auto p-4 min-h-screen">
+    <!-- border border-gray-100-->
+    <div class="grid grid-cols-[40%,60%] grid-rows-1 gap-4">
+        <div class="col-span-1 row-span-2 border border-gray-100 rounded p-4 flex items-center justify-center relative">
+            <img src="../../assets/foto_perfil.jpg" alt="User profile" class="mx-auto rounded-full img_responsive">
+            <button *ngIf="isMyProfile()==true" class="flex items-center" title="Editar Perfil">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="absolute top-0 right-2 m-2">
+                    <path fill="black" d="M17.263 2.177a1.75 1.75 0 0 1 2.474 0l2.586 2.586a1.75 1.75 0 0 1 0 2.474L19.53 10.03l-.012.013L8.69 20.378a1.75 1.75 0 0 1-.699.409l-5.523 1.68a.75.75 0 0 1-.747-.188a.75.75 0 0 1-.188-.747l1.673-5.5a1.75 1.75 0 0 1 .466-.756L14.476 4.963ZM4.708 16.361a.26.26 0 0 0-.067.108l-1.264 4.154l4.177-1.271a.25.25 0 0 0 .1-.059l10.273-9.806l-2.94-2.939zM19 8.44l2.263-2.262a.25.25 0 0 0 0-.354l-2.586-2.586a.25.25 0 0 0-.354 0L16.061 5.5Z" />
+                </svg>
+            </button>
         </div>
-        <div class="col-span-1">
-            <div class="grid grid-rows-3 gap-4 h-full">
-                <div class="row-span-1 grid grid-cols-2 gap-4">
-                    <div class="col-span-1 bg-gray-100 rounded p-4 flex items-center justify-center">
-                        <p class="text-2xl">Username</p>
-                    </div>
-                    <div class="col-span-1 bg-gray-100 rounded p-4 flex items-center justify-center" >
-                        <button class="flex justify-center items-center h-8 px-7 font-medium text-white bg-primary-500 rounded-full hover:shadow-lg transition-shadow duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16">
-                                <path fill="white" d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5z" />
-                            </svg>
-                            <label for="modalLogin" class="ml-1 cursor-pointer">Seguir</label>
-                        </button>
-                    </div>
-                    @if(isLoged()==false){
-                        <app-modal-access-prohibited></app-modal-access-prohibited>
-                    }
-                    
+        <div class="col-span-1 grid grid-rows-2 gap-4">
+            <div class="row-span-1 grid grid-cols-2 gap-4 border border-gray-100">
+                <!-- Contenido de la primera fila de la segunda columna, dividida en 2 columnas -->
+                <div class="col-span-1 border-gray-100 rounded p-4 flex items-center justify-start">
+                    <p class="text-2xl font-bold">Username</p>
                 </div>
-                <div class="row-span-1 grid grid-cols-3 gap-4">
-                    <div class="col-span-1 bg-gray-100 rounded p-4 flex items-center justify-center tocol sm:gap-1">
-                        <p class="text-xl">10 </p>
-                        <p class="text-xl">Publicaciones</p>
-                    </div>
-                    <div class="col-span-1 bg-gray-100 rounded p-4 flex items-center justify-center tocol sm:gap-1">
-                        <p class="text-xl">10 </p>
-                        <p class="text-xl">Seguidores</p>
-                    </div>
-                    <div class="col-span-1 bg-gray-100 rounded p-4 flex items-center justify-center tocol sm:gap-1" >
-                        <p class="text-xl">10 </p>
-                        <p class="text-xl">Seguidos</p>
-                    </div>
+                <div class="col-span-1 border-gray-100  rounded p-4 flex items-center justify-start" >
+                    <button class="flex justify-center items-center h-8 px-7 font-medium text-white bg-primary-500 rounded-full hover:shadow-lg transition-shadow duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16">
+                            <path fill="white" d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5z" />
+                        </svg>
+                        <label for="modalLogin" class="ml-1 cursor-pointer">Seguir</label>
+                    </button>
+                    @if(isLoged()==false){ <app-modal-access-prohibited></app-modal-access-prohibited> }
                 </div>
-                <div class="row-span-1 bg-gray-100 rounded p-4">
-                    <textarea class="w-full h-full p-2"></textarea>
+            </div>
+
+            <div class="row-span-1 grid grid-cols-3 gap-4">
+                <!-- Contenido de la segunda fila de la segunda columna, dividida en 3 columnas -->
+                <div class="col-span-1 border border-gray-100  rounded p-4 flex items-center justify-start tocol sm:gap-1">
+                    <p class="text-xl">10 </p>
+                    <p class="text-xl">Publicaciones</p>
+                </div>
+                <div class="col-span-1 border border-gray-100 rounded p-4 flex items-center justify-start tocol sm:gap-1">
+                    <p class="text-xl">10 </p>
+                    <p class="text-xl">Seguidores</p>
+                </div>
+                <div class="col-span-1 border border-gray-100  rounded p-4 flex items-center justify-start tocol sm:gap-1" >
+                    <p class="text-xl">10 </p>
+                    <p class="text-xl">Seguidos</p>
                 </div>
             </div>
         </div>
+        <div class="col-span-2 row-span-1 border border-gray-100 p-2" [attr.contenteditable]="isMyProfile()">
+            <p class="text-xl font-bold">Pedro García Lopez</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit
+        </div>
+    </div>
+    <div class="grid grid-cols-3 border border-blue-300 mt-8 justify-items-center">
+        <div>
+            <p class="text-xl font-bold">Publicaciones</p>
+        </div>
+        <div>hola</div>
+        <div>hola</div>
+    </div>
+
+    <div class="grid mt-8 justify-items-center gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <app-user-view-recipe></app-user-view-recipe>
+        <app-user-view-recipe></app-user-view-recipe>
+        <app-user-view-recipe></app-user-view-recipe>
+        <app-user-view-recipe></app-user-view-recipe>
+        <app-user-view-recipe></app-user-view-recipe>
+        <app-user-view-recipe></app-user-view-recipe>
     </div>
 </div>
