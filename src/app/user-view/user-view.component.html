@@ -16,7 +16,7 @@
                     <p class="text-2xl font-bold">Username</p>
                 </div>
                 <div class="col-span-1 border-gray-100  rounded p-4 flex items-center justify-start" >
-                    <button class="flex justify-center items-center h-8 px-7 font-medium text-white bg-primary-500 rounded-full hover:shadow-lg transition-shadow duration-300">
+                    <button class="flex justify-center items-center h-8 px-7 font-medium text-white bg-primary-500 rounded-lg hover:shadow-lg transition-shadow duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16">
                             <path fill="white" d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5z" />
                         </svg>
@@ -47,20 +47,59 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit
         </div>
     </div>
-    <div class="grid grid-cols-3 border border-blue-300 mt-8 justify-items-center">
-        <div>
-            <p class="text-xl font-bold">Publicaciones</p>
+    <!-- border border-blue-300 -->
+    <div class="grid grid-cols-3  mt-16 justify-items-center" *ngIf="isMyProfile()">
+        <div (click)="cambiarContenido('publicaciones')" >
+            <div class="flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
+                    <path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="32.6" d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96" />
+                    <path fill="none" stroke="black" stroke-miterlimit="10" stroke-width="32.6" d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304Z" />
+                </svg>
+                <p class="text-xl font-bold cursor-pointer hidden sm:block">Publicaciones</p>
+            </div>
+            <div *ngIf="tabSeleccionada === 'publicaciones'" class="active"></div>
         </div>
-        <div>hola</div>
-        <div>hola</div>
+        
+        <div (click)="cambiarContenido('guardados')" >
+            <div class="flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24">
+                    <path fill="dark" d="M11.696 16.856L7.59 12.064a2.46 2.46 0 0 1 3.583-3.367L12 9.5l.827-.803a2.461 2.461 0 0 1 3.583 3.368l-4.106 4.79a.4.4 0 0 1-.608 0M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2s10 4.477 10 10m-1.5 0a8.5 8.5 0 1 0-17 0a8.5 8.5 0 0 0 17 0" />
+                </svg>
+                <p class="text-xl font-bold cursor-pointer hidden sm:block">Guardados</p>
+            </div>
+            <div *ngIf="tabSeleccionada === 'guardados'" class="active"></div>
+        </div>
+        <div (click)="cambiarContenido('nueva-receta')" >
+            <div class="flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 56 56">
+                    <path fill="black" d="M46.867 9.262c-2.39-2.39-5.765-2.766-9.75-2.766H18.836c-3.937 0-7.312.375-9.703 2.766c-2.39 2.39-2.742 5.742-2.742 9.656v18.094c0 4.008.351 7.336 2.742 9.726c2.39 2.39 5.766 2.766 9.773 2.766h18.211c3.985 0 7.36-.375 9.75-2.766c2.391-2.39 2.742-5.718 2.742-9.726V18.988c0-4.008-.351-7.36-2.742-9.726m-1.031 9.07v19.313c0 2.437-.305 4.921-1.71 6.351c-1.43 1.406-3.962 1.734-6.376 1.734h-19.5c-2.414 0-4.945-.328-6.351-1.734c-1.43-1.43-1.735-3.914-1.735-6.352V18.403c0-2.46.305-4.992 1.711-6.398c1.43-1.43 3.984-1.734 6.445-1.734h19.43c2.414 0 4.945.328 6.375 1.734c1.406 1.43 1.711 3.914 1.711 6.328M28 40.504c.938 0 1.688-.727 1.688-1.664v-9.164h9.164c.937 0 1.687-.797 1.687-1.664c0-.914-.75-1.688-1.687-1.688h-9.164v-9.187c0-.938-.75-1.664-1.688-1.664a1.64 1.64 0 0 0-1.664 1.664v9.187h-9.164c-.938 0-1.688.774-1.688 1.688c0 .867.75 1.664 1.688 1.664h9.164v9.164c0 .937.727 1.664 1.664 1.664" />
+                </svg>
+                <p class="text-xl font-bold cursor-pointer hidden sm:block">Nueva receta</p>
+            </div>
+            <div *ngIf="tabSeleccionada === 'nueva-receta'" class="active"></div>
+        </div>
     </div>
 
     <div class="grid mt-8 justify-items-center gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        <app-user-view-recipe></app-user-view-recipe>
-        <app-user-view-recipe></app-user-view-recipe>
-        <app-user-view-recipe></app-user-view-recipe>
-        <app-user-view-recipe></app-user-view-recipe>
-        <app-user-view-recipe></app-user-view-recipe>
-        <app-user-view-recipe></app-user-view-recipe>
+        <ng-container *ngIf="tabSeleccionada === 'publicaciones'">
+            <!-- For de publicaciones del Usuario -->
+            <app-user-view-recipe></app-user-view-recipe>
+            <app-user-view-recipe></app-user-view-recipe>
+            <app-user-view-recipe></app-user-view-recipe>
+            <app-user-view-recipe></app-user-view-recipe>
+            <app-user-view-recipe></app-user-view-recipe>
+            <app-user-view-recipe></app-user-view-recipe>
+        </ng-container>
+
+        <!-- For de guardados del Usuario -->
+        <ng-container *ngIf="tabSeleccionada === 'guardados'">
+            <app-user-view-recipe></app-user-view-recipe>
+            <app-user-view-recipe></app-user-view-recipe>
+        </ng-container>
     </div>
+
+    <!-- Vista de crear receta -->
+    <ng-container *ngIf="tabSeleccionada === 'nueva-receta'">
+        <app-recipe-create></app-recipe-create>
+    </ng-container>
 </div>
