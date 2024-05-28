@@ -17,4 +17,5 @@ export const routes: Routes = [
     { path: "sign-in/create-account", component: CreateAccountComponent},
     { path: 'user-view', component: UserViewComponent } ,
     { path: 'recipe', component: RecipeComponent } ,
+    { path: '**', redirectTo: '' } // Si la ruta no existe, redirijo a la raíz
 ];
