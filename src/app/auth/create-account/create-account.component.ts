@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../auth.service';
+import { AppComponent } from '../../app.component';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -20,9 +21,17 @@ export class CreateAccountComponent {
   });
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    @Inject(AppComponent) private appComponent: AppComponent
   )
   {}
+
+  ngAfterViewInit(): void {
+    // Oculto el header y footer
+    setTimeout(() => {
+      this.appComponent.isShowHeaderFooter = false;
+    }, 0);
+  }
 
   async createAccount(){
     const username = this.accountCreationForm.value.username as string;
