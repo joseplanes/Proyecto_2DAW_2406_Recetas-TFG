@@ -11,5 +11,13 @@ import { NgModule } from '@angular/core';
 })
 export class RecipeCreateComponent {
   dificultad: string = '';
-    
+  ingredientes: string[] = [''];
+  pasos: string[] = ['1.'];
+  addIngrediente() {
+    this.ingredientes.push('');
+  }
+
+  addPasos(){
+    this.pasos.push('');
+  }
 }

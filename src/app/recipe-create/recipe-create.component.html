@@ -5,8 +5,10 @@
         </div>
         <form action="#" class="mx-auto mb-0 mt-8 max-w-2xl space-y-4">
             <div class="lg:items-center">
-                <img class="mx-auto relative" src="../../favicon.ico" alt="Gastromic Logo" style="height: 110px;" />
-                <!-- Aqui deberia ir lo de subir las imagenes pero es que no lo consigo  -->
+                <label for="imagenes">
+                    <img class="mx-auto relative cursor-pointer" src="../../favicon.ico" alt="Gastromic Logo" style="height: 110px;" />
+                </label>
+                <input type="file" multiple name="imagenes" id="imagenes" class="hidden">
             </div>
             <div>
                 <div class="relative">
@@ -36,13 +38,13 @@
             <div class="grid md:grid-cols-1 sm:grid-cols-1 gap-2">
                 <div class="grid grid-cols-1">
                 <label for="persons" class="text-lg">Personas</label>
-                <legend>Para cuantas personas seria?</legend>
+                <legend class="text-sm text-gray-500">Para cuantas personas seria?</legend>
                 <input type="text" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                     placeholder="" />
                 </div>
                 <div>
                     <label for="time" class="text-lg">Tiempo</label>
-                    <legend>Cuanto tiempo aproximado llevaria la elaboracion de la receta?</legend>
+                    <legend class="text-sm text-gray-500">Cuanto tiempo aproximado llevaria la elaboracion de la receta?</legend>
                     <input type="time" id="time" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                         placeholder="" />
                 </div>
@@ -71,19 +73,25 @@
                     <input type="radio" name="dificultad" class="hidden" value="dificil" [(ngModel)]="dificultad" /> Difícil
                 </label>
             </div>
-            <div>
+            <div class="">
                 <label for="" class="">Ingredientes</label>
-                <div class="relative">
-                    <textarea class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                        placeholder=""></textarea>
-                </div>
+                <div class="grid grid-cols-1" >
+                @for (i of ingredientes; track i) {
+                      <input type="text" id="ingrendientes" name="ingredientes" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                             [(ngModel)]="ingredientes[0]" placeholder="">
+                            }
+                        </div>
+                    <button (click)="addIngrediente() " class="bg-primary-600 px-2  py-2.5 border rounded-xl text-white mt-2">Añadir ingrediente</button>
             </div>
             <div>
                 <label for="steps" class="">Pasos</label>
-                <div class="relative">
-                    <textarea class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                        placeholder="Describa los pasos a seguir para la preparacion de la receta"></textarea>
+                <div class="grid grid-cols-1" >
+                    @for (i of pasos; track i) {
+                            <input type="text" id="pasos" name="pasos" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                                    [(ngModel)]="pasos[0]" placeholder="">
+                    }
                 </div>
+                <button (click)="addPasos() " class="bg-primary-600 px-2  py-2.5 border rounded-xl text-white mt-2">Añadir paso </button>
             </div>
             <div class="">
                 <button type="submit" class=" w-full rounded-lg  bg-primary-500 px-5 py-3  text-sm font-medium text-white">
