@@ -35,6 +35,7 @@ export class AppComponent implements AfterViewInit {
     });
   }
 
+  // Necesario para que se cargue el JS de la plantilla de Preline
   ngOnInit() {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {

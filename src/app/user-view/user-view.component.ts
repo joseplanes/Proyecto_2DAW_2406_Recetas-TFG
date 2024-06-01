@@ -17,6 +17,12 @@ export class UserViewComponent {
   myprofile: boolean = true;
   following: boolean = false;
   tabSeleccionada = 'publicaciones'; // 'publicaciones' es la pestaña activa por defecto
+  botonDeshabilitado = true;
+
+  // Luego, podrías tener una función que se llame cuando se haga clic en el botón
+  alHacerClic() {
+    this.botonDeshabilitado = false;
+  }
 
   constructor() { }
 

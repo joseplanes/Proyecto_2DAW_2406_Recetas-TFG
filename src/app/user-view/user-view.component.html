@@ -4,8 +4,10 @@
         <div class="col-span-1 row-span-2 border border-gray-100 rounded p-4 flex items-center justify-center relative">
             <img src="../../assets/foto_perfil.jpg" alt="User profile" class="mx-auto rounded-full img_responsive">
             <button *ngIf="isMyProfile()==true" class="flex items-center" title="Editar Perfil">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="absolute top-0 right-2 m-2">
-                    <path fill="black" d="M17.263 2.177a1.75 1.75 0 0 1 2.474 0l2.586 2.586a1.75 1.75 0 0 1 0 2.474L19.53 10.03l-.012.013L8.69 20.378a1.75 1.75 0 0 1-.699.409l-5.523 1.68a.75.75 0 0 1-.747-.188a.75.75 0 0 1-.188-.747l1.673-5.5a1.75 1.75 0 0 1 .466-.756L14.476 4.963ZM4.708 16.361a.26.26 0 0 0-.067.108l-1.264 4.154l4.177-1.271a.25.25 0 0 0 .1-.059l10.273-9.806l-2.94-2.939zM19 8.44l2.263-2.262a.25.25 0 0 0 0-.354l-2.586-2.586a.25.25 0 0 0-.354 0L16.061 5.5Z" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    class="absolute top-0 right-2 m-2">
+                    <path fill="black"
+                        d="M17.263 2.177a1.75 1.75 0 0 1 2.474 0l2.586 2.586a1.75 1.75 0 0 1 0 2.474L19.53 10.03l-.012.013L8.69 20.378a1.75 1.75 0 0 1-.699.409l-5.523 1.68a.75.75 0 0 1-.747-.188a.75.75 0 0 1-.188-.747l1.673-5.5a1.75 1.75 0 0 1 .466-.756L14.476 4.963ZM4.708 16.361a.26.26 0 0 0-.067.108l-1.264 4.154l4.177-1.271a.25.25 0 0 0 .1-.059l10.273-9.806l-2.94-2.939zM19 8.44l2.263-2.262a.25.25 0 0 0 0-.354l-2.586-2.586a.25.25 0 0 0-.354 0L16.061 5.5Z" />
                 </svg>
             </button>
         </div>
@@ -15,28 +17,82 @@
                 <div class="col-span-1 border-gray-100 rounded p-4 flex items-center justify-start">
                     <p class="text-2xl font-bold">Username</p>
                 </div>
-                <div class="col-span-1 border-gray-100  rounded p-4 flex items-center justify-start" >
-                    <button class="flex justify-center items-center h-8 px-7 font-medium text-white bg-primary-500 rounded-lg hover:shadow-lg transition-shadow duration-300">
+                <div class="col-span-1 border-gray-100  rounded p-4 flex items-center justify-start">
+                    <button type="button"
+                        class="flex justify-center items-center h-8 px-7 font-medium text-white bg-primary-500 rounded-lg hover:shadow-lg transition-shadow duration-300"
+                        data-hs-overlay="#hs-vertically-centered-modal">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16">
-                            <path fill="white" d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5z" />
+                            <path fill="white"
+                                d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5z" />
                         </svg>
                         <label for="modalLogin" class="ml-1 cursor-pointer">Seguir</label>
                     </button>
-                    @if(isLoged()==false){ <app-modal-access-prohibited></app-modal-access-prohibited> }
+                    <!-- @if(isLoged()==false){  -->
+                    <div id="hs-vertically-centered-modal"
+                        class="hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none">
+                        <div
+                            class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto min-h-[calc(100%-3.5rem)] flex items-center">
+                            <div
+                                class="w-full flex flex-col bg-white border shadow-sm rounded-xl pointer-events-auto  ">
+                                <div class="flex justify-between items-center py-3 px-4 border-b ">
+                                    <div class="flex items-center gap-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="-2 -3 24 24">
+                                            <path fill="#ff0000" d="m12.8 1.613l6.701 11.161c.963 1.603.49 3.712-1.057 4.71a3.213 3.213 0 0 1-1.743.516H3.298C1.477 18 0 16.47 0 14.581c0-.639.173-1.264.498-1.807L7.2 1.613C8.162.01 10.196-.481 11.743.517c.428.276.79.651 1.057 1.096m-2.22.839a1.077 1.077 0 0 0-1.514.365L2.365 13.98a1.17 1.17 0 0 0-.166.602c0 .63.492 1.14 1.1 1.14H16.7c.206 0 .407-.06.581-.172a1.164 1.164 0 0 0 .353-1.57L10.933 2.817a1.12 1.12 0 0 0-.352-.365zM10 14a1 1 0 1 1 0-2a1 1 0 0 1 0 2m0-9a1 1 0 0 1 1 1v4a1 1 0 0 1-2 0V6a1 1 0 0 1 1-1" />
+                                        </svg>
+                                        <p class="font-bold text-lg">¡Acceso denegado!</p>
+                                    </div>
+                                    <button type="button"
+                                        class="flex justify-center items-center size-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none "
+                                        data-hs-overlay="#hs-vertically-centered-modal">
+                                        <span class="sr-only">Close</span>
+                                        <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="black"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M18 6 6 18"></path>
+                                            <path d="m6 6 12 12"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="p-4 overflow-y-auto mt-2">
+                                    <p class="text-gray-800">
+                                        Inicia sesión para interactuar con la comunidad.
+                                    </p>
+                                </div>
+                                <div class="flex justify-end items-center gap-x-2 py-3 px-4">
+                                    <button type="button"
+                                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none "
+                                        data-hs-overlay="#hs-vertically-centered-modal">
+                                        Close
+                                    </button>
+                                    <button type="button" 
+                                    class="flex justify-center items-center h-10 px-7 font-medium text-white bg-primary-500 rounded-xl hover:shadow-lg transition-shadow duration-300 disabled:opacity-100"
+                                    data-hs-overlay="#hs-vertically-centered-modal"
+                                    [routerLink]="['/sign-in']"
+                                    >
+                                    Iniciar Sesión
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- } -->
                 </div>
             </div>
 
             <div class="row-span-1 grid grid-cols-3 gap-4">
                 <!-- Contenido de la segunda fila de la segunda columna, dividida en 3 columnas -->
-                <div class="col-span-1 border border-gray-100  rounded p-4 flex items-center justify-start tocol sm:gap-1">
+                <div
+                    class="col-span-1 border border-gray-100  rounded p-4 flex items-center justify-start tocol sm:gap-1">
                     <p class="text-xl">10 </p>
                     <p class="text-xl">Publicaciones</p>
                 </div>
-                <div class="col-span-1 border border-gray-100 rounded p-4 flex items-center justify-start tocol sm:gap-1">
+                <div
+                    class="col-span-1 border border-gray-100 rounded p-4 flex items-center justify-start tocol sm:gap-1">
                     <p class="text-xl">10 </p>
                     <p class="text-xl">Seguidores</p>
                 </div>
-                <div class="col-span-1 border border-gray-100  rounded p-4 flex items-center justify-start tocol sm:gap-1" >
+                <div
+                    class="col-span-1 border border-gray-100  rounded p-4 flex items-center justify-start tocol sm:gap-1">
                     <p class="text-xl">10 </p>
                     <p class="text-xl">Seguidos</p>
                 </div>
@@ -49,30 +105,34 @@
     </div>
     <!-- border border-blue-300 -->
     <div class="grid grid-cols-3  mt-16 justify-items-center" *ngIf="isMyProfile()">
-        <div (click)="cambiarContenido('publicaciones')" >
+        <div (click)="cambiarContenido('publicaciones')">
             <div class="flex items-center gap-1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
-                    <path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="32.6" d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96" />
-                    <path fill="none" stroke="black" stroke-miterlimit="10" stroke-width="32.6" d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304Z" />
+                    <path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="32.6"
+                        d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96" />
+                    <path fill="none" stroke="black" stroke-miterlimit="10" stroke-width="32.6"
+                        d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304Z" />
                 </svg>
                 <p class="text-xl font-bold cursor-pointer hidden sm:block">Publicaciones</p>
             </div>
             <div *ngIf="tabSeleccionada === 'publicaciones'" class="active"></div>
         </div>
-        
-        <div (click)="cambiarContenido('guardados')" >
+
+        <div (click)="cambiarContenido('guardados')">
             <div class="flex items-center gap-1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24">
-                    <path fill="dark" d="M11.696 16.856L7.59 12.064a2.46 2.46 0 0 1 3.583-3.367L12 9.5l.827-.803a2.461 2.461 0 0 1 3.583 3.368l-4.106 4.79a.4.4 0 0 1-.608 0M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2s10 4.477 10 10m-1.5 0a8.5 8.5 0 1 0-17 0a8.5 8.5 0 0 0 17 0" />
+                    <path fill="dark"
+                        d="M11.696 16.856L7.59 12.064a2.46 2.46 0 0 1 3.583-3.367L12 9.5l.827-.803a2.461 2.461 0 0 1 3.583 3.368l-4.106 4.79a.4.4 0 0 1-.608 0M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2s10 4.477 10 10m-1.5 0a8.5 8.5 0 1 0-17 0a8.5 8.5 0 0 0 17 0" />
                 </svg>
                 <p class="text-xl font-bold cursor-pointer hidden sm:block">Guardados</p>
             </div>
             <div *ngIf="tabSeleccionada === 'guardados'" class="active"></div>
         </div>
-        <div (click)="cambiarContenido('nueva-receta')" >
+        <div (click)="cambiarContenido('nueva-receta')">
             <div class="flex items-center gap-1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 56 56">
-                    <path fill="black" d="M46.867 9.262c-2.39-2.39-5.765-2.766-9.75-2.766H18.836c-3.937 0-7.312.375-9.703 2.766c-2.39 2.39-2.742 5.742-2.742 9.656v18.094c0 4.008.351 7.336 2.742 9.726c2.39 2.39 5.766 2.766 9.773 2.766h18.211c3.985 0 7.36-.375 9.75-2.766c2.391-2.39 2.742-5.718 2.742-9.726V18.988c0-4.008-.351-7.36-2.742-9.726m-1.031 9.07v19.313c0 2.437-.305 4.921-1.71 6.351c-1.43 1.406-3.962 1.734-6.376 1.734h-19.5c-2.414 0-4.945-.328-6.351-1.734c-1.43-1.43-1.735-3.914-1.735-6.352V18.403c0-2.46.305-4.992 1.711-6.398c1.43-1.43 3.984-1.734 6.445-1.734h19.43c2.414 0 4.945.328 6.375 1.734c1.406 1.43 1.711 3.914 1.711 6.328M28 40.504c.938 0 1.688-.727 1.688-1.664v-9.164h9.164c.937 0 1.687-.797 1.687-1.664c0-.914-.75-1.688-1.687-1.688h-9.164v-9.187c0-.938-.75-1.664-1.688-1.664a1.64 1.64 0 0 0-1.664 1.664v9.187h-9.164c-.938 0-1.688.774-1.688 1.688c0 .867.75 1.664 1.688 1.664h9.164v9.164c0 .937.727 1.664 1.664 1.664" />
+                    <path fill="black"
+                        d="M46.867 9.262c-2.39-2.39-5.765-2.766-9.75-2.766H18.836c-3.937 0-7.312.375-9.703 2.766c-2.39 2.39-2.742 5.742-2.742 9.656v18.094c0 4.008.351 7.336 2.742 9.726c2.39 2.39 5.766 2.766 9.773 2.766h18.211c3.985 0 7.36-.375 9.75-2.766c2.391-2.39 2.742-5.718 2.742-9.726V18.988c0-4.008-.351-7.36-2.742-9.726m-1.031 9.07v19.313c0 2.437-.305 4.921-1.71 6.351c-1.43 1.406-3.962 1.734-6.376 1.734h-19.5c-2.414 0-4.945-.328-6.351-1.734c-1.43-1.43-1.735-3.914-1.735-6.352V18.403c0-2.46.305-4.992 1.711-6.398c1.43-1.43 3.984-1.734 6.445-1.734h19.43c2.414 0 4.945.328 6.375 1.734c1.406 1.43 1.711 3.914 1.711 6.328M28 40.504c.938 0 1.688-.727 1.688-1.664v-9.164h9.164c.937 0 1.687-.797 1.687-1.664c0-.914-.75-1.688-1.687-1.688h-9.164v-9.187c0-.938-.75-1.664-1.688-1.664a1.64 1.64 0 0 0-1.664 1.664v9.187h-9.164c-.938 0-1.688.774-1.688 1.688c0 .867.75 1.664 1.688 1.664h9.164v9.164c0 .937.727 1.664 1.664 1.664" />
                 </svg>
                 <p class="text-xl font-bold cursor-pointer hidden sm:block">Nueva receta</p>
             </div>
