@@ -1,11 +1,17 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterModule, RouterOutlet, Event } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { filter } from 'rxjs';
+import { IStaticMethods } from 'preline/preline';
+declare global {
+  interface Window {
+    HSStaticMethods: IStaticMethods;
+  }
+}
 
 @Component({
   selector: 'app-root',
@@ -26,6 +32,16 @@ export class AppComponent implements AfterViewInit {
     ).subscribe((event: NavigationEnd) => {
       // Mostrar el encabezado y pie de página cuando la ruta cambia
       this.isShowHeaderFooter = true;
+    });
+  }
+
+  ngOnInit() {
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        setTimeout(() => {
+          window.HSStaticMethods.autoInit();
+        }, 100);
+      }
     });
   }
 
