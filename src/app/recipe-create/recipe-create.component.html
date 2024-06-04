@@ -52,46 +52,51 @@
             </div>
             <div>
                 <label for="" >Dificultad</label>
+                <legend class="text-sm text-gray-500">Cual seria la dificultad de la receta?</legend>
             </div>
             <div class="grid md:grid-cols-3 w-full gap-4 sm:grid-cols-1 lg:justify-center lg:items-center">
-                <label class="btn btn-outline w-full text-white" 
-                       [class.bg-green-500]="dificultad !== 'facil'" 
-                       [class.bg-green-800]="dificultad === 'facil'" 
+                <label class="py-3 px-4 items-center gap-x-2 text-sm font-semibold rounded-lg border text-black  disabled:opacity-50 disabled:pointer-events-none text-center "
+                       [class.border-green-500]="dificultad !== 'facil'" 
+                       [class.bg-green-500]="dificultad === 'facil'" 
                        (click)="dificultad = 'facil'">
                     <input type="radio" name="dificultad" class="hidden" value="facil" [(ngModel)]="dificultad" /> Fácil
                 </label>
-                <label class="btn btn-outline w-full text-white" 
-                       [class.bg-yellow-500]="dificultad !== 'medio'" 
-                       [class.bg-yellow-800]="dificultad === 'medio'" 
-                       (click)="dificultad = 'medio'">
-                    <input type="radio" name="dificultad" class="hidden" value="medio" [(ngModel)]="dificultad" /> Medio
+                <label class="py-3 px-4 items-center gap-x-2 text-sm font-semibold rounded-lg border text-black  disabled:opacity-50 disabled:pointer-events-none text-center "
+                    [class.border-yellow-500]="dificultad !== 'medio'" 
+                    [class.bg-yellow-500]="dificultad === 'medio'" 
+                    (click)="dificultad = 'medio'">
+                <input type="radio" name="dificultad" class="hidden" value="medio" [(ngModel)]="dificultad" /> Medio
                 </label>
-                <label class="btn btn-outline w-full text-white" 
-                       [class.bg-red-500]="dificultad !== 'dificil'" 
-                       [class.bg-red-800]="dificultad === 'dificil'" 
-                       (click)="dificultad = 'dificil'">
-                    <input type="radio" name="dificultad" class="hidden" value="dificil" [(ngModel)]="dificultad" /> Difícil
+                
+                <label class="py-3 px-4 items-center gap-x-2 text-sm font-semibold rounded-lg border text-black  disabled:opacity-50 disabled:pointer-events-none text-center "
+                        [class.border-red-500]="dificultad !== 'dificil'" 
+                        [class.bg-red-500]="dificultad === 'dificil'" 
+                        (click)="dificultad = 'dificil'">
+                <input type="radio" name="dificultad" class="hidden" value="dificil" [(ngModel)]="dificultad" /> Difícil
                 </label>
             </div>
             <div class="">
                 <label for="" class="">Ingredientes</label>
-                <div class="grid grid-cols-1" >
-                @for (i of ingredientes; track i) {
-                      <input type="text" id="ingrendientes" name="ingredientes" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                             [(ngModel)]="ingredientes[0]" placeholder="">
-                            }
-                        </div>
-                    <button (click)="addIngrediente() " class="bg-primary-600 px-2  py-2.5 border rounded-xl text-white mt-2">Añadir ingrediente</button>
+                <div class="grid grid-cols-1">
+                    <div *ngFor="let ingrediente of ingredientes; let i = index; trackBy: trackByIndex">
+                        <input type="text" id="ingredientes" name="ingredientes" class="rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                               [value]="ingredientes[i].nombre" (input)="updateIngrediente(i, 'nombre', $event)" placeholder="Nombre del ingrediente">
+                        <input type="text" id="cantidad" name="cantidad" class=" rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                               [value]="ingredientes[i].cantidad" (input)="updateIngrediente(i, 'cantidad', $event)" placeholder="Cantidad">
+                    </div>
+                </div>
+                <button (click)="addIngrediente()" class="bg-primary-600 px-2 py-2.5 border rounded-xl text-white mt-2">Añadir ingrediente</button>
             </div>
             <div>
-                <label for="steps" class="">Pasos</label>
-                <div class="grid grid-cols-1" >
-                    @for (i of pasos; track i) {
-                            <input type="text" id="pasos" name="pasos" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                                    [(ngModel)]="pasos[0]" placeholder="">
-                    }
+                <div>
+                    <label for="steps" class="">Pasos</label>
+                    <div *ngFor="let paso of pasos; let i = index; trackBy: trackByIndex">
+                        <input type="text" id="pasos" name="pasos" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                               [value]="pasos[i]" (input)="updatePasos(i, $event)" placeholder="">
+                    </div>
                 </div>
-                <button (click)="addPasos() " class="bg-primary-600 px-2  py-2.5 border rounded-xl text-white mt-2">Añadir paso </button>
+                    <button (click)="addPasos() " class="bg-primary-600 px-2  py-2.5 border rounded-xl text-white mt-2">Añadir paso </button>
+        
             </div>
             <div class="">
                 <button type="submit" class=" w-full rounded-lg  bg-primary-500 px-5 py-3  text-sm font-medium text-white">
