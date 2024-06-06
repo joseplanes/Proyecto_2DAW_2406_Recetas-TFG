@@ -65,9 +65,9 @@
                                         Close
                                     </button>
                                     <button type="button" 
-                                    class="flex justify-center items-center h-10 px-7 font-medium text-white bg-primary-500 rounded-xl hover:shadow-lg transition-shadow duration-300 disabled:opacity-100"
+                                    class="flex justify-center items-center h-10 px-7 font-medium text-white bg-primary-500 rounded-xl hover:shadow-lg transition-shadow duration-300 disabled:opacity-50"
                                     data-hs-overlay="#hs-vertically-centered-modal"
-                                    [routerLink]="['/sign-in']"
+                                    (click)="onButtonClick()"
                                     >
                                     Iniciar Sesión
                                     </button>

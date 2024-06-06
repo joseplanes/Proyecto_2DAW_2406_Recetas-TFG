@@ -1,5 +1,5 @@
 declare var google: any;
-import { Component, Inject, inject } from '@angular/core';
+import { Component,  Inject,  inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../auth.service';

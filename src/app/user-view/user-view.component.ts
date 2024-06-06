@@ -1,5 +1,5 @@
 import { Component,  } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ModalAccessProhibitedComponent } from '../modal-access-prohibited/modal-access-prohibited.component';
 import { CommonModule } from '@angular/common';
 import { UserViewRecipeComponent } from './user-view-recipe/user-view-recipe.component';
@@ -16,15 +16,10 @@ export class UserViewComponent {
   logged: boolean = false;
   myprofile: boolean = true;
   following: boolean = false;
-  tabSeleccionada = 'publicaciones'; // 'publicaciones' es la pestaña activa por defecto
+  tabSeleccionada = 'publicaciones';
   botonDeshabilitado = true;
 
-  // Luego, podrías tener una función que se llame cuando se haga clic en el botón
-  alHacerClic() {
-    this.botonDeshabilitado = false;
-  }
-
-  constructor() { }
+  constructor(private router: Router) { }
 
   isLoged() {
     return this.logged == true ? true : false;
@@ -40,5 +35,12 @@ export class UserViewComponent {
 
   cambiarContenido(tab: string) {
       this.tabSeleccionada = tab;
+  }
+
+  // Funcion que redirige a sign-in, de esta forma la opacidad del modal se quita
+  onButtonClick() {
+    setTimeout(() => {
+      this.router.navigate(['/sign-in']);
+    }, 0);
   }
 }
