@@ -9,6 +9,7 @@ import { UserViewComponent } from './user-view/user-view.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { CreateAccountComponent } from './auth/create-account/create-account.component';
 import { Page404Component } from './page404/page404.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent }, // Cuando la ruta es vacía, se carga el componente HomeComponent
@@ -19,5 +20,6 @@ export const routes: Routes = [
     { path: "sign-in/create-account", component: CreateAccountComponent},
     { path: 'user-view', component: UserViewComponent } ,
     { path: 'recipe', component: RecipeComponent } ,
+    { path: 'privacy-policy', component: PrivacyPolicyComponent } ,
     { path: '**', component: Page404Component } // Si la ruta no existe, redirijo a page404
 ];
