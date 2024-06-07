@@ -44,11 +44,10 @@ export class CreateAccountComponent {
         username: username,
         email: email,
         password: password,
-        role: "Public"
       }
 
       this.authService.createAccount(userObject);
-      console.log("CUENTA CREADA")
+      // console.log("CUENTA CREADA")
     }
     else {
       console.log("ERROR AL CREAR LA CUENTA")
