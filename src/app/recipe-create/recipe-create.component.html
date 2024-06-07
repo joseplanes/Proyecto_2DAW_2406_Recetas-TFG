@@ -1,9 +1,9 @@
 <section class="flex lg:justify-center lg:items-center mb-10">
     <div class="w-full">
         <div class="mx-auto max-w-lg text-center">
-            <h1 class="text-center text-2xl font-bold text-primary-800 sm:text-3xl">¡Cree su receta!</h1>
+            <h1 class="text-center text-6xl font-semibold text-primary-800 sm:text-3xl">¡Cree su receta!</h1>
         </div>
-        <form action="#" class="mx-auto mt-8 max-w-2xl space-y-4">
+        <form action="#" class="mx-auto -mt-6 max-w-2xl space-y-4">
             <div class="flex items-center justify-center">
                 <label for="imagenes">
                     <img src="../../assets/logo_gastromic.svg" class="h-[200px] sm:h-[250px]" alt="Gastromic Logo" />
@@ -44,8 +44,7 @@
                         <legend class="text-sm text-gray-500">Cuanto tiempo aproximado llevaria la elaboracion de la receta?</legend>
                         <input type="time" id="time" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                             placeholder="" />
-                    </div>
-                
+                    </div>              
                 </div>
                 <div>
                     <label for="" >Dificultad</label>
@@ -75,11 +74,17 @@
                 <div class="">
                     <label for="" class="">Ingredientes</label>
                     <div class="grid grid-cols-1">
-                        <div *ngFor="let ingrediente of ingredientes; let i = index; trackBy: trackByIndex">
+                        <div *ngFor="let ingrediente of ingredientes; let i = index; trackBy: trackByIndex" class="grid grid-cols-3 gap-4">
                             <input type="text" id="ingredientes" name="ingredientes" class="rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                    [value]="ingredientes[i].nombre" (input)="updateIngrediente(i, 'nombre', $event)" placeholder="Nombre del ingrediente">
                             <input type="text" id="cantidad" name="cantidad" class=" rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                    [value]="ingredientes[i].cantidad" (input)="updateIngrediente(i, 'cantidad', $event)" placeholder="Cantidad">
+                            <select name="medida" id="medida" class="w-auto rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm">
+                                <option value="gr">GR</option>
+                                <option value="ml">ML</option>
+                                <option value="unit">Unidade/s</option>
+                                <option value="cucharadas">Cucharadas</option>
+                            </select>
                         </div>
                     </div>
                     <button (click)="addIngrediente()" class="bg-primary-600 px-2 py-2.5 border rounded-xl text-white mt-2">Añadir ingrediente</button>
@@ -100,8 +105,7 @@
                         Subir Receta
                     </button>
                 </div>
-            </div>
-          
+            </div>      
         </form>
     </div>
 </section>

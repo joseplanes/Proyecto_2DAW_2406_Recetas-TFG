@@ -15,11 +15,19 @@ export class RecipeCreateComponent {
   dificultad: string = '';
   ingredientes = [{ nombre: '', cantidad: '' }];
   pasos: string[] = [''];
+  medida: string = '';
+  
+  
+  setDificultad(dificultad: string) {
+      this.dificultad = this.dificultad === dificultad ? '' : dificultad;
+      console.log(this.dificultad);
+    }
 
   addIngrediente() {
-    this.ingredientes.push({ nombre: '', cantidad: '' });
+    this.ingredientes.push({ nombre: '', cantidad: ' ' + this.medida });
+    console.log(this.ingredientes);
   }
-
+  
   updateIngrediente(i: number, prop: 'nombre' | 'cantidad', event: Event) {
     const target = event.target as HTMLInputElement | null;
     if (target) {
@@ -41,5 +49,5 @@ export class RecipeCreateComponent {
   }
 
 }
-
-
+  
+ 
