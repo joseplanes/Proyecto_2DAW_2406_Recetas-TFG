@@ -48,7 +48,8 @@ export class HeaderComponent {
 
   toggleNav() {
     this.hideNav = !this.hideNav;
-  } 
+  }
+
   isAuthenticated() {
     return this.auth.isTokenExpired();
   }

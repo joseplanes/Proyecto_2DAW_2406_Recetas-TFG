@@ -1,10 +1,15 @@
-<div class="flex flex-row">
+<!-- <style>
+    input:focus {
+        border: 3px solid blue;
+    }
+</style> -->
+<div class="flex flex-row p-[40px]">
     <!-- Aside -->
-    <aside class=" bg-gray-200 p-4 ml-12 rounded-md hidden xl:block">
+    <aside class="bg-gray-200 p-4 rounded-md hidden xl:block">
         <h1>Filtrar por Categorias</h1>
         <h2>Principales filtros</h2>
-        <ul class="list-disc ml-6">   
-            <li>Tiempo 
+        <ul class="list-disc ml-6">
+            <li>Tiempo
                 <input type="range" min="0" max="100" value="0" class="range range-xs" step="25" />
             </li>
             <li>Dificultad</li>
@@ -20,55 +25,110 @@
     </aside>
 
     <!-- Contenido principal -->
-    <main class="p-4 grid mt-8 justify-items-center gap-4 grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 w-full ml-3 rounded-md"> 
-        <!-- <app-user-view-recipe /> -->
-        <app-user-view-recipe />
-        <app-user-view-recipe />
+    <div class="w-full border flex-col">
 
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
+        <div class="w-full border h-[100px] px-20 flex items-center">
+            
+                <div class="w-[320px] border p-2 rounded-tl-lg rounded-bl-lg">
+                    <input type="search" #iptSearch class="w-full px-4 py-1 text-gray-800 rounded-full focus:outline-none"
+                        placeholder="Busca cualquier receta">
+                </div>
+                <div>
+                    <button type="submit"
+                        class="flex items-center bg-primary-500 justify-center w-12 h-12 text-white rounded-r-lg">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </button>
+                </div>
+            
 
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
+            <div class="hs-dropdown relative inline-flex ml-20">
+                <button id="hs-dropdown-default" type="button"
+                    class="hs-dropdown-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none ">
+                    Ordenar por
+                    <svg class="hs-dropdown-open:rotate-180 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
+                </button>
+    
+                <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg p-2 mt-2  after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full"
+                    aria-labelledby="hs-dropdown-default">
+                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 "
+                        href="#">
+                        Newsletter
+                    </a>
+                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 "
+                        href="#">
+                        Purchases
+                    </a>
+                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 "
+                        href="#">
+                        Downloads
+                    </a>
+                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 "
+                        href="#">
+                        Team Account
+                    </a>
+                </div>
+            </div>
+        </div>
 
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
+        
 
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
+        <main class="grid justify-items-center gap-4 grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 w-full ml-3 rounded-md">
+            <!-- <app-user-view-recipe /> -->
+            <app-user-view-recipe />
+            <app-user-view-recipe />
 
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
 
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
 
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
 
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
 
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
 
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
 
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
 
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
 
-    </main>
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+        </main>
+    </div>
+
 </div>
