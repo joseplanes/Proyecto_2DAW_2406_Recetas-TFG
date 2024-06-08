@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../auth.service';
 import { AppComponent } from '../../app.component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-create-account',
@@ -22,6 +22,7 @@ export class CreateAccountComponent {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    private router: Router,
     @Inject(AppComponent) private appComponent: AppComponent
   )
   {}
@@ -47,7 +48,7 @@ export class CreateAccountComponent {
       }
 
       this.authService.createAccount(userObject);
-      // console.log("CUENTA CREADA")
+      this.router.navigate(['sign-in/succesfull-operation']);
     }
     else {
       console.log("ERROR AL CREAR LA CUENTA")

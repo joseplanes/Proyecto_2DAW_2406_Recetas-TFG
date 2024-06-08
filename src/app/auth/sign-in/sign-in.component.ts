@@ -52,7 +52,7 @@ export class SignInComponent {
     const email = this.signInForm.value.email as string;
     const password = this.signInForm.value.password as string
     this.authService.login(email, password);
-    this.router.navigate(['']);
+    this.router.navigate(['sign-in/succesfull-operation']);
   }
 
   private decodeToken(token: string){ // Decodeo token JWT
