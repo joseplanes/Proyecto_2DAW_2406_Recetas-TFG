@@ -1,74 +1,315 @@
-<div class="flex flex-row">
+<div class="flex p-[40px]">
     <!-- Aside -->
-    <aside class=" bg-gray-200 p-4 ml-12 rounded-md hidden xl:block">
-        <h1>Filtrar por Categorias</h1>
-        <h2>Principales filtros</h2>
-        <ul class="list-disc ml-6">   
-            <li>Tiempo 
-                <input type="range" min="0" max="100" value="0" class="range range-xs" step="25" />
-            </li>
-            <li>Dificultad</li>
-            <li>Nº Personas
-                <select class="select select-ghost select-xs w-full max-w-xs">
-                    <option disabled selected></option>
-                    <option>2 personas</option>
-                    <option>3 personas</option>
-                    <option>4 personas</option>
+    <aside class="bg-gray-100 py-6 px-10 rounded-md hidden xl:block h-[1000px]">
+        <div class="flex items-center gap-2 mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="black"
+                    d="M9 5a1 1 0 1 0 0 2a1 1 0 0 0 0-2M6.17 5a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 0 1 0-2zM15 11a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-1.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2zM9 17a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2z" />
+            </svg>
+            <p class="text-xl font-bold">Filtrar por Categorias</p>
+        </div>
+
+        <!-- Principales filtros -->
+        <div class="flex flex-col gap-8">
+            <!-- Principales Filtros -->
+            <div>
+                <div class="flex items-center justify-between mb-2">
+                    <p class="font-bold">Principales filtros</p>
+                    <svg (click)="manejarClic()" [ngClass]="{'rotate-180': listaVisible}" class="cursor-pointer size-4"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
+                </div>
+                <div *ngIf="listaVisible" class="ml-3 flex flex-col items-start gap-2">
+                    <div class="flex items-center justify-between w-full">
+                        <span>Tiempo</span>
+                        <select
+                            class="block p-1 w-[160px] border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+                            <option selected="" disabled>Seleccione Tiempo</option>
+                            <option>Menos de 5 min</option>
+                            <option>Entre 5 y 15 min</option>
+                            <option>Entre 16 y 30 min</option>
+                            <option>Entre 31 y 60 min</option>
+                            <option>Más de 1 hora</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center justify-between w-full">
+                        <span>Dificultad</span>
+                        <select
+                            class="block p-1 w-[160px] border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+                            <option selected="" disabled>Seleccione Dificultad</option>
+                            <option>Fácil</option>
+                            <option>Intermedio</option>
+                            <option>Díficil</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center justify-between w-full">
+                        <span>Tipo</span>
+                        <select
+                            class="block p-1 w-[160px] border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+                            <option selected="" disabled>Seleccione Tipo</option>
+                            <option>Desayuno</option>
+                            <option>Almuerzo</option>
+                            <option>Comida</option>
+                            <option>Merienda</option>
+                            <option>Cena</option>
+                            <option>Postres</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tipos de Dietas -->
+            <div>
+                <div class="flex items-center justify-between mb-2">
+                    <p class="font-bold">Tipos de dietas</p>
+                    <svg (click)="manejarClic()" [ngClass]="{'rotate-180': listaVisible}" class="cursor-pointer size-4"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
+                </div>
+                <div *ngIf="listaVisible" class="ml-3 flex flex-col items-start gap-2">
+                    <div class="flex flex-col items-start w-full">
+                        <label><input type="checkbox" name="diets" value="high-protein"> Alta en Proteína</label>
+                        <label><input type="checkbox" name="diets" value="mediterranean"> Mediterránea</label>
+                        <label><input type="checkbox" name="diets" value="vegetarian"> Vegetariana</label>
+                        <label><input type="checkbox" name="diets" value="vegan"> Vegana</label>
+                        <label><input type="checkbox" name="diets" value="gluten-free"> Sin Gluten</label>
+                        <label><input type="checkbox" name="diets" value="lactose-free"> Sin Lactosa</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tipos de Dietas -->
+            <div>
+                <div class="flex items-center justify-between mb-2">
+                    <p class="font-bold">Ingredientes</p>
+                    <svg (click)="manejarClic()" [ngClass]="{'rotate-180': listaVisible}" class="cursor-pointer size-4"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
+                </div>
+                <div *ngIf="listaVisible" class="ml-3 flex flex-col items-start gap-2">
+                    <!-- Select -->
+                    <select multiple="" data-hs-select='{
+                        "placeholder": "Elige Ingredientes",
+                        "toggleTag": "<button type=\"button\"></button>",
+                        "toggleClasses": "hs-select-disabled:pointer-events-none bg-white hs-select-disabled:opacity-50 relative flex text-nowrap w-full cursor-pointer  border border-gray-200 rounded-lg text-start text-sm focus:border-blue-500 focus:ring-blue-500",
+                        "dropdownClasses": "mt-2 z-50 w-full max-h-72 p-1 bg-gray-100 space-y-0.5 bg-gray-100 border border-gray-200 rounded-lg overflow-hidden overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300",
+                        "optionClasses": "py-2 px-4 w-full text-sm text-gray-800 cursor-pointer hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100",
+                        "mode": "tags",
+                        "wrapperClasses": "relative ps-0.5 pe-9 min-h-[46px] bg-gray-100 flex items-center flex-wrap text-nowrap w-full border border-gray-200 rounded-lg text-start text-sm focus:border-blue-500 focus:ring-blue-500",
+                        "tagsItemTemplate": "<div class=\"flex flex-nowrap bg-gray-100 items-center relative z-10 bg-gray-100 border border-gray-200 rounded-full p-1 m-1\"><div class=\"size-6 me-1\" data-icon></div><div class=\"whitespace-nowrap text-gray-800\" data-title></div><div class=\"inline-flex flex-shrink-0 justify-center items-center size-5 ms-2 rounded-full text-gray-800 bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 text-sm cursor-pointer\" data-remove><svg class=\"flex-shrink-0 size-3\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M18 6 6 18\"/><path d=\"m6 6 12 12\"/></svg></div></div>",
+                        "tagsInputClasses": "py-3 px-2 rounded-lg order-1 text-sm outline-none",
+                        "optionTemplate": "<div class=\"flex items-center\"><div class=\"size-8 me-2\" data-icon></div><div><div class=\"text-sm font-semibold text-gray-800\" data-title></div><div class=\"text-xs text-gray-500\" data-description></div></div><div class=\"ms-auto\"><span class=\"hidden hs-selected:block\"><svg class=\"flex-shrink-0 size-4 text-blue-600\" xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" viewBox=\"0 0 16 16\"><path d=\"M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z\"/></svg></span></div></div>",
+                        "extraMarkup": "<div class=\"absolute top-1/2 end-3 -translate-y-1/2\"><svg class=\"flex-shrink-0 size-3.5 text-gray-500\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m7 15 5 5 5-5\"/><path d=\"m7 9 5-5 5 5\"/></svg></div>"
+                    }' class="hidden w-full">
+                        <option value="">Choose</option>
+                        <option value="1" data-hs-select-option='{
+                            "description": "chris",
+                            "icon": "<img class=\"inline-block rounded-full\" src=\"https://images.unsplash.com/photo-1531927557220-a9e23c1e4794?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80\" />"
+                        }'>Christina</option>
+                        <option value="2" data-hs-select-option='{
+                            "description": "david",
+                            "icon": "<img class=\"inline-block rounded-full\" src=\"https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80\" />"
+                        }'>David</option>
+                        <option value="3" data-hs-select-option='{
+                            "description": "alex27",
+                            "icon": "<img class=\"inline-block rounded-full\" src=\"https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80\" />"
+                        }'>Alex</option>
+                        <option value="4" data-hs-select-option='{
+                            "description": "samia_samia",
+                            "icon": "<img class=\"inline-block rounded-full\" src=\"https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80\" />"
+                        }'>Samia</option>
+                    </select>
+                    <!-- End Select -->
+                </div>
+            </div>
+
+            <!-- Temporada -->
+            <div class="flex items-center justify-between mb-2">
+                <p class="font-bold">Temporada</p>
+                <select
+                    class="block p-1 w-[160px] border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+                    <option selected="" disabled>-- Temporada</option>
+                    <option>Primavera</option>
+                    <option>Verano</option>
+                    <option>Otoño</option>
+                    <option>Invierno</option>
                 </select>
-            </li>
-        </ul>
+            </div>
+
+            <!-- Métodos de coccion -->
+            <div class="flex items-center justify-between mb-2">
+                <p class="font-bold">Métodos de Cocción</p>
+                <select
+                    class="block p-1 w-[160px] border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+                    <option selected="" disabled>-- Cocción</option>
+                    <option>Horneado</option>
+                    <option>Asado</option>
+                    <option>Frito</option>
+                    <option>A la plancha</option>
+                    <option>Al vapor</option>
+                </select>
+            </div>
+
+            <!-- max calorias -->
+            <div class="flex flex-col items-start justify-between mb-2">
+                <p class="font-bold">Max Calorías</p>
+                <div class="bg-white border border-gray-200 rounded-md"
+                    data-hs-input-number="">
+                    <div class="w-full flex justify-between items-center gap-x-1">
+                        <div class="grow py-2 px-3">
+                            <input class="w-full p-0 bg-transparent border-0 text-gray-800 focus:ring-0 "
+                                type="text" value="1" data-hs-input-number-input="">
+                        </div>
+                        <div class="flex items-center -gap-y-px divide-x divide-gray-200 border-s border-gray-200 ">
+                            <button type="button"
+                                class="size-10 inline-flex justify-center items-center gap-x-2 text-sm font-medium last:rounded-e-lg bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none "
+                                data-hs-input-number-decrement="">
+                                <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                </svg>
+                            </button>
+                            <button type="button"
+                                class="size-10 inline-flex justify-center items-center gap-x-2 text-sm font-medium last:rounded-e-lg bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none "
+                                data-hs-input-number-increment="">
+                                <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                    <path d="M12 5v14"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
     </aside>
 
     <!-- Contenido principal -->
-    <main class="p-4 grid mt-8 justify-items-center gap-4 grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 w-full ml-3 rounded-md"> 
-        <!-- <app-user-view-recipe /> -->
-        <app-user-view-recipe />
-        <app-user-view-recipe />
+    <div class="w-full flex-col">
 
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
+        <div class="w-full  h-[100px] lg:px-20 flex items-center lg:gap-[150px] md:gap-[40px] sm:px-5 mb-6"
+            id="filters">
+            <div class="flex items-center">
+                <div class="lg:w-[320px] md:w-[200px] border p-2 rounded-tl-lg rounded-bl-lg">
+                    <input type="search" #iptSearch
+                        class="w-full px-4 py-1 text-gray-800 rounded-full focus:outline-none"
+                        placeholder="Busca cualquier receta">
+                </div>
+                <div>
+                    <button type="submit"
+                        class="flex items-center bg-primary-500 justify-center w-12 h-12 text-white rounded-r-lg">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
 
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
+            <div class="hs-dropdown relative inline-flex">
+                <button id="hs-dropdown-default" type="button"
+                    class="hs-dropdown-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none ">
+                    Ordenar por
+                    <svg class="hs-dropdown-open:rotate-180 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
+                </button>
 
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-
-        <app-user-view-recipe />
-        <app-user-view-recipe />
-        <app-user-view-recipe />
+                <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg p-2 mt-2  after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full"
+                    aria-labelledby="hs-dropdown-default">
+                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 "
+                        href="#">
+                        Más Recientes
+                    </a>
+                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 "
+                        href="#">
+                        Mejores Valorados
+                    </a>
+                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 "
+                        href="#">
+                        Siguiendo
+                    </a>
+                </div>
+            </div>
 
 
-    </main>
+            <div class="sm:ml-auto xl:hidden">
+                <button class="flex items-center justify-center rounded-lg border border-gray-200 py-3 px-4 gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="black"
+                            d="M9 5a1 1 0 1 0 0 2a1 1 0 0 0 0-2M6.17 5a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 0 1 0-2zM15 11a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-1.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2zM9 17a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2z" />
+                    </svg>
+                    <span>Filtros</span>
+                </button>
+            </div>
+        </div>
+
+
+
+        <main class="grid justify-items-center gap-4 grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 w-full ml-3 rounded-md">
+            <!-- <app-user-view-recipe /> -->
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+            <app-user-view-recipe />
+        </main>
+    </div>
+
 </div>
