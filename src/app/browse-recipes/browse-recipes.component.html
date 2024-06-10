@@ -1,11 +1,6 @@
-<!-- <style>
-    input:focus {
-        border: 3px solid blue;
-    }
-</style> -->
 <div class="flex flex-row p-[40px]">
     <!-- Aside -->
-    <aside class="bg-gray-200 p-4 rounded-md hidden xl:block">
+    <aside class="bg-gray-100 p-4 rounded-md hidden xl:block">
         <h1>Filtrar por Categorias</h1>
         <h2>Principales filtros</h2>
         <ul class="list-disc ml-6">
@@ -25,11 +20,11 @@
     </aside>
 
     <!-- Contenido principal -->
-    <div class="w-full border flex-col">
+    <div class="w-full  flex-col">
 
-        <div class="w-full border h-[100px] px-20 flex items-center">
-            
-                <div class="w-[320px] border p-2 rounded-tl-lg rounded-bl-lg">
+        <div class="w-full  h-[100px] lg:px-20 flex items-center lg:gap-[150px] md:gap-[40px] sm:px-5 mb-6" id="filters">
+            <div class="flex items-center">
+                <div class="lg:w-[320px] md:w-[200px] border p-2 rounded-tl-lg rounded-bl-lg">
                     <input type="search" #iptSearch class="w-full px-4 py-1 text-gray-800 rounded-full focus:outline-none"
                         placeholder="Busca cualquier receta">
                 </div>
@@ -43,9 +38,9 @@
                         </svg>
                     </button>
                 </div>
-            
+            </div>
 
-            <div class="hs-dropdown relative inline-flex ml-20">
+            <div class="hs-dropdown relative inline-flex">
                 <button id="hs-dropdown-default" type="button"
                     class="hs-dropdown-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none ">
                     Ordenar por
@@ -60,21 +55,27 @@
                     aria-labelledby="hs-dropdown-default">
                     <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 "
                         href="#">
-                        Newsletter
+                        Más Recientes
                     </a>
                     <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 "
                         href="#">
-                        Purchases
+                        Mejores Valorados
                     </a>
                     <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 "
                         href="#">
-                        Downloads
-                    </a>
-                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 "
-                        href="#">
-                        Team Account
+                        Siguiendo
                     </a>
                 </div>
+            </div>
+
+
+            <div class="sm:ml-auto xl:hidden">
+                <button class="flex items-center justify-center rounded-lg border border-gray-200 py-3 px-4 gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="black" d="M9 5a1 1 0 1 0 0 2a1 1 0 0 0 0-2M6.17 5a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 0 1 0-2zM15 11a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-1.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2zM9 17a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2z" />
+                    </svg>
+                    <span>Filtros</span>
+                </button>
             </div>
         </div>
 
