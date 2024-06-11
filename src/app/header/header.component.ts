@@ -13,6 +13,7 @@ export class HeaderComponent {
   name: string = '';
   image: string = '';
   email: string = '';
+  logged: boolean = false;
 
   hideNav = true;
 
@@ -24,6 +25,7 @@ export class HeaderComponent {
         this.name = parsedUser.name;
         this.image = parsedUser.picture;
         this.email = parsedUser.email;
+        this.logged = true;
       }
     }
   }
@@ -51,6 +53,6 @@ export class HeaderComponent {
   }
 
   isAuthenticated() {
-    return this.auth.isTokenExpired();
+    return !this.logged || !this.auth.isTokenExpired();
   }
 }

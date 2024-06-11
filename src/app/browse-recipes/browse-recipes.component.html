@@ -1,6 +1,6 @@
 <div class="flex p-[40px]">
     <!-- Aside -->
-    <aside class="bg-gray-100 py-6 px-10 rounded-md hidden xl:block h-[1000px]">
+    <aside class="bg-gray-100 py-6 px-10 rounded-md hidden xl:block h-[1100px]">
         <div class="flex items-center gap-2 mb-6">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path fill="black"
@@ -15,13 +15,13 @@
             <div>
                 <div class="flex items-center justify-between mb-2">
                     <p class="font-bold">Principales filtros</p>
-                    <svg (click)="manejarClic()" [ngClass]="{'rotate-180': listaVisible}" class="cursor-pointer size-4"
+                    <svg (click)="openItem('principalesFiltros')" [ngClass]="{'rotate-180': visibilidadElementos['principalesFiltros']}" class="cursor-pointer size-4"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="m6 9 6 6 6-6" />
                     </svg>
                 </div>
-                <div *ngIf="listaVisible" class="ml-3 flex flex-col items-start gap-2">
+                <div *ngIf="visibilidadElementos['principalesFiltros']" class="ml-3 flex flex-col items-start gap-2">
                     <div class="flex items-center justify-between w-full">
                         <span>Tiempo</span>
                         <select
@@ -64,13 +64,13 @@
             <div>
                 <div class="flex items-center justify-between mb-2">
                     <p class="font-bold">Tipos de dietas</p>
-                    <svg (click)="manejarClic()" [ngClass]="{'rotate-180': listaVisible}" class="cursor-pointer size-4"
+                    <svg (click)="openItem('tiposDietas')" [ngClass]="{'rotate-180': visibilidadElementos['tiposDietas']}" class="cursor-pointer size-4"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="m6 9 6 6 6-6" />
                     </svg>
                 </div>
-                <div *ngIf="listaVisible" class="ml-3 flex flex-col items-start gap-2">
+                <div *ngIf="visibilidadElementos['tiposDietas']" class="ml-3 flex flex-col items-start gap-2">
                     <div class="flex flex-col items-start w-full">
                         <label><input type="checkbox" name="diets" value="high-protein"> Alta en Proteína</label>
                         <label><input type="checkbox" name="diets" value="mediterranean"> Mediterránea</label>
@@ -82,18 +82,40 @@
                 </div>
             </div>
 
-            <!-- Tipos de Dietas -->
+            <!-- Paises -->
             <div>
                 <div class="flex items-center justify-between mb-2">
-                    <p class="font-bold">Ingredientes</p>
-                    <svg (click)="manejarClic()" [ngClass]="{'rotate-180': listaVisible}" class="cursor-pointer size-4"
+                    <p class="font-bold">Países</p>
+                    <svg (click)="openItem('paises')" [ngClass]="{'rotate-180': visibilidadElementos['paises']}" class="cursor-pointer size-4"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="m6 9 6 6 6-6" />
                     </svg>
                 </div>
-                <div *ngIf="listaVisible" class="ml-3 flex flex-col items-start gap-2">
-                    <!-- Select -->
+                <div *ngIf="visibilidadElementos['paises']" class="ml-3 flex flex-col items-start gap-2">
+                    <div class="flex flex-col items-start w-full">
+                        <label><input type="checkbox" name="country" value="china"> China</label>
+                        <label><input type="checkbox" name="country" value="mexicana"> Mexicana</label>
+                        <label><input type="checkbox" name="country" value="española"> Española</label>
+                        <label><input type="checkbox" name="country" value="italiana"> Italiana</label>
+                        <label><input type="checkbox" name="country" value="francesa"> Francesa</label>
+                        <label><input type="checkbox" name="country" value="india"> India</label>
+                        <label><input type="checkbox" name="country" value="japonesa"> Japonesa</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ingredientes -->
+            <div>
+                <div class="flex items-center justify-between mb-2">
+                    <p class="font-bold">Ingredientes</p>
+                    <!-- <svg  class="cursor-pointer size-4"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg> -->
+                </div>
+                <div class="flex flex-col items-start gap-2">
                     <select multiple="" data-hs-select='{
                         "placeholder": "Elige Ingredientes",
                         "toggleTag": "<button type=\"button\"></button>",
@@ -125,7 +147,6 @@
                             "icon": "<img class=\"inline-block rounded-full\" src=\"https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80\" />"
                         }'>Samia</option>
                     </select>
-                    <!-- End Select -->
                 </div>
             </div>
 
@@ -155,6 +176,8 @@
                     <option>Al vapor</option>
                 </select>
             </div>
+
+            
 
             <!-- max calorias -->
             <div class="flex flex-col items-start justify-between mb-2">
@@ -199,8 +222,7 @@
     <!-- Contenido principal -->
     <div class="w-full flex-col">
 
-        <div class="w-full  h-[100px] lg:px-20 flex items-center lg:gap-[150px] md:gap-[40px] sm:px-5 mb-6"
-            id="filters">
+        <div class="w-full flex items-center mb-6  h-[60px] sm:px-5 md:gap-[40px] lg:px-20 lg:gap-[150px]" id="filters">
             <div class="flex items-center">
                 <div class="lg:w-[320px] md:w-[200px] border p-2 rounded-tl-lg rounded-bl-lg">
                     <input type="search" #iptSearch
@@ -219,43 +241,57 @@
                 </div>
             </div>
 
-            <div class="hs-dropdown relative inline-flex">
-                <button id="hs-dropdown-default" type="button"
-                    class="hs-dropdown-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none ">
-                    Ordenar por
-                    <svg class="hs-dropdown-open:rotate-180 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
-                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="m6 9 6 6 6-6" />
-                    </svg>
-                </button>
+            <div class="last-two-divs flex gap-5 sm:ml-auto">
 
-                <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg p-2 mt-2  after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full"
-                    aria-labelledby="hs-dropdown-default">
-                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 "
-                        href="#">
-                        Más Recientes
-                    </a>
-                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 "
-                        href="#">
-                        Mejores Valorados
-                    </a>
-                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 "
-                        href="#">
-                        Siguiendo
-                    </a>
+                <div class="hs-dropdown relative inline-flex">
+                    <button id="hs-dropdown-default" type="button"
+                        class="hs-dropdown-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none ">
+                        Ordenar por
+                        <svg class="hs-dropdown-open:rotate-180 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m6 9 6 6 6-6" />
+                        </svg>
+                    </button>
+
+                    <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg p-2 mt-2  after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full"
+                        aria-labelledby="hs-dropdown-default">
+                        <a class="flex items-center gap-x-1.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 "
+                            href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32">
+                                <path fill="black" d="M20.59 22L15 16.41V7h2v8.58l5 5.01z" />
+                                <path fill="black" d="M16 2A13.94 13.94 0 0 0 6 6.23V2H4v8h8V8H7.08A12 12 0 1 1 4 16H2A14 14 0 1 0 16 2" />
+                            </svg>
+                            Más Recientes
+                        </a>
+                        <a class="flex items-center gap-x-1.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 "
+                            href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256">
+                                <path fill="black" d="M178 40c-20.65 0-38.73 8.88-50 23.89C116.73 48.88 98.65 40 78 40a62.07 62.07 0 0 0-62 62c0 70 103.79 126.66 108.21 129a8 8 0 0 0 7.58 0C136.21 228.66 240 172 240 102a62.07 62.07 0 0 0-62-62m-50 174.8c-18.26-10.64-96-59.11-96-112.8a46.06 46.06 0 0 1 46-46c19.45 0 35.78 10.36 42.6 27a8 8 0 0 0 14.8 0c6.82-16.67 23.15-27 42.6-27a46.06 46.06 0 0 1 46 46c0 53.61-77.76 102.15-96 112.8" />
+                            </svg>
+                            Mejores Valorados
+                        </a>
+                        <a class="flex items-center gap-x-1.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 "
+                            href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                                <path fill="black" d="M18 14v-3h-3V9h3V6h2v3h3v2h-3v3zm-9-2q-1.65 0-2.825-1.175T5 8t1.175-2.825T9 4t2.825 1.175T13 8t-1.175 2.825T9 12m-8 8v-2.8q0-.85.438-1.562T2.6 14.55q1.55-.775 3.15-1.162T9 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T17 17.2V20zm2-2h12v-.8q0-.275-.137-.5t-.363-.35q-1.35-.675-2.725-1.012T9 15t-2.775.338T3.5 16.35q-.225.125-.363.35T3 17.2zm6-8q.825 0 1.413-.587T11 8t-.587-1.412T9 6t-1.412.588T7 8t.588 1.413T9 10m0 8" />
+                            </svg>
+                            Siguiendo
+                        </a>
+                    </div>
                 </div>
-            </div>
+           
 
 
-            <div class="sm:ml-auto xl:hidden">
-                <button class="flex items-center justify-center rounded-lg border border-gray-200 py-3 px-4 gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                        <path fill="black"
-                            d="M9 5a1 1 0 1 0 0 2a1 1 0 0 0 0-2M6.17 5a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 0 1 0-2zM15 11a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-1.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2zM9 17a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2z" />
-                    </svg>
-                    <span>Filtros</span>
-                </button>
+                <div class="sm:ml-auto xl:hidden">
+                    <button class="flex items-center justify-center rounded-lg border border-gray-200 py-3 px-4 gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="black"
+                                d="M9 5a1 1 0 1 0 0 2a1 1 0 0 0 0-2M6.17 5a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 0 1 0-2zM15 11a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-1.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2zM9 17a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2z" />
+                        </svg>
+                        <span>Filtros</span>
+                    </button>
+                </div>
             </div>
         </div>
 
