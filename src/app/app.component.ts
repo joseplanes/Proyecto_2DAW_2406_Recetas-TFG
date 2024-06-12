@@ -26,6 +26,8 @@ export class AppComponent implements AfterViewInit {
   title = 'Recetas_TFG';
   isShowHeaderFooter = true;
 
+  datosUsuario:any;
+
   constructor(private router: Router, private gastromic: GastromicService) {
     // Suscribirse al evento NavigationEnd
     this.router.events.pipe(
@@ -35,8 +37,14 @@ export class AppComponent implements AfterViewInit {
       this.isShowHeaderFooter = true;
     });
 
+    this.datosUsuario = this.gastromic.getCurrentUser();
 
-    console.log(this.gastromic.prueba())
+    console.log(" PRUEBA SERVICIO ", this.datosUsuario)
+    console.log("TESTTT2 ", this.gastromic.testtt())
+
+    this.gastromic.testtt().forEach((e:any) => {
+      console.log("elemento: " + e)
+    });
   }
 
   // Necesario para que se cargue el JS de la plantilla de Preline
