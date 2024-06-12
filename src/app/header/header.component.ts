@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [RouterModule, CommonModule],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css', './header.hamburguer.css']
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
   name: string = '';
@@ -53,6 +53,6 @@ export class HeaderComponent {
   }
 
   isAuthenticated() {
-    return !this.logged || !this.auth.isTokenExpired();
+    return this.logged || !this.auth.isTokenExpired();
   }
 }

@@ -11,7 +11,7 @@ import { jwtDecode } from "jwt-decode";
 export class AuthService {
   // https://yhydf2awm25r.share.zrok.io
   // http://localhost:8055/
-  private client = createDirectus('http://localhost:8055/').with(authentication()).with(rest());
+  private client = createDirectus('http://194.164.166.181:8055/').with(authentication()).with(rest());
   router = inject(Router);
   constructor() {}
 

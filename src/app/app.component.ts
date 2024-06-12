@@ -7,6 +7,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { filter } from 'rxjs';
 import { IStaticMethods } from 'preline/preline';
+import { GastromicService } from './gastromic.service';
 declare global {
   interface Window {
     HSStaticMethods: IStaticMethods;
@@ -25,7 +26,7 @@ export class AppComponent implements AfterViewInit {
   title = 'Recetas_TFG';
   isShowHeaderFooter = true;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private gastromic: GastromicService) {
     // Suscribirse al evento NavigationEnd
     this.router.events.pipe(
       filter((event): event is NavigationEnd => event instanceof NavigationEnd)
@@ -33,6 +34,9 @@ export class AppComponent implements AfterViewInit {
       // Mostrar el encabezado y pie de página cuando la ruta cambia
       this.isShowHeaderFooter = true;
     });
+
+
+    console.log(this.gastromic.prueba())
   }
 
   // Necesario para que se cargue el JS de la plantilla de Preline
