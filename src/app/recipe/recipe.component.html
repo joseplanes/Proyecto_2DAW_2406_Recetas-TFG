@@ -1,16 +1,32 @@
 <section class="container grid grid-cols-1 px-24 mt-4 mb-10">
-  <div class="container grid md:grid-cols-2 sm:grid-cols-1 mb-8 ">
-    <div>
-      <h1 class="text-5xl font-bold">Paella conejo</h1>
-      <div class="flex flex-wrap">
-
+  <div class="container grid md:grid-cols-2 sm:grid-cols-1 mb-8">
+    <div class="flex flex-col items-center ">
+      <h1 class="text-5xl font-bold text-primary-600">Paella conejo</h1>
+      <div class="grid grid-cols-4 ml-4 mt-4 gap-5 text-lg content-center justify-center">
+        <div class="flex flex-wrap justify-center items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="black" d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/>
+          </svg>
+          <span class="ml-1">Fácil</span>
+        </div>
+        <div class="flex flex-wrap justify-center items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="none" stroke="black" d="M3 .5h18m-18 23h18m-15.5 0v-6l2.856-1.714a4.415 4.415 0 0 0 0-7.572L5.5 6.5v-6m13 0v6l-2.856 1.714a4.416 4.416 0 0 0 0 7.572L18.5 17.5v6"/></svg>
+          <span class="ml-1">30 min</span>
+        </div>
+        <div class="flex flex-wrap justify-center items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.398 4.41A3.601 3.601 0 0 1 21 7.405A3.6 3.6 0 0 1 17.625 11H17m-1.602-6.59a3.602 3.602 0 0 0-6.796 0m6.796 0a3.6 3.6 0 0 1 .089 2.093m-5.769-.9A3.6 3.6 0 0 0 8.602 4.41m0 0A3.601 3.601 0 0 0 3 7.405A3.6 3.6 0 0 0 6.375 11H7m10 3v-4M7 14v-4m11 4.5c-1.599-.622-3.7-1-6-1s-4.4.378-6 1M17 17a5 5 0 0 1-10 0" color="black"/></svg>
+          <span class="ml-1">Por Adrian</span>
+        </div>
+        <div class="flex flex-wrap justify-center items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256"><path fill="black" d="M240 102c0 70-103.79 126.66-108.21 129a8 8 0 0 1-7.58 0C119.79 228.66 16 172 16 102a62.07 62.07 0 0 1 62-62c20.65 0 38.73 8.88 50 23.89C139.27 48.88 157.35 40 178 40a62.07 62.07 0 0 1 62 62"/></svg>
+          <span class="ml-1">200</span>
+        </div>
       </div>
     </div>
     <div>
       <img src="../../assets/paella_conejo.jpg" alt="">
     </div>
   </div>
-  <section class="container grid md:grid-cols-4 sm:grid-cols-1 ">
+  <section class="container grid md:grid-cols-4 sm:grid-cols-1">
     <div class="col-span-3 pr-6" >
       <div class="w-11/12">
         <h2 class="text-2xl  font-semibold">Descripcion</h2>
@@ -36,17 +52,27 @@
         <h2 class="text-2xl  font-semibold">Pasos</h2>
         <ul class="ml-2">
           <li>Precalentar la paellera</li>
-          <li>Cortar Conejo</li>
-        
+          <li>Cortar Conejo</li>       
         </ul>
       </div>
       <div class="mt-6">
-        <h2 class="text-2xl  font-semibold">Comentarios</h2>
-        <ul>
-          <li>Precalentar la paellera</li>
-          <li>Cortar Conejo</li>
-        
-        </ul>
+        <h2 class="text-2xl  font-semibold mb-6">Comentarios</h2>
+        <div class="bg-white border rounded-xl shadow-sm sm:flex w-full h-52">
+          <div class="flex-shrink-0 relative w-full rounded-t-xl overflow-hidden pt-[40%] sm:rounded-s-xl sm:max-w-60 md:rounded-se-none md:max-w-xs">
+            <img class="size-52 absolute top-0 start-0 object-cover" src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2532&q=80" alt="Image Description">
+          </div>
+          <div class="flex flex-wrap -ml-24">
+            <div class=" flex flex-col ">
+              <h3 class="text-lg font-bold text-black">
+                Manolo
+              </h3>
+              <p class="mt-1 text-black">
+                Some quick example text to build on the card title and make up the bulk of the card's content.
+              </p>
+              
+            </div>
+          </div>
+        </div>
       </div>
       
     </div>
