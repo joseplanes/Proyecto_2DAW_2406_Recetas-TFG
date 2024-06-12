@@ -13,7 +13,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './browse-recipes.component.css'
 })
 export class BrowseRecipesComponent implements AfterViewInit {
-  listaVisible = true;
+  visibilidadElementos:any = {
+    'principalesFiltros': true,
+    'tiposDietas': false,
+    'paises': false,
+  };
   @ViewChild('iptSearch') iptSearch!: ElementRef;
 
   // Establece el foco en el input automaticamente
@@ -21,7 +25,11 @@ export class BrowseRecipesComponent implements AfterViewInit {
     this.iptSearch.nativeElement.focus();
   }
 
-  manejarClic() {
-    this.listaVisible = !this.listaVisible;
+  openItem(id: string) {
+    if (this.visibilidadElementos[id] === undefined) {
+      this.visibilidadElementos[id] = true;
+    } else {
+      this.visibilidadElementos[id] = !this.visibilidadElementos[id];
+    }
   }
 }
