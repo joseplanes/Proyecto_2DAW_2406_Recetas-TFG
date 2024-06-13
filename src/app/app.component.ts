@@ -33,18 +33,12 @@ export class AppComponent implements AfterViewInit {
     this.router.events.pipe(
       filter((event): event is NavigationEnd => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
-      // Mostrar el encabezado y pie de página cuando la ruta cambia
-      this.isShowHeaderFooter = true;
+      this.isShowHeaderFooter = true; // Mostrar el encabezado y pie de página cuando la ruta cambia
     });
+
 
     this.datosUsuario = this.gastromic.getCurrentUser();
-
-    console.log(" PRUEBA SERVICIO ", this.datosUsuario)
     console.log("TESTTT2 ", this.gastromic.testtt())
-
-    this.gastromic.testtt().forEach((e:any) => {
-      console.log("elemento: " + e)
-    });
   }
 
   // Necesario para que se cargue el JS de la plantilla de Preline

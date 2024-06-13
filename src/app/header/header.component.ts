@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { CommonModule } from '@angular/common';
+import { GastromicService } from '../gastromic.service';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -15,9 +16,11 @@ export class HeaderComponent {
   email: string = '';
   logged: boolean = false;
 
+  userinfo: any;
+
   hideNav = true;
 
-  constructor(private auth: AuthService, private router: Router) {
+  constructor(private auth: AuthService, private router: Router, private gastromic: GastromicService) {
     let user = sessionStorage.getItem('user');
     if (user) {
       let parsedUser = JSON.parse(user);
@@ -30,10 +33,14 @@ export class HeaderComponent {
     }
   }
 
+  ngOnInit() {
+    this.userinfo = this.gastromic.testtt();
+  }
+
+  
   getImageProfile(){
     console.log(this.image);
     return this.image;
-    
   }
   
   signOut(){
