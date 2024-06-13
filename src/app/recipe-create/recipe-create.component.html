@@ -3,10 +3,10 @@
         <div class="mx-auto max-w-lg text-center">
             <h1 class="text-center text-6xl font-semibold text-primary-800 sm:text-3xl">¡Cree su receta!</h1>
         </div>
-        <form action="#" [formGroup]="recipeCreateForm" (ngSubmit)="onSubmit()" class="mx-auto -mt-6 max-w-2xl space-y-4">
+        <form action="#" [formGroup]="recipeCreateForm" (ngSubmit)="onSubmit()" class="mx-auto mt-6 max-w-2xl space-y-4">
             <div class="flex items-center justify-center">
                 <label for="imagenes">
-                    <img src="../../assets/logo_gastromic.svg" class="h-[200px] sm:h-[250px]" alt="Gastromic Logo" />
+                    <img src="../../assets/logo_gastromic.svg" class="h-[200px] sm:h-[120px]" alt="Gastromic Logo" />
                 </label>
                 <input type="file" formControlName="images" multiple name="imagenes" id="imagenes" class="hidden">
             </div>
