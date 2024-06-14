@@ -44,6 +44,8 @@ export class SignInComponent {
     google.accounts.id.renderButton(document.getElementById('google-btn'), {
       type: "icon",
       shape: 'circle',
+      border: 'none',
+
     });
   }
 
@@ -64,7 +66,7 @@ export class SignInComponent {
     if(response){
       const payLoad = this.decodeToken(response.credential); // Decodeo token
       sessionStorage.setItem('user', JSON.stringify(payLoad)); // Guardo en session localstorage
-      this.router.navigate(['']); // Redirijo a home
+      this.router.navigate(['sign-in/succesfull-operation']); // Redirijo a home
     }
   }
 }
