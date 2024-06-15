@@ -1,5 +1,5 @@
-<section class="container md:grid md:grid-cols-1 md:px-24 mt-4 mb-10 sm:flex sm:flex-col px-2 ">
-  <div class="container md:grid md:grid-cols-2 sm:flex sm:flex-col md:mb-8 ">
+<section class="container md:grid md:grid-cols-1 md:px-24 mt-4 mb-10 sm:flex sm:flex-col px-2 mx-auto">
+  <div class="container md:grid md:grid-cols-2 sm:flex sm:flex-col md:mb-8 bg-gray-50 p-4 rounded-xl">
     <div class="md:flex md:flex-col items-center md:mt-20 ">
       <h1 class="text-5xl font-bold text-primary-600">Paella conejo</h1>
       <div class="flex flex-col ml-10 mt-4 gap-5 text-lg items-start  w-1/2 mb-4 ">
@@ -22,8 +22,8 @@
         </div>
       </div>
     </div>
-    <div>
-      <img src="../../assets/paella_conejo.jpg" alt="">
+    <div class="">
+      <img class="size-fit object-fill rounded-xl " src="../../assets/paella_conejo.jpg" alt="">
     </div>
   </div>
   <section class="container grid md:grid-cols-4 sm:grid-cols-1">
@@ -57,7 +57,7 @@
       </div>
       <h2 class="text-2xl font-semibold mt-4">Comentarios</h2>
      
-        <div class="border p-4 rounded-xl mt-2 md:w-1/2">
+        <div class="border p-4 rounded-xl shadow-lg mt-2 md:w-1/2">
           <div class="gird grid-cols-1 justify-center">
             <div class="flex flex-wrap gap-2 content-center">
               <img class=" rounded-full size-12" src="../../assets/foto_perfil.jpg" alt="Imagen usuario">
@@ -88,10 +88,20 @@
         </div>
     
               
-    <div class="md:border-l-2 md:w-1/4 md:px-6">
+    <div class="md:border-l-2 w-full  mt-4 md:px-6">
       <div class="">
         <h2 class="text-2xl  font-semibold">Recetas relacionadas</h2>
       </div>
+
+      <div class="mt-4 border  rounded-2xl grid grid-cols-4 gap-2 shadow-lg shadow-primary-100">
+        <div class="col-span-1">
+          <img class=" rounded-l-lg size-14 " src="../../assets/paella_conejo.jpg" alt="Imagen usuario">
+        </div>
+        <div class="w-full col-span-3 content-center">
+          <h4 class="text-lg font-semibold">Paella conejo</h4>
+        </div>
+      </div>
+      
     </div>
   </section>
 </section>
