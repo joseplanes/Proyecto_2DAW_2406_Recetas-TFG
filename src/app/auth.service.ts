@@ -41,7 +41,9 @@ export class AuthService {
   }
 
   public async logOut() {
-    return this.client.logout();
+    localStorage.removeItem("refresh-token");
+    localStorage.removeItem("expires");
+    localStorage.removeItem("token");
   }
 
   public createAccount(userObject:any) {
