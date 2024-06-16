@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { FormsModule,FormBuilder,ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { GastromicService } from '../gastromic.service';
 
 
 @Component({
@@ -17,34 +18,36 @@ export class RecipeCreateComponent {
   pasos: string[] = [''];
   medida: string = '';
 
+  // recipeCreateForm = this.formBuilder.group({
+  //   images: [''],
+  //   name: '',
+  //   description: '',
+  //   category: '',
+  //   serves:'',
+  //   time: '',
+  //   dificulty: '',
+  //   ingredients: this.formBuilder.array([]),
+  //   steps: [''],
+  // });
+
   recipeCreateForm = this.formBuilder.group({
-    images: [''],
-    name: '',
-    description: '',
-    category: '',
-    serves:'',
-    time: '',
-    dificulty: '',
-    ingredients: this.formBuilder.array([]),
-    steps: [''],
-  });
+        images: [''],
+        name: '',
+        description: '',
+        category: '',
+        serves: '',
+        time: '',
+        dificulty: '',
+        ingredients: this.formBuilder.array([
+          this.formBuilder.group({ingredient: '', quantity: '', unit: ''})
+        ]),
+        steps: [''],
+      });
   
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private gastromicService: GastromicService) { }
 
   // ngOnInit() {
-  //   this.recipeCreateForm = this.formBuilder.group({
-  //     images: [''],
-  //     name: '',
-  //     description: '',
-  //     category: '',
-  //     serves: '',
-  //     time: '',
-  //     dificulty: '',
-  //     ingredients: this.formBuilder.array([
-  //       this.formBuilder.group({ingredient: '', quantity: '', unit: ''})
-  //     ]),
-  //     steps: [''],
-  //   });
+  //   this.
   // }
 
   onSubmit() {
@@ -80,6 +83,25 @@ export class RecipeCreateComponent {
   trackByIndex(index: number): number {
     return index;
   }
+
+  createRecipe() {
+    const title = this.recipeCreateForm.value.name as string;
+    const description = this.recipeCreateForm.value.description as string;
+    const category = this.recipeCreateForm.value.category as string
+    // const password_confirm = this.recipeCreateForm.value.password_confirm as string
+
+    let recipe = {
+      title: title,
+      description: description,
+      category: category
+    }
+
+    this.gastromicService.createRecipe(recipe);
+  }
+
+  // createRecipe(recipe:any) {
+  //   this.gastromicService.createRecipe();
+  // }
 
 }
   

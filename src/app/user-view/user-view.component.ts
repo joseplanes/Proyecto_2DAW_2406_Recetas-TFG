@@ -38,10 +38,6 @@ export class UserViewComponent implements OnInit {
     this.gastromicService.fetchRecipes();
     this.gastromicService.fetchUserFollowers();
     this.gastromicService.getUserRecipes(this.getCurrentUser()?.id);
-
-    // console.log("USER RECIPES: ", this.gastromicService.getUserRecipes(this.getCurrentUser()?.id));
-
-    // console.log("GET USERS FOLOLO0RS: " + this.gastromicService.getUserFollowers())
   }
 
   isLoged() {

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EmailValidator } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { createDirectus, rest, readCollections, authentication, readCollection } from '@directus/sdk';
 
 @Injectable({
@@ -157,11 +158,20 @@ export class GastromicService {
   }
 
   createRecipe(recipe:any) {
-
-    let test = {
-      title: "PRUEBA"
-    }
-    this.httpClient.post(`${this.url}/items/recipes?access_token=${this.token}`, recipe);
+    // let test = {
+    //   "title": "PRUEBA666",
+    //   "user_created": this.getCurrentUser().id
+    // };
+    this.httpClient.post(`${this.url}/items/recipes?access_token=${this.token}`, recipe)
+      .subscribe({
+        next: (response) => {
+          console.log('Recipe created successfully', response);
+          return;
+        },
+        error: (error) => {
+          console.error('Error creating recipe', error);
+        }
+      });
   }
 
 
