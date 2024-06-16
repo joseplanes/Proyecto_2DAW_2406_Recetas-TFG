@@ -15,6 +15,7 @@ import { AppComponent } from '../../app.component';
 export class SignInComponent {
   emailValue = '';
   // private router = inject(Router);
+  emailValue = "";
   signInForm = this.formBuilder.group({
     email: '',
     password: ''

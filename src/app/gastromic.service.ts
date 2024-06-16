@@ -12,7 +12,7 @@ export class GastromicService {
 
   private file:any;
   private user:any;
-  private recipes:any;
+  recipes:any;
   private url = 'http://194.164.166.181:8055';
   private token = localStorage.getItem('token');
   private client = createDirectus('http://194.164.166.181:8055/').with(rest()).with(authentication());
@@ -46,7 +46,7 @@ export class GastromicService {
   }
 
   fetchRecipes() {
-    this.httpClient.get(`${this.url}/collections/recipes?access_token=${this.token}`)
+    this.httpClient.get(`${this.url}/items/recipes`)
       .subscribe({
         next: ((response: any) => {
           this.recipes = response.data;
@@ -59,11 +59,11 @@ export class GastromicService {
   }
 
   fetchFileById(id:any) {
-    this.httpClient.get(`${this.url}/collections/files/${id}?access_token=${this.token}`)
+    this.httpClient.get(`${this.url}/assets/${id}?access_token=${this.token}`)
       .subscribe({
         next: ((response: any) => {
           this.file = response.data;
-          localStorage.setItem("recipes", response.data)
+          localStorage.setItem("file", response.data)
         }),
         error: (error => {
           console.error("ERROR: " + error);
@@ -95,6 +95,10 @@ export class GastromicService {
           console.error("ERROR: " + error);
         })
       });
+  }
+
+  getRatingRecipe() {
+    
   }
 
   recipee(){
