@@ -12,6 +12,7 @@ export class GastromicService {
 
   private file:any;
   private user:any;
+  private rating_recipes:any;
   recipes:any;
   private url = 'http://194.164.166.181:8055';
   private token = localStorage.getItem('token');
@@ -97,9 +98,23 @@ export class GastromicService {
       });
   }
 
-  getRatingRecipe() {
-    
+  fetchRatingRecipes() {
+    this.httpClient.get(`${this.url}/items/rating_recipes?access_token=${this.token}`)
+      .subscribe({
+        next: ((response: any) => {
+          this.rating_recipes = response.data;
+        }),
+        error: (error => {
+          console.error("ERROR: " + error);
+        })
+      });
   }
+
+  getRatingRecipes() {
+    return this.rating_recipes;
+  }
+
+
 
   recipee(){
     return this.recipe;

@@ -14,6 +14,12 @@ import { GastromicService } from '../gastromic.service';
   styleUrl: './browse-recipes.component.css'
 })
 export class BrowseRecipesComponent implements AfterViewInit {
+  item:any;
+
+
+  private likes = 0;
+  rating_recipes = this.getRatingRecipes();
+
   visibilidadElementos:any = {
     'principalesFiltros': true,
     'tiposDietas': false,
@@ -30,7 +36,29 @@ export class BrowseRecipesComponent implements AfterViewInit {
     private gastromicService: GastromicService
   )
   { 
+
     this.gastromicService.fetchRecipes();
+    this.gastromicService.fetchRatingRecipes();
+    this.item = this.getRecipes();
+
+
+    console.log("GET RECIPES: ", this.item)
+    console.log("GET RATING_RECIPES: ", this.getRatingRecipes())
+
+    this.item.forEach((e:any) => {
+      
+      this.rating_recipes.forEach((j:any) => {
+        if(e.id == j.rating_recipes_id) {
+          if(j.valuation == true) {
+            this.likes++;
+          }
+          e.likes = this.likes.toString();
+        }
+        else {
+          e.likes = "0";
+        }
+      });
+    });
   }
 
   openItem(id: string) {
@@ -41,4 +69,11 @@ export class BrowseRecipesComponent implements AfterViewInit {
     }
   }
 
+  getRecipes() {
+    return this.gastromicService.getRecipes();
+  }
+
+  getRatingRecipes() {
+    return this.gastromicService.getRatingRecipes();
+  }
 }
