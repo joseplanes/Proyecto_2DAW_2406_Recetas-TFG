@@ -23,7 +23,7 @@ export class HeaderComponent {
   constructor(private auth: AuthService, private router: Router, private gastromic: GastromicService) {
     let user = sessionStorage.getItem('user');
     if (user) {
-      let parsedUser = JSON.parse(user);
+      let parsedUser = JSON.parse(user);    
       if (parsedUser) {
         this.name = parsedUser.name;
         this.image = parsedUser.picture;
@@ -35,7 +35,7 @@ export class HeaderComponent {
 
   // Me traigo la información del usuario
   ngOnInit() {
-    this.userinfo = this.gastromic.testtt();
+    this.userinfo = this.gastromic.getCurrentUser();
     console.log(this.userinfo);
   }
 

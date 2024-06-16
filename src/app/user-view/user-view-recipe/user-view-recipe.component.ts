@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { GastromicService } from '../../gastromic.service';
 
 @Component({
   selector: 'app-user-view-recipe',
@@ -8,5 +9,23 @@ import { Component } from '@angular/core';
   styleUrl: './user-view-recipe.component.css'
 })
 export class UserViewRecipeComponent {
+
+  @Input() recipes:any;
+
+  constructor(
+    private gastromicService: GastromicService
+  ) 
+  { 
+    this.gastromicService.fetchRecipes();
+
+    // this.recipes = this.getRecipes();
+    // console.log("RECIPESSSSSSS: ", this.getRecipes())
+  }
+
+
+  // getRecipes() {
+  //   return this.gastromicService.getRecipes();
+  // }
+
 
 }

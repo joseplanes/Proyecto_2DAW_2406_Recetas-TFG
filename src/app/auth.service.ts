@@ -3,6 +3,7 @@ import { Injectable , inject} from '@angular/core';
 import { Router } from '@angular/router';
 import { createDirectus, authentication, rest, createUser, logout } from '@directus/sdk';
 import { jwtDecode } from "jwt-decode";
+import { GastromicService } from './gastromic.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthService {
   // http://localhost:8055/
   private client = createDirectus('http://194.164.166.181:8055/').with(authentication()).with(rest());
   router = inject(Router);
-  constructor() {}
+  constructor(private gastromicService: GastromicService) {}
 
   signOut(){
     google.accounts.id.disableAutoSelect();
@@ -34,6 +35,8 @@ export class AuthService {
     }
 
     console.log("Token", await this.client.getToken());
+
+
   }
 
   public async refresh() {
@@ -41,7 +44,7 @@ export class AuthService {
   }
 
   public async logOut() {
-    localStorage.removeItem("refresh-token");
+    localStorage.removeItem("refresh_token");
     localStorage.removeItem("expires");
     localStorage.removeItem("token");
 

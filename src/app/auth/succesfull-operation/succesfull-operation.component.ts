@@ -20,6 +20,9 @@ export class SuccesfullOperationComponent {
   constructor(private router: Router, private appComponent: AppComponent) {
     setTimeout(() => {
       this.router.navigate(['']);
+      setTimeout(() => {
+        location.reload();
+      }, 0);
     }, 3000);
   }
 

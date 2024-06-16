@@ -15,7 +15,7 @@
         <div class="relative">
           <input type="email" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
             placeholder="Introduzca su correo electrónico" 
-            formControlName="email"
+            formControlName="email" [value]="emailValue"
             />
 
           <span class="absolute inset-y-0 end-0 grid place-content-center px-4 ">
@@ -58,7 +58,7 @@
 
       <div class="flex items-center justify-between gap-2 mt-5">
         <div class="flex items-center">
-          <input id="remember-me" name="remember-me" type="checkbox"
+          <input (change)="onRememberMe($event)" id="remember-me" name="remember-me" type="checkbox"
             class="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
           <label for="remember-me" class="ml-3 block text-sm">
             Recuérdame
@@ -82,6 +82,7 @@
               <path d="M16.2864 7.4133C18.9689 7.4133 20.7784 8.54885 21.8102 9.4978L25.8419 5.64C23.3658 3.38445 20.1435 2 16.2864 2C10.699 2 5.8736 5.1422 3.52441 9.71549L8.14345 13.2311C9.30229 9.85555 12.5086 7.4133 16.2864 7.4133Z" fill="#EB4335"/>
               </svg>
           </button> -->
+    
         <div id="google-btn"></div>
         <!-- Apple -->
         <button type="button" class="border-none outline-none">

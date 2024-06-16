@@ -14,6 +14,7 @@ import { AppComponent } from '../../app.component';
 })
 export class SignInComponent {
   // private router = inject(Router);
+  emailValue = "";
   signInForm = this.formBuilder.group({
     email: '',
     password: ''
@@ -31,6 +32,12 @@ export class SignInComponent {
     setTimeout(() => {
       this.appComponent.isShowHeaderFooter = false;
     }, 0);
+
+    this.emailValue = localStorage.getItem('email') || '';
+    if (this.signInForm && this.signInForm.get('email')) {
+      this.signInForm?.get('email')?.setValue(this.emailValue);
+    }
+
   }
 
 
@@ -66,6 +73,15 @@ export class SignInComponent {
       const payLoad = this.decodeToken(response.credential); // Decodeo token
       sessionStorage.setItem('user', JSON.stringify(payLoad)); // Guardo en session localstorage
       this.router.navigate(['sign-in/succesfull-operation']); // Redirijo a home
+    }
+  }
+
+  onRememberMe(event: Event) {
+    const target = event.target as HTMLInputElement;
+    if (target.checked) {
+      localStorage.setItem('email', this.signInForm.value.email as string);
+    } else {
+      localStorage.removeItem('email');
     }
   }
 }
