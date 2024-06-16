@@ -156,10 +156,12 @@ export class GastromicService {
     return this.rating_recipes;
   }
 
+  createRecipe(recipe:any) {
 
-
-  recipee(){
-    return this.recipe;
+    let test = {
+      title: "PRUEBA"
+    }
+    this.httpClient.post(`${this.url}/items/recipes?access_token=${this.token}`, recipe);
   }
 
 

@@ -90,7 +90,7 @@ export class UserViewComponent implements OnInit {
   getUserFollowers() {
     let followers = this.gastromicService.getUserFollowers();
     let counter = 0;
-    followers.forEach((e:any) => {
+    followers?.forEach((e:any) => {
       if(e.user_id == this.getCurrentUser().id) {
         counter++;
       }
@@ -102,7 +102,7 @@ export class UserViewComponent implements OnInit {
   getUsersFollowed() {
     let followed = this.gastromicService.getUserFollowers();
     let counter = 0;
-    followed.forEach((e:any) => {
+    followed?.forEach((e:any) => {
       if(e.follower_id == this.getCurrentUser().id) {
         counter++;
       }
