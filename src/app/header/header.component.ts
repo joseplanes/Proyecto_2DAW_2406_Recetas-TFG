@@ -35,7 +35,7 @@ export class HeaderComponent {
 
   // Me traigo la información del usuario
   ngOnInit() {
-    this.userinfo = this.gastromic.testtt();
+    this.userinfo = this.gastromic.getCurrentUser();
     console.log(this.userinfo);
   }
 
