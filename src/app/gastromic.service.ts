@@ -92,13 +92,20 @@ export class GastromicService {
 
   getUserRecipes(user_id:any) {
     let user_recipes:any = [];
+    let counter = 0;
     this.recipes?.forEach((e:any) => {
       if(e.user_created == user_id) {
         user_recipes.push(e);
+        counter++;
       }
     });
 
-    return user_recipes;
+    let result = {
+      user_recipes: user_recipes,
+      counter: counter
+    }
+
+    return result;
   }
   
   getRecipe(id : number){
