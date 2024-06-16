@@ -20,21 +20,14 @@ export class UserViewComponent implements OnInit {
   tabSeleccionada = 'publicaciones';
   botonDeshabilitado = true;
 
+  item:any;
+
   user:any;
   ngOnInit(): void {
     this.gastromicService.fetchCurrentUser();
-    this.gastromicService.fetchRecipes();
 
-    this.gastromicService.fetchFileById("60554a2e-5366-4557-a122-ef10bfde2c81")
-
-    console.log("FILEEE: " + this.getFile())
     console.log("CURRENT USER: " + this.getCurrentUser())
 
-
-    // console.log("GET CURRENT USER: " + this.getCurrentUser());
-    // this.gastromicService.getCurrentUser();
-    // this.gastromicService.fetchCurrentUser();
-    // this.user = {...this.gastromicService.getCurrentUser()}
   }
 
 
@@ -45,11 +38,9 @@ export class UserViewComponent implements OnInit {
     private gastromicService : GastromicService
   ) 
   {
-    
-    // this.gastromicService.fetchFileById(this.getCurrentUser().avatar);
+    this.gastromicService.fetchRecipes();
 
-    console.log("GET RECIPES: ", this.getRecipes())
-    // console.log("THIS USER: " + this.user[0].id)
+    console.log("USER RECIPES: ", this.gastromicService.getUserRecipes(this.getCurrentUser()?.id));
   }
 
   isLoged() {
@@ -87,8 +78,18 @@ export class UserViewComponent implements OnInit {
     return this.gastromicService.getFile();
   }
 
+<<<<<<< HEAD
   setFileId(id:any) {
     this.gastromicService.fetchFileById(id);
   }
 
+=======
+  getUserAvatar() {
+    return this.gastromicService.getUserAvatar();
+  }
+
+  getUserRecipes() {
+    return this.gastromicService.getUserRecipes(this.getCurrentUser()?.id)
+  }
+>>>>>>> 7f319d28f47ef8cd3bfae92ebafe5b6c33d22f7f
 }

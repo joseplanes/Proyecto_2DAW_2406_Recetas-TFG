@@ -8,7 +8,9 @@ import { createDirectus, rest, readCollections, authentication, readCollection }
 })
 export class GastromicService {
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient) { 
+    this.fetchCurrentUser();
+  }
 
   private file:any;
   private user:any;
@@ -83,8 +85,29 @@ export class GastromicService {
   getCurrentUser(){
     return this.user;
   }
-  
 
+  getUserAvatar() {
+    return `http://194.164.166.181:8055/assets/${this.getCurrentUser()?.avatar}?access_token=${this.token}`;
+  }
+
+  getUserRecipes(user_id:any) {
+    let user_recipes:any = [];
+    let counter = 0;
+    this.recipes?.forEach((e:any) => {
+      if(e.user_created == user_id) {
+        user_recipes.push(e);
+        counter++;
+      }
+    });
+
+    let result = {
+      user_recipes: user_recipes,
+      counter: counter
+    }
+
+    return result;
+  }
+  
   getRecipe(id : number){
     this.httpClient.get(`${this.url}/items/recipes/${id}?access_token=${this.token}`)
       .subscribe({
