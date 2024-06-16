@@ -1,5 +1,6 @@
+import { Time } from '@angular/common';
 import { Injectable } from '@angular/core';
-import { AbstractControl,FormGroup, ValidationErrors } from '@angular/forms';
+import { AbstractControl,FormGroup,FormControl  } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -7,10 +8,10 @@ import { AbstractControl,FormGroup, ValidationErrors } from '@angular/forms';
 export class ValidatorService {
 
   constructor() { }
-  error:string = '';
+  error: string[] = [];
 
   setErrorMessage(error: string) {
-    this.error = error;
+    this.error.push(error); 
     return this.error;
   }
 
@@ -45,4 +46,70 @@ export class ValidatorService {
     }
     return isValid;
   }
+
+  nombreIsEmpty(value: string) {
+    const isValid = value.trim() !== '';
+    if (!isValid) {
+      this.setErrorMessage('El campo nombre no puede estar vacío');
+    }
+    return isValid;
+  }
+
+  validateIsString(value: string) {
+    const isValid = /^[^0-9]+$/.test(value);
+    if (!isValid) {
+      this.setErrorMessage('El campo no puede contener números');
+    }
+    return isValid;
+  }
+
+  
+  categpryIsEmpy(category: string) {
+    const isValid = category.trim() !== '';
+    if (!isValid) {
+      this.setErrorMessage('Debe selecionar una categoria');
+    }
+    return isValid;
+  }
+
+  pasosIsEmpy(pasos: string) {
+    const isValid = pasos.trim() !== '';
+    if (!isValid) {
+      this.setErrorMessage('Debe agregar los pasos');
+    }
+    return isValid;
+  }
+
+  ingredientesIsEmpy(ingredientes: string) {
+    const isValid = ingredientes.trim() !== '';
+    if (!isValid) {
+      this.setErrorMessage('Debe agregar un ingredientes');
+    }
+    return isValid;
+  }
+
+  dificultadIsEmpy(dificultad: string) {
+    const isValid = dificultad.trim() !== '';
+    if (!isValid) {
+      this.setErrorMessage('Debe agregar una dificultad');
+    }
+    return isValid;
+  }
+  
+  tiempoIsEmpy(tiempo: Time) {
+    const isValid = tiempo !== null;
+    if (!isValid) {
+      this.setErrorMessage('Debe agregar un tiempo');
+    }
+    return isValid;
+  }
+
+  userNameIsEmpy(userName: string) {
+    const isValid = userName.trim() !== '';
+    if (!isValid) {
+      this.setErrorMessage('Debe agregar un nombre de usuario');
+    }
+    return isValid;
+  }
+
 }

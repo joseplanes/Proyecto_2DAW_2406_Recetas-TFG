@@ -67,11 +67,17 @@ export class SignInComponent {
     const email = this.signInForm.value.email as string;
     const password = this.signInForm.value.password as string
 
-    if(!this.validatorService.validateEmail(email)){
-      return this.setError();
-    }
+    let hasError = false;
 
+    if(!this.validatorService.validateEmail(email)){
+      hasError = true;
+    }
+  
     if(!this.validatorService.validatePasswordNotEmpty(password)){
+      hasError = true;
+    }
+  
+    if (hasError) {
       return this.setError();
     }
 
