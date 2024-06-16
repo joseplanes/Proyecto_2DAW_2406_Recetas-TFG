@@ -16,7 +16,7 @@ export class UserViewRecipeComponent {
     private gastromicService: GastromicService
   ) 
   { 
-    this.gastromicService.fetchRecipes();
+    // this.gastromicService.fetchRecipes();
 
     // this.recipes = this.getRecipes();
     // console.log("RECIPESSSSSSS: ", this.getRecipes())
@@ -26,6 +26,10 @@ export class UserViewRecipeComponent {
   // getRecipes() {
   //   return this.gastromicService.getRecipes();
   // }
+
+  getUserAvatar() {
+    return this.gastromicService.getUserAvatar();
+  }
 
 
 }

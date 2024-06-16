@@ -8,10 +8,14 @@ import { createDirectus, rest, readCollections, authentication, readCollection }
 })
 export class GastromicService {
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient) { 
+    this.fetchCurrentUser();
+  }
 
   private file:any;
   private user:any;
+  private user_followers:any;
+  private users_followed:any;
   private rating_recipes:any;
   recipes:any;
   private url = 'http://194.164.166.181:8055';
@@ -83,8 +87,46 @@ export class GastromicService {
   getCurrentUser(){
     return this.user;
   }
-  
 
+  getUserAvatar() {
+    return `http://194.164.166.181:8055/assets/${this.getCurrentUser()?.avatar}?access_token=${this.token}`;
+  }
+
+  getUserRecipes(user_id:any) {
+    let user_recipes:any = [];
+    let counter = 0;
+    this.recipes?.forEach((e:any) => {
+      if(e.user_created == user_id) {
+        user_recipes.push(e);
+        counter++;
+      }
+    });
+
+    let result = {
+      user_recipes: user_recipes,
+      counter: counter
+    }
+
+    return result;
+  }
+
+  fetchUserFollowers() {
+    this.httpClient.get(`${this.url}/items/users_followed?access_token=${this.token}`)
+      .subscribe({
+        next: ((response: any) => {
+          this.user_followers = response.data;
+        }),
+        error: (error => {
+          console.error("ERROR: " + error);
+        })
+      });
+
+  }
+
+  getUserFollowers() {
+    return this.user_followers;
+  }
+  
   getRecipe(id : number){
     this.httpClient.get(`${this.url}/items/recipes/${id}?access_token=${this.token}`)
       .subscribe({
@@ -114,10 +156,12 @@ export class GastromicService {
     return this.rating_recipes;
   }
 
+  createRecipe(recipe:any) {
 
-
-  recipee(){
-    return this.recipe;
+    let test = {
+      title: "PRUEBA"
+    }
+    this.httpClient.post(`${this.url}/items/recipes?access_token=${this.token}`, recipe);
   }
 
 
