@@ -27,5 +27,9 @@ export class UserViewRecipeComponent {
   //   return this.gastromicService.getRecipes();
   // }
 
+  getUserAvatar() {
+    return this.gastromicService.getUserAvatar();
+  }
+
 
 }
