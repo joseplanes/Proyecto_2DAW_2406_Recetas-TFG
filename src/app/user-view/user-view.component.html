@@ -2,7 +2,16 @@
     <!-- border border-gray-100-->
     <div class="grid grid-cols-[40%,60%] grid-rows-1 gap-4">
         <div class="col-span-1 row-span-2 border border-gray-100 rounded p-4 flex items-center justify-center relative">
-            <img src="../../assets/foto_perfil.jpg" alt="User profile" class="mx-auto rounded-full img_responsive">
+            <img *ngIf="getCurrentUser()?.avatar; else defaultAvatar" [src]="getCurrentUser().avatar" alt="User profile" class="mx-auto rounded-full img_responsive">
+
+            <ng-template #defaultAvatar>
+              <svg xmlns="http://www.w3.org/2000/svg" width="288" height="288" viewBox="0 0 36 36">
+                <path fill="black" d="M30.61 24.52a17.16 17.16 0 0 0-25.22 0a1.5 1.5 0 0 0-.39 1v6A1.5 1.5 0 0 0 6.5 33h23a1.5 1.5 0 0 0 1.5-1.5v-6a1.5 1.5 0 0 0-.39-.98" class="clr-i-solid clr-i-solid-path-1"/>
+                <circle cx="18" cy="10" r="7" fill="black" class="clr-i-solid clr-i-solid-path-2"/>
+                <path fill="none" d="M0 0h36v36H0z"/>
+              </svg>
+            </ng-template>
+
             <button *ngIf="isMyProfile()==true" class="flex items-center" title="Editar Perfil">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                     class="absolute top-0 right-2 m-2">

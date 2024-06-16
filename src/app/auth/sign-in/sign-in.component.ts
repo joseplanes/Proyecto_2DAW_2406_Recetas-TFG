@@ -1,5 +1,5 @@
 declare var google: any;
-import { Component,  Inject,  inject } from '@angular/core';
+import { Component,  Inject,  inject , AfterViewInit} from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../auth.service';
@@ -13,6 +13,7 @@ import { AppComponent } from '../../app.component';
   styleUrl: './sign-in.component.css'
 })
 export class SignInComponent {
+  emailValue = '';
   // private router = inject(Router);
   signInForm = this.formBuilder.group({
     email: '',
@@ -31,6 +32,12 @@ export class SignInComponent {
     setTimeout(() => {
       this.appComponent.isShowHeaderFooter = false;
     }, 0);
+
+    this.emailValue = localStorage.getItem('email') || '';
+    if (this.signInForm && this.signInForm.get('email')) {
+      this.signInForm?.get('email')?.setValue(this.emailValue);
+    }
+
   }
 
 
@@ -47,7 +54,11 @@ export class SignInComponent {
       border: 'none',
 
     });
+  
   }
+
+  
+
 
 
   signIn() {
@@ -67,6 +78,15 @@ export class SignInComponent {
       const payLoad = this.decodeToken(response.credential); // Decodeo token
       sessionStorage.setItem('user', JSON.stringify(payLoad)); // Guardo en session localstorage
       this.router.navigate(['sign-in/succesfull-operation']); // Redirijo a home
+    }
+  }
+
+  onRememberMe(event: Event) {
+    const target = event.target as HTMLInputElement;
+    if (target.checked) {
+      localStorage.setItem('email', this.signInForm.value.email as string);
+    } else {
+      localStorage.removeItem('email');
     }
   }
 }
