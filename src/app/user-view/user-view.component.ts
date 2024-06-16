@@ -31,8 +31,6 @@ export class UserViewComponent implements OnInit {
   }
 
 
-
-
   constructor(
     private router: Router,
     private gastromicService : GastromicService
@@ -40,7 +38,7 @@ export class UserViewComponent implements OnInit {
   {
     this.gastromicService.fetchRecipes();
 
-    console.log("USER RECIPES: ", this.gastromicService.getUserRecipes(this.getCurrentUser()?.id));
+
   }
 
   isLoged() {
@@ -78,12 +76,6 @@ export class UserViewComponent implements OnInit {
     return this.gastromicService.getFile();
   }
 
-<<<<<<< HEAD
-  setFileId(id:any) {
-    this.gastromicService.fetchFileById(id);
-  }
-
-=======
   getUserAvatar() {
     return this.gastromicService.getUserAvatar();
   }
@@ -91,5 +83,4 @@ export class UserViewComponent implements OnInit {
   getUserRecipes() {
     return this.gastromicService.getUserRecipes(this.getCurrentUser()?.id)
   }
->>>>>>> 7f319d28f47ef8cd3bfae92ebafe5b6c33d22f7f
 }

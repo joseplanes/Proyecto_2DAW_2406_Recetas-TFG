@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { GastromicService } from '../../gastromic.service';
+import { CommonModule } from '@angular/common'
+
 
 @Component({
   selector: 'app-user-view-recipe',

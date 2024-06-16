@@ -4,29 +4,33 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../auth.service';
 import { AppComponent } from '../../app.component';
+import {ValidatorService} from '../../validator.service';
+import {ValidadorViewComponent} from '../../validador-view/validador-view.component';
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [RouterLink, ReactiveFormsModule, ValidadorViewComponent],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
 export class SignInComponent {
   emailValue = '';
   // private router = inject(Router);
-
+  error = false
   signInForm = this.formBuilder.group({
     email: '',
     password: ''
-  });
+  }); 
 
   constructor(
     private formBuilder : FormBuilder,
     private authService : AuthService,
     private router : Router,
-    @Inject(AppComponent) private appComponent: AppComponent
+    @Inject(AppComponent) private appComponent: AppComponent,
+    private validatorService: ValidatorService
   ) {}
+
 
   ngAfterViewInit(): void {
     // Oculto el header y footer
@@ -59,12 +63,18 @@ export class SignInComponent {
   }
 
   
-
-
-
   signIn() {
     const email = this.signInForm.value.email as string;
     const password = this.signInForm.value.password as string
+
+    if(!this.validatorService.validateEmail(email)){
+      return this.setError();
+    }
+
+    if(!this.validatorService.validatePasswordNotEmpty(password)){
+      return this.setError();
+    }
+
     this.authService.login(email, password);
     this.router.navigate(['sign-in/succesfull-operation']);
   }
@@ -89,5 +99,9 @@ export class SignInComponent {
     } else {
       localStorage.removeItem('email');
     }
+  }
+
+  setError(){
+    this.error = true;
   }
 }
