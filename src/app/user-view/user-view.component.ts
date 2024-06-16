@@ -37,8 +37,8 @@ export class UserViewComponent implements OnInit {
   ) 
   {
     this.gastromicService.fetchRecipes();
-
-
+    this.gastromicService.fetchUserFollowers();
+    this.gastromicService.getUserRecipes(this.getCurrentUser()?.id);
   }
 
   isLoged() {
@@ -82,5 +82,29 @@ export class UserViewComponent implements OnInit {
 
   getUserRecipes() {
     return this.gastromicService.getUserRecipes(this.getCurrentUser()?.id)
+  }
+
+  getUserFollowers() {
+    let followers = this.gastromicService.getUserFollowers();
+    let counter = 0;
+    followers?.forEach((e:any) => {
+      if(e.user_id == this.getCurrentUser().id) {
+        counter++;
+      }
+    });
+
+    return counter;
+  }
+
+  getUsersFollowed() {
+    let followed = this.gastromicService.getUserFollowers();
+    let counter = 0;
+    followed?.forEach((e:any) => {
+      if(e.follower_id == this.getCurrentUser().id) {
+        counter++;
+      }
+    });
+
+    return counter;
   }
 }

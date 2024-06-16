@@ -18,7 +18,7 @@
                 </div>
                 <div>
                     <label for="description"  class="text-lg">Descripción</label>
-                    <textarea formControlName="description()" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                    <textarea formControlName="description" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                         placeholder="Describa brevemente su receta"></textarea>
                 </div>
                 <div>
@@ -55,20 +55,20 @@
                            [class.border-green-500]="dificultad !== 'facil'" 
                            [class.bg-green-500]="dificultad === 'facil'" 
                            (click)="dificultad = 'facil'">
-                        <input type="radio" formControlName="dificulty" name="dificultad" class="hidden" value="facil" [(ngModel)]="dificultad" /> Fácil
+                        <input type="radio" formControlName="dificulty" name="dificulty" class="hidden" value="facil" [(ngModel)]="dificultad" /> Fácil
                     </label>
                     <label class="py-3 px-4 items-center gap-x-2 text-sm font-semibold rounded-lg border text-black  disabled:opacity-50 disabled:pointer-events-none text-center cursor-pointer"
                         [class.border-yellow-500]="dificultad !== 'medio'" 
                         [class.bg-yellow-500]="dificultad === 'medio'" 
                         (click)="dificultad = 'medio'">
-                    <input type="radio" name="dificultad" formControlName="dificulty" class="hidden" value="medio" [(ngModel)]="dificultad" /> Medio
+                    <input type="radio" name="dificulty" formControlName="dificulty" class="hidden" value="medio" [(ngModel)]="dificultad" /> Medio
                     </label>
                     
                     <label class="py-3 px-4 items-center gap-x-2 text-sm font-semibold rounded-lg border text-black  disabled:opacity-50 disabled:pointer-events-none text-center cursor-pointer"
                             [class.border-red-500]="dificultad !== 'dificil'" 
                             [class.bg-red-500]="dificultad === 'dificil'" 
                             (click)="dificultad = 'dificil'">
-                    <input type="radio" name="dificultad" formControlName="dificulty" class="hidden" value="dificil" [(ngModel)]="dificultad" /> Difícil
+                    <input type="radio" name="dificulty" formControlName="dificulty" class="hidden" value="dificil" [(ngModel)]="dificultad" /> Difícil
                     </label>
                 </div>
                 <div class="">
@@ -101,7 +101,7 @@
             
                 </div>
                 <div class="">
-                    <button type="submit" class=" w-full rounded-lg  bg-primary-500 px-5 py-3  text-sm font-medium text-white" >
+                    <button (click)="createRecipe()" type="submit" class=" w-full rounded-lg  bg-primary-500 px-5 py-3  text-sm font-medium text-white" >
                         Subir Receta
                     </button>
                 </div>

@@ -3,8 +3,7 @@
     <div class="grid grid-cols-[40%,60%] grid-rows-1 gap-4">
         <div class="col-span-1 row-span-2 border border-gray-100 rounded p-4 flex items-center justify-center relative">
             <!--<img src="../../assets/foto_perfil.jpg" alt="User profile" class="mx-auto rounded-full img_responsive">-->
-
-            @if (this.getUserAvatar() != null ) {
+            @if (this.getUserAvatar() !== null ) {
                 <img src="{{ this.getUserAvatar() || ''}}" alt="User profile" class="mx-auto rounded-full img_responsive">
 
             }@else{
@@ -15,8 +14,8 @@
                         <path fill="none" d="M0 0h36v36H0z"/>
                     </svg>
                 </div>
-            }
 
+            }
             <button *ngIf="isMyProfile()==true" class="flex items-center" title="Editar Perfil">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                     class="absolute top-0 right-2 m-2">
@@ -102,12 +101,12 @@
                 </div>
                 <div
                     class="col-span-1 border border-gray-100 rounded p-4 flex items-center justify-start tocol sm:gap-1">
-                    <p class="text-xl">10 </p>
+                    <p class="text-xl">{{this.getUserFollowers()}} </p>
                     <p class="text-xl">Seguidores</p>
                 </div>
                 <div
                     class="col-span-1 border border-gray-100  rounded p-4 flex items-center justify-start tocol sm:gap-1">
-                    <p class="text-xl">10 </p>
+                    <p class="text-xl">@if(this.getUsersFollowed()){this.getUsersFollowed()}@else {0} </p>
                     <p class="text-xl">Seguidos</p>
                 </div>
             </div>

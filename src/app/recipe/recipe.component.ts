@@ -18,7 +18,6 @@ export class RecipeComponent {
   }
 
   ngOnInit() {
-    console.log(this.GastromicService.recipee());
 
   }
   

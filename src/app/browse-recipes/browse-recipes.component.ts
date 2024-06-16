@@ -61,9 +61,9 @@ export class BrowseRecipesComponent implements AfterViewInit {
 
     let recipes = this.gastromicService.getRecipes();
 
-    recipes.forEach((e: any) => {
+    recipes?.forEach((e: any) => {
       let likes = 0; // Inicializar likes aquí asegura que se reinicie para cada elemento de item.
-      this.rating_recipes.forEach((j: any) => {
+      this.rating_recipes?.forEach((j: any) => {
         if (e.id == j.rating_recipes_id) {
           if (j.valuation == true) {
             likes++;

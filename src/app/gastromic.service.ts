@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EmailValidator } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { createDirectus, rest, readCollections, authentication, readCollection } from '@directus/sdk';
 
 @Injectable({
@@ -14,6 +15,8 @@ export class GastromicService {
 
   private file:any;
   private user:any;
+  private user_followers:any;
+  private users_followed:any;
   private rating_recipes:any;
   recipes:any;
   private url = 'http://194.164.166.181:8055';
@@ -107,6 +110,23 @@ export class GastromicService {
 
     return result;
   }
+
+  fetchUserFollowers() {
+    this.httpClient.get(`${this.url}/items/users_followed?access_token=${this.token}`)
+      .subscribe({
+        next: ((response: any) => {
+          this.user_followers = response.data;
+        }),
+        error: (error => {
+          console.error("ERROR: " + error);
+        })
+      });
+
+  }
+
+  getUserFollowers() {
+    return this.user_followers;
+  }
   
   getRecipe(id : number){
     this.httpClient.get(`${this.url}/items/recipes/${id}?access_token=${this.token}`)
@@ -137,10 +157,21 @@ export class GastromicService {
     return this.rating_recipes;
   }
 
-
-
-  recipee(){
-    return this.recipe;
+  createRecipe(recipe:any) {
+    // let test = {
+    //   "title": "PRUEBA666",
+    //   "user_created": this.getCurrentUser().id
+    // };
+    this.httpClient.post(`${this.url}/items/recipes?access_token=${this.token}`, recipe)
+      .subscribe({
+        next: (response) => {
+          console.log('Recipe created successfully', response);
+          return;
+        },
+        error: (error) => {
+          console.error('Error creating recipe', error);
+        }
+      });
   }
 
 
