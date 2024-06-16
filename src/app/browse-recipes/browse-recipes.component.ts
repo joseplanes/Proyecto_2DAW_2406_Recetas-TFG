@@ -4,6 +4,7 @@ import { RouterLink, RouterModule } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { UserViewRecipeComponent } from '../user-view/user-view-recipe/user-view-recipe.component';
 import { CommonModule } from '@angular/common';
+import { GastromicService } from '../gastromic.service';
 
 @Component({
   selector: 'app-browse-recipes',
@@ -25,6 +26,13 @@ export class BrowseRecipesComponent implements AfterViewInit {
     this.iptSearch.nativeElement.focus();
   }
 
+  constructor(
+    private gastromicService: GastromicService
+  )
+  { 
+    this.gastromicService.fetchRecipes();
+  }
+
   openItem(id: string) {
     if (this.visibilidadElementos[id] === undefined) {
       this.visibilidadElementos[id] = true;
@@ -32,4 +40,5 @@ export class BrowseRecipesComponent implements AfterViewInit {
       this.visibilidadElementos[id] = !this.visibilidadElementos[id];
     }
   }
+
 }

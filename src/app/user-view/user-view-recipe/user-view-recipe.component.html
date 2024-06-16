@@ -40,11 +40,15 @@
         </div>
     </div>
 </div> -->
+
+@for (recipe of getRecipes(); track $index) {
+
+
 <div class="flex flex-col bg-white border shadow-sm rounded-xl w-80 lg:w-[23rem]  hover:shadow-lg  cursor-pointer  transition-transform mb-4">
     <div class="flex items-center justify-between gap-2 p-4 md:p-5">
         <div class="flex items-center gap-2">
             <img class="w-8 h-8 rounded-full" src="assets/foto_perfil.jpg" alt="user photo">
-            <span class="text-lg font-bold">Macarrones con queso</span>
+            <span class="text-lg font-bold">{{recipe.title}}</span>
         </div>
         <div class="flex items-center gap-1">
             <span class="font-bold">50</span>
@@ -82,3 +86,4 @@
         </div>
     </div>
 </div>
+}
