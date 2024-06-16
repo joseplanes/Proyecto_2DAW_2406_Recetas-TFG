@@ -65,4 +65,12 @@ export class HeaderComponent {
   isAuthenticated() {
     return this.logged || !this.auth.isTokenExpired();
   }
+
+  getCurrentUser() {
+    return this.gastromic.getCurrentUser();
+  }
+
+  getUserAvatar() {
+    return this.gastromic.getUserAvatar();
+  }
 }

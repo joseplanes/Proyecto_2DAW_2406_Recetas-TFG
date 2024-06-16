@@ -14,6 +14,8 @@ export class GastromicService {
 
   private file:any;
   private user:any;
+  private user_followers:any;
+  private users_followed:any;
   private rating_recipes:any;
   recipes:any;
   private url = 'http://194.164.166.181:8055';
@@ -106,6 +108,23 @@ export class GastromicService {
     }
 
     return result;
+  }
+
+  fetchUserFollowers() {
+    this.httpClient.get(`${this.url}/items/users_followed?access_token=${this.token}`)
+      .subscribe({
+        next: ((response: any) => {
+          this.user_followers = response.data;
+        }),
+        error: (error => {
+          console.error("ERROR: " + error);
+        })
+      });
+
+  }
+
+  getUserFollowers() {
+    return this.user_followers;
   }
   
   getRecipe(id : number){
