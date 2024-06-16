@@ -45,7 +45,6 @@ export class SignInComponent {
       type: "icon",
       shape: 'circle',
       border: 'none',
-
     });
   }
 

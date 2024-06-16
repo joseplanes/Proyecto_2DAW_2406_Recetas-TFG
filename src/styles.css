@@ -15,3 +15,7 @@
 ::-webkit-scrollbar-track {
     background-color: oklch(0.278078 0.029596 256.848 / 0.1);
 }
+
+body {
+    font-family: 'Quicksand', sans-serif;
+}
