@@ -16,7 +16,8 @@ import { GastromicService } from '../gastromic.service';
 export class BrowseRecipesComponent implements AfterViewInit {
   item:any;
   private likes = 0;
-  rating_recipes = this.getRatingRecipes();
+  // rating_recipes = this.getRatingRecipes();
+  rating_recipes:any;
 
   visibilidadElementos:any = {
     'principalesFiltros': true,
@@ -30,20 +31,39 @@ export class BrowseRecipesComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.iptSearch.nativeElement.focus();
   }
+  
 
 
   constructor(private gastromicService: GastromicService){ 
 
-    this.gastromicService.fetchRecipes();
-    this.gastromicService.fetchRatingRecipes();
+    // this.gastromicService.fetchRecipes();
+    // this.gastromicService.fetchRatingRecipes();
 
 
+    // console.log("GET RECIPES: ", this.item)
+    // console.log("GET RATING_RECIPES: ", this.getRatingRecipes())
+
+    // this.item = this.getRecipes();
+
+    // console.log("GET RECIPES: ",  this.getRecipes())
+    this.rating_recipes = [];
+    // this.init();
+  }
+
+  async ngOnInit(){
+    await this.init();
+    this.item = this.getRecipes();
     console.log("GET RECIPES: ", this.item)
     console.log("GET RATING_RECIPES: ", this.getRatingRecipes())
+  }
 
-    this.item = this.getRecipes();
-
-    console.log("GET RECIPES: ",  this.getRecipes())
+  async init() {
+    try {
+        await this.gastromicService.fetchRecipes();
+        this.rating_recipes = await this.gastromicService.fetchRatingRecipes();
+    } catch (error) {
+        console.error(error);
+    }
   }
 
   openItem(id: string) {
@@ -55,21 +75,21 @@ export class BrowseRecipesComponent implements AfterViewInit {
   }
 
   getRecipes() {
-
     let recipes = this.gastromicService.getRecipes();
-
-    recipes.forEach((e: any) => {
-      let likes = 0; // Inicializar likes aquí asegura que se reinicie para cada elemento de item.
-      this.rating_recipes.forEach((j: any) => {
-        if (e.id == j.rating_recipes_id) {
-          if (j.valuation == true) {
-            likes++;
-          }
-        }
-      });
-      e.likes = likes; // Asignar el conteo final de likes a e.likes después de revisar todos los rating_recipes.
-    });
-
+    if (recipes && this.rating_recipes) {
+        recipes.forEach((e: any) => {
+            let likes = 0;
+            this.rating_recipes.forEach((j: any) => {
+                if (e.id == j.rating_recipes_id) { 
+                    if (j.valuation == true) { 
+                        likes++;
+                        console.log("LIKES: ", likes)
+                    }
+                }
+            });
+            e.likes = likes;
+        });
+    }
 
     return recipes;
   }
