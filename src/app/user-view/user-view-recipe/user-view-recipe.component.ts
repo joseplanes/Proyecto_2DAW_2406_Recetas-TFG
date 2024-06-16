@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { GastromicService } from '../../gastromic.service';
 
 @Component({
@@ -10,18 +10,22 @@ import { GastromicService } from '../../gastromic.service';
 })
 export class UserViewRecipeComponent {
 
+  @Input() recipes:any;
+
   constructor(
     private gastromicService: GastromicService
   ) 
   { 
     this.gastromicService.fetchRecipes();
-    console.log("RECIPESSSSSSS: ", this.getRecipes())
+
+    // this.recipes = this.getRecipes();
+    // console.log("RECIPESSSSSSS: ", this.getRecipes())
   }
 
 
-  getRecipes() {
-    return this.gastromicService.getRecipes();
-  }
+  // getRecipes() {
+  //   return this.gastromicService.getRecipes();
+  // }
 
 
 }

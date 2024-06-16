@@ -14,6 +14,12 @@ import { GastromicService } from '../gastromic.service';
   styleUrl: './browse-recipes.component.css'
 })
 export class BrowseRecipesComponent implements AfterViewInit {
+  item:any;
+
+
+  private likes = 0;
+  rating_recipes = this.getRatingRecipes();
+
   visibilidadElementos:any = {
     'principalesFiltros': true,
     'tiposDietas': false,
@@ -30,7 +36,17 @@ export class BrowseRecipesComponent implements AfterViewInit {
     private gastromicService: GastromicService
   )
   { 
+
     this.gastromicService.fetchRecipes();
+    this.gastromicService.fetchRatingRecipes();
+
+
+    console.log("GET RECIPES: ", this.item)
+    console.log("GET RATING_RECIPES: ", this.getRatingRecipes())
+
+    this.item = this.getRecipes();
+
+    console.log("GET RECIPES: ",  this.getRecipes())
   }
 
   openItem(id: string) {
@@ -41,4 +57,27 @@ export class BrowseRecipesComponent implements AfterViewInit {
     }
   }
 
+  getRecipes() {
+
+    let recipes = this.gastromicService.getRecipes();
+
+    recipes.forEach((e: any) => {
+      let likes = 0; // Inicializar likes aquí asegura que se reinicie para cada elemento de item.
+      this.rating_recipes.forEach((j: any) => {
+        if (e.id == j.rating_recipes_id) {
+          if (j.valuation == true) {
+            likes++;
+          }
+        }
+      });
+      e.likes = likes; // Asignar el conteo final de likes a e.likes después de revisar todos los rating_recipes.
+    });
+
+
+    return recipes;
+  }
+
+  getRatingRecipes() {
+    return this.gastromicService.getRatingRecipes();
+  }
 }

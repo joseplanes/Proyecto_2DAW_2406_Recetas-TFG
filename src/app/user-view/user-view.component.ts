@@ -25,10 +25,15 @@ export class UserViewComponent implements OnInit {
     this.gastromicService.fetchCurrentUser();
     this.gastromicService.fetchRecipes();
 
+    this.gastromicService.fetchFileById("60554a2e-5366-4557-a122-ef10bfde2c81")
+
+    console.log("FILEEE: " + this.getFile())
+    console.log("CURRENT USER: " + this.getCurrentUser())
+
+
     // console.log("GET CURRENT USER: " + this.getCurrentUser());
     // this.gastromicService.getCurrentUser();
     // this.gastromicService.fetchCurrentUser();
-    // console.log("CURRENT USER: " + this.getCurrentUser())
     // this.user = {...this.gastromicService.getCurrentUser()}
   }
 
