@@ -36,7 +36,7 @@ export class AppComponent implements AfterViewInit {
       this.isShowHeaderFooter = true; // Mostrar el encabezado y pie de página cuando la ruta cambia
     });
 
-    this.datosUsuario = this.gastromic.getCurrentUser();
+    // this.datosUsuario = this.gastromic.getCurrentUser();
 
     // console.log(" PRUEBA SERVICIO ", this.datosUsuario)
     // console.log("TESTTT2 ", this.gastromic.testtt())

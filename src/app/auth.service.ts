@@ -1,7 +1,7 @@
 declare var google: any;
 import { Injectable , inject} from '@angular/core';
 import { Router } from '@angular/router';
-import { createDirectus, authentication, rest, createUser } from '@directus/sdk';
+import { createDirectus, authentication, rest, createUser, logout } from '@directus/sdk';
 import { jwtDecode } from "jwt-decode";
 
 @Injectable({
@@ -41,7 +41,11 @@ export class AuthService {
   }
 
   public async logOut() {
-    return this.client.logout();
+    localStorage.removeItem("refresh-token");
+    localStorage.removeItem("expires");
+    localStorage.removeItem("token");
+
+    await this.client.request(logout(localStorage.getItem("refresh_token") || "", "json"))
   }
 
   public createAccount(userObject:any) {

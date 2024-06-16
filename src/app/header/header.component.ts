@@ -47,6 +47,7 @@ export class HeaderComponent {
   
   signOut(){
     sessionStorage.removeItem('user');
+    this.auth.logOut();
     this.auth.signOut();
     location.reload();
   }
