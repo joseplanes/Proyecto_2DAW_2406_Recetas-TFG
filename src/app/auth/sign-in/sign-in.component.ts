@@ -76,6 +76,8 @@ export class SignInComponent {
     if(!this.validatorService.validatePasswordNotEmpty(password)){
       hasError = true;
     }
+
+    
   
     if (hasError) {
       return this.setError();
