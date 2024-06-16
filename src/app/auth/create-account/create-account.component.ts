@@ -42,6 +42,8 @@ export class CreateAccountComponent {
   }
 
   async createAccount(){
+  
+    this.validatorService.clearErrors();
     const username = this.accountCreationForm.value.username as string;
     const email = this.accountCreationForm.value.email as string;
     const password = this.accountCreationForm.value.password as string

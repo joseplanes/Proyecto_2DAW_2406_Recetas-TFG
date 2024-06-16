@@ -64,6 +64,8 @@ export class SignInComponent {
 
   
   signIn() {
+    this.validatorService.clearErrors();
+
     const email = this.signInForm.value.email as string;
     const password = this.signInForm.value.password as string
 

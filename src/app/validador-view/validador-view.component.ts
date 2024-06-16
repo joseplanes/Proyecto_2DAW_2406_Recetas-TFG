@@ -14,6 +14,10 @@ export class ValidadorViewComponent {
 
   constructor(private validatorService: ValidatorService) { }
 
+  setErrorMessage(error: string) {
+    this.validatorService.setErrorMessage('');
+  }
+
   getErrorMessage() {
     return this.validatorService.error;
   }
