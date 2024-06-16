@@ -15,8 +15,6 @@ import { GastromicService } from '../gastromic.service';
 })
 export class BrowseRecipesComponent implements AfterViewInit {
   item:any;
-
-
   private likes = 0;
   rating_recipes = this.getRatingRecipes();
 
@@ -25,6 +23,7 @@ export class BrowseRecipesComponent implements AfterViewInit {
     'tiposDietas': false,
     'paises': false,
   };
+
   @ViewChild('iptSearch') iptSearch!: ElementRef;
 
   // Establece el foco en el input automaticamente
@@ -32,10 +31,8 @@ export class BrowseRecipesComponent implements AfterViewInit {
     this.iptSearch.nativeElement.focus();
   }
 
-  constructor(
-    private gastromicService: GastromicService
-  )
-  { 
+
+  constructor(private gastromicService: GastromicService){ 
 
     this.gastromicService.fetchRecipes();
     this.gastromicService.fetchRatingRecipes();
@@ -52,10 +49,10 @@ export class BrowseRecipesComponent implements AfterViewInit {
           if(j.valuation == true) {
             this.likes++;
           }
-          e.likes = this.likes.toString();
+          e.likes = this.likes;
         }
         else {
-          e.likes = "0";
+          e.likes = 0;
         }
       });
     });
