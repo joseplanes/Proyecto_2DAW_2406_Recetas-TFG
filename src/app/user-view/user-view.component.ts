@@ -26,8 +26,6 @@ export class UserViewComponent implements OnInit {
   ngOnInit(): void {
     this.gastromicService.fetchCurrentUser();
 
-    console.log("CURRENT USER: " + this.getCurrentUser())
-
   }
 
 
@@ -39,8 +37,6 @@ export class UserViewComponent implements OnInit {
     this.gastromicService.fetchRecipes();
     this.gastromicService.fetchUserFollowers();
     this.gastromicService.getUserRecipes(this.getCurrentUser()?.id);
-
-    console.log("USER VIEW RECIPES: ", this.getUserRecipes())
   }
 
   isLoged() {
