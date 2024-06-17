@@ -14,9 +14,6 @@ import { GastromicService } from '../gastromic.service';
   styleUrl: './browse-recipes.component.css'
 })
 export class BrowseRecipesComponent implements AfterViewInit {
-  item:any;
-
-
   private likes = 0;
   rating_recipes = this.getRatingRecipes();
 
@@ -41,13 +38,6 @@ export class BrowseRecipesComponent implements AfterViewInit {
     this.gastromicService.fetchRatingRecipes();
     this.gastromicService.fetchUsers();
 
-
-    console.log("GET RECIPES: ", this.item)
-    console.log("GET RATING_RECIPES: ", this.getRatingRecipes())
-
-    this.item = this.getRecipes();
-
-    console.log("GET RECIPES: ",  this.getRecipes())
   }
 
   openItem(id: string) {
