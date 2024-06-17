@@ -85,13 +85,13 @@ export class UserViewComponent implements OnInit {
   }
 
   getUserRecipes() {
-    let recipes = this.gastromicService.getUserRecipes(this.getCurrentUser()?.id).user_recipes;
+    let contenedor = this.gastromicService.getUserRecipes(this.getCurrentUser().id);
 
-    recipes.forEach((e:any) => {
+    contenedor.user_recipes.forEach((e:any) => {
       e.avatar = this.gastromicService.getUserAvatarRecipe(this.getCurrentUser().avatar);
     });
 
-    return recipes;
+    return contenedor;
   }
 
   getUserFollowers() {
