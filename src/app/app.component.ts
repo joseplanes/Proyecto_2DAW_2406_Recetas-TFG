@@ -8,6 +8,7 @@ import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { filter } from 'rxjs';
 import { IStaticMethods } from 'preline/preline';
 import { GastromicService } from './gastromic.service';
+import { AuthService } from './auth.service';
 declare global {
   interface Window {
     HSStaticMethods: IStaticMethods;
@@ -28,7 +29,7 @@ export class AppComponent implements AfterViewInit {
 
   datosUsuario:any;
 
-  constructor(private router: Router, private gastromic: GastromicService) {
+  constructor(private router: Router, private gastromic: GastromicService, private auth: AuthService) {
     // Suscribirse al evento NavigationEnd
     this.router.events.pipe(
       filter((event): event is NavigationEnd => event instanceof NavigationEnd)
@@ -37,7 +38,9 @@ export class AppComponent implements AfterViewInit {
     });
 
     // this.datosUsuario = this.gastromic.getCurrentUser();
-    this.gastromic.fetchCurrentUser();
+
+    if(!this.auth.isTokenExpired())
+      this.gastromic.fetchCurrentUser();
 
     // console.log(" PRUEBA SERVICIO ", this.datosUsuario)
     // console.log("TESTTT2 ", this.gastromic.testtt())
