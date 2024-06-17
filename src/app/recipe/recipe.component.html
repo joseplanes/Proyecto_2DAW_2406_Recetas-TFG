@@ -60,19 +60,12 @@
 
           @for (item of getRecipe()?.ingredients; track $index) {
 
-            <!--eeeeee {{item}}-->
-
             @for (recipes_ingredients of this.getRecipeIngredients(); track $index) {
-              <!--SSSSSSSSSSSSSSS: {{recipes_ingredients.id}}-->
 
               @if(recipes_ingredients.id == item) {
 
-                <!--{{recipes_ingredients.id}}-->
-
                 @for (ingredients of this.getIngredients(); track $index) {
-                  <!--recipes_ingredientes_id: {{recipes_ingredients.id}}-->
-                  
-                  <!--ingredientes_id: {{ingredients.id}}-->
+
                   @if(ingredients.id == recipes_ingredients.ingredients_id) {
                     <li>
                       {{ingredients.name}}
@@ -83,17 +76,9 @@
                 }
               }
 
-
             }
-
-            <!--@for (ingredients of this.getIngredients(); track $index) {
-              SSSSSSSSSSS {{ingredients.name}}
-            }-->
           }
 
-          <!-- Recorremos los ingredientes de esta receta en concreto -->
-          
-       
         </ul>
       </div>
 
