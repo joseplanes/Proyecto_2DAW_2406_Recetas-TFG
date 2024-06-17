@@ -49,7 +49,7 @@ export class GastromicService {
           this.user = response.data;
           localStorage.setItem("user", response.data)
         }),
-        error: (error => {
+        error: ((error:any) => {
           console.error("ERROR: " + error);
         })
       });
