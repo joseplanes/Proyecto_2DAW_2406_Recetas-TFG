@@ -16,7 +16,10 @@ export class GastromicService {
   private file:any;
   private user:any;
   private user_followers:any;
-  private users_followed:any;
+  private recipe_ingredients:any;
+  private recipe_created:any;
+  private categories:any;
+  private ingredients:any;
   private rating_recipes:any;
   recipes:any;
   private url = 'http://194.164.166.181:8055';
@@ -157,15 +160,98 @@ export class GastromicService {
     return this.rating_recipes;
   }
 
-  createRecipe(recipe:any) {
+  fetchCategories() {
+    this.httpClient.get(`${this.url}/items/categories?access_token=${this.token}`)
+      .subscribe({
+        next: ((response: any) => {
+          this.categories = response.data;
+        }),
+        error: (error => {
+          console.error("ERROR: " + error);
+        })
+      });
+  }
+
+  fetchRecipesIngredients() {
+    this.httpClient.get(`${this.url}/items/recipe_ingredients?access_token=${this.token}`)
+      .subscribe({
+        next: ((response: any) => {
+          this.recipe_ingredients = response.data;
+        }),
+        error: (error => {
+          console.error("ERROR: " + error);
+        })
+      });
+  }
+
+  setIngrediente(ingredient:any){
+    this.httpClient.post(`${this.url}/items/recipes?access_token=${this.token}`, ingredient)
+      .subscribe({
+        next: (response) => {
+          console.log('Recipe created successfully', response);
+          return;
+        },
+        error: (error) => {
+          console.error('Error creating recipe', error);
+        }
+      });
+  }
+
+  getRecipesIngredients() {
+    return this.ingredients;
+  }
+
+  fetchIngredients() {
+    this.httpClient.get(`${this.url}/items/ingredients?access_token=${this.token}`)
+      .subscribe({
+        next: ((response: any) => {
+          this.ingredients = response.data;
+        }),
+        error: (error => {
+          console.error("ERROR: " + error);
+        })
+      });
+  }
+
+  getIngredients() {
+    return this.ingredients;
+  }
+
+  getCategories() {
+    return this.categories;
+  }
+
+  async createRecipe(recipe:any) {
     // let test = {
     //   "title": "PRUEBA666",
     //   "user_created": this.getCurrentUser().id
     // };
     this.httpClient.post(`${this.url}/items/recipes?access_token=${this.token}`, recipe)
       .subscribe({
+        next: (response:any) => {
+          console.log('Recipe created successfully', response.data);
+          this.recipe_created = response.data;
+        },
+        error: (error) => {
+          console.error('Error creating recipe', error);
+        }
+      });
+  }
+
+  recipeCreated() {
+    return this.recipe_created;
+  }
+
+  async createRecipe_Category(recipe_category:any) {
+    // let test = {
+    //   "title": "PRUEBA666",
+    //   "user_created": this.getCurrentUser().id
+    // };
+    this.httpClient.post(`${this.url}/items/recipes_categories?access_token=${this.token}`, recipe_category)
+      .subscribe({
         next: (response) => {
           console.log('Recipe created successfully', response);
+          // this.recipe_created = response
           return;
         },
         error: (error) => {
