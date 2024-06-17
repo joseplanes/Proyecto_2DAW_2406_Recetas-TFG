@@ -28,6 +28,7 @@ export class GastromicService {
   private categories: any;
   private ingredients: any;
   private rating_recipes: any;
+  private recipes_steps:any;
   private users: any;
   recipes: any;
   private url = "http://194.164.166.181:8055";
@@ -207,6 +208,22 @@ export class GastromicService {
 
   getRecipe() {
     return this.recipe;
+  }
+
+  fetchRecipesSteps(){
+    this.httpClient.get(`${this.url}/items/steps`)
+      .subscribe({
+        next: ((response: any) => {
+          this.recipes_steps = response.data;
+        }),
+        error: ((error) => {
+          console.error("ERROR: " + error);
+        }),
+      });
+  }
+
+  getRecipesSteps() {
+    return this.recipes_steps;
   }
 
   fetchRatingRecipes() {

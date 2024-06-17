@@ -86,10 +86,14 @@
         <h2 class="text-2xl  font-semibold">Pasos</h2>
         <ul class="ml-2">
         @for (item of getRecipe()?.steps; track $index) {
-          <li>
 
-            {{item}}     
-          </li>
+          @for (steps of this.getRecipesSteps(); track $index) {
+            @if(steps.id == item) {
+              <li>
+                <div [innerHTML]="steps.instructions"></div>
+              </li>
+            }
+          }
         }
         </ul>
       </div>

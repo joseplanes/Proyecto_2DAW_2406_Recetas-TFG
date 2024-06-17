@@ -26,6 +26,7 @@ export class RecipeComponent implements OnInit {
     
     this.GastromicService.fetchIngredients();
     this.GastromicService.fetchRecipesIngredients();
+    this.GastromicService.fetchRecipesSteps();
   }
 
   ngOnInit() {
@@ -50,5 +51,9 @@ export class RecipeComponent implements OnInit {
 
   getIngredients() {
     return this.GastromicService.getIngredients();
+  }
+
+  getRecipesSteps() {
+    return this.GastromicService.getRecipesSteps();
   }
 }
