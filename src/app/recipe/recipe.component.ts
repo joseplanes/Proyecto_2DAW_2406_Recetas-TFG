@@ -21,10 +21,14 @@ export class RecipeComponent implements OnInit {
   ) 
   { 
     this.GastromicService.fetchRecipe(this.recipe_id)
+    this.GastromicService.fetchRatingRecipes();
+
+    
+    this.GastromicService.fetchIngredients();
+    this.GastromicService.fetchRecipesIngredients();
   }
 
   ngOnInit() {
-    
   }
 
 
@@ -38,5 +42,13 @@ export class RecipeComponent implements OnInit {
 
   getUserById() {
     return this.GastromicService.getUserById();
+  }
+
+  getRecipeIngredients() {
+    return this.GastromicService.getRecipesIngredients();
+  }
+
+  getIngredients() {
+    return this.GastromicService.getIngredients();
   }
 }

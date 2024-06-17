@@ -24,7 +24,7 @@
         </div>
         <div class="flex flex-wrap justify-center items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256"><path fill="black" d="M240 102c0 70-103.79 126.66-108.21 129a8 8 0 0 1-7.58 0C119.79 228.66 16 172 16 102a62.07 62.07 0 0 1 62-62c20.65 0 38.73 8.88 50 23.89C139.27 48.88 157.35 40 178 40a62.07 62.07 0 0 1 62 62"/></svg>
-          <span class="ml-1">200</span>
+          <span class="ml-1">{{this.getRecipe()?.likes}}</span>
         </div>
       </div>
     </div>
@@ -57,12 +57,42 @@
           </select>
         </div>
         <ul class="ml-2">
+
           @for (item of getRecipe()?.ingredients; track $index) {
-            <li>
-  
-              {{item}}     
-            </li>
+
+            <!--eeeeee {{item}}-->
+
+            @for (recipes_ingredients of this.getRecipeIngredients(); track $index) {
+              <!--SSSSSSSSSSSSSSS: {{recipes_ingredients.id}}-->
+
+              @if(recipes_ingredients.id == item) {
+
+                <!--{{recipes_ingredients.id}}-->
+
+                @for (ingredients of this.getIngredients(); track $index) {
+                  <!--recipes_ingredientes_id: {{recipes_ingredients.id}}-->
+                  
+                  <!--ingredientes_id: {{ingredients.id}}-->
+                  @if(ingredients.id == recipes_ingredients.ingredients_id) {
+                    <li>
+                      {{ingredients.name}}
+                      {{recipes_ingredients.quantity}}
+                      {{recipes_ingredients.measure_unit}}
+                    </li>
+                  }
+                }
+              }
+
+
+            }
+
+            <!--@for (ingredients of this.getIngredients(); track $index) {
+              SSSSSSSSSSS {{ingredients.name}}
+            }-->
           }
+
+          <!-- Recorremos los ingredientes de esta receta en concreto -->
+          
        
         </ul>
       </div>
