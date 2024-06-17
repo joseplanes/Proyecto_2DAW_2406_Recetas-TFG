@@ -15,7 +15,7 @@ import {
 })
 export class GastromicService {
   constructor(private httpClient: HttpClient) {
-    this.fetchCurrentUser();
+    // this.fetchCurrentUser();
   }
 
   private file: any;
@@ -29,6 +29,7 @@ export class GastromicService {
   private ingredients: any;
   private rating_recipes: any;
   private recipes_steps:any;
+  private recipes_comments:any;
   private users: any;
   recipes: any;
   private url = "http://194.164.166.181:8055";
@@ -272,6 +273,24 @@ export class GastromicService {
 
   getRecipesIngredients() {
     return this.recipe_ingredients;
+  }
+
+  fetchRecipesComments(){
+    this.httpClient.get(
+      `${this.url}/items/comments`,
+    )
+      .subscribe({
+        next: ((response: any) => {
+          this.recipes_comments = response.data;
+        }),
+        error: ((error) => {
+          console.error("ERROR: " + error);
+        }),
+      });
+  }
+
+  getRecipesComments() {
+    return this.recipes_comments;
   }
 
   setIngrediente(ingredient: any) {
