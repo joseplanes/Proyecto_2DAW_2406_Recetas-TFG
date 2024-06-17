@@ -39,6 +39,8 @@ export class UserViewComponent implements OnInit {
     this.gastromicService.fetchRecipes();
     this.gastromicService.fetchUserFollowers();
     this.gastromicService.getUserRecipes(this.getCurrentUser()?.id);
+
+    console.log("USER VIEW RECIPES: ", this.getUserRecipes())
   }
 
   isLoged() {
@@ -69,7 +71,9 @@ export class UserViewComponent implements OnInit {
   }
 
   getRecipes() {
-    return this.gastromicService.getRecipes();
+
+
+    let recipes = this.gastromicService.getRecipes();
   }
 
   getFile() {
@@ -81,7 +85,13 @@ export class UserViewComponent implements OnInit {
   }
 
   getUserRecipes() {
-    return this.gastromicService.getUserRecipes(this.getCurrentUser()?.id)
+    let recipes = this.gastromicService.getUserRecipes(this.getCurrentUser()?.id).user_recipes;
+
+    recipes.forEach((e:any) => {
+      e.avatar = this.gastromicService.getUserAvatarRecipe(this.getCurrentUser().avatar);
+    });
+
+    return recipes;
   }
 
   getUserFollowers() {
