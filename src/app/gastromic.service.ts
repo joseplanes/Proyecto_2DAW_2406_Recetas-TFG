@@ -22,6 +22,7 @@ export class GastromicService {
   private categories:any;
   private ingredients:any;
   private rating_recipes:any;
+  private users:any;
   recipes:any;
   private url = 'http://194.164.166.181:8055';
   private token = localStorage.getItem('token');
@@ -92,8 +93,28 @@ export class GastromicService {
     return this.user;
   }
 
+  fetchUsers() {
+    this.httpClient.get(`${this.url}/users`)
+      .subscribe({
+        next: ((response: any) => {
+          this.users = response.data;
+        }),
+        error: ((error:any) => {
+          console.error("ERROR: " + error);
+        }),
+      });
+  }
+
+  getUsers() {
+    return this.users;
+  }
+
   getUserAvatar() {
     return `http://194.164.166.181:8055/assets/${this.getCurrentUser()?.avatar}?access_token=${this.token}`;
+  }
+
+  getUserAvatarRecipe(user_id:any)  {
+    return `http://194.164.166.181:8055/assets/${user_id}`;
   }
 
   getUserRecipes(user_id:any) {
@@ -149,7 +170,7 @@ export class GastromicService {
   }
 
   fetchRatingRecipes() {
-    this.httpClient.get(`${this.url}/items/rating_recipes?access_token=${this.token}`)
+    this.httpClient.get(`${this.url}/items/rating_recipes`)
       .subscribe({
         next: ((response: any) => {
           this.rating_recipes = response.data;

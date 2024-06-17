@@ -39,6 +39,7 @@ export class BrowseRecipesComponent implements AfterViewInit {
 
     this.gastromicService.fetchRecipes();
     this.gastromicService.fetchRatingRecipes();
+    this.gastromicService.fetchUsers();
 
 
     console.log("GET RECIPES: ", this.item)
@@ -58,7 +59,6 @@ export class BrowseRecipesComponent implements AfterViewInit {
   }
 
   getRecipes() {
-
     let recipes = this.gastromicService.getRecipes();
 
     recipes?.forEach((e: any) => {
@@ -70,14 +70,30 @@ export class BrowseRecipesComponent implements AfterViewInit {
           }
         }
       });
+
+      this.getUsers()?.forEach((k:any) => {
+        let currentKID = 0;
+        if(e.user_created == k.id) {
+
+          if(k.id !== currentKID) {
+            e.avatar = this.gastromicService.getUserAvatarRecipe(k.avatar);
+          }
+          currentKID = k.id
+        }
+        else
+          return;
+      });
       e.likes = likes; // Asignar el conteo final de likes a e.likes después de revisar todos los rating_recipes.
     });
-
 
     return recipes;
   }
 
   getRatingRecipes() {
     return this.gastromicService.getRatingRecipes();
+  }
+
+  getUsers() {
+    return this.gastromicService.getUsers();
   }
 }
