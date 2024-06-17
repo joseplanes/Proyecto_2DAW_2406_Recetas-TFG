@@ -39,6 +39,12 @@ export class HeaderComponent {
     console.log(this.userinfo);
   }
 
+  onButtonClick() {
+    setTimeout(() => {
+      this.router.navigate(['/sign-in']);
+    }, 0);
+  }
+
   
   getImageProfile(){
     console.log(this.image);

@@ -16,11 +16,9 @@ import { PatronPipe } from '../patron.pipe';
   styleUrl: './browse-recipes.component.css',
 })
 export class BrowseRecipesComponent implements AfterViewInit {
+  @ViewChild('iptSearch') iptSearch!: ElementRef;
   item:any;
-  // creo la varaiable patron para el filtro
   patron = "";
-
-
   private likes = 0;
   rating_recipes = this.getRatingRecipes();
 
@@ -29,18 +27,15 @@ export class BrowseRecipesComponent implements AfterViewInit {
     'tiposDietas': false,
     'paises': false,
   };
-  @ViewChild('iptSearch') iptSearch!: ElementRef;
+  
 
   // Establece el foco en el input automaticamente
   ngAfterViewInit(): void {
     this.iptSearch.nativeElement.focus();
   }
 
-  constructor(
-    private gastromicService: GastromicService
-  )
+  constructor(private gastromicService: GastromicService)
   { 
-
     this.gastromicService.fetchRecipes();
     this.gastromicService.fetchRatingRecipes();
 
