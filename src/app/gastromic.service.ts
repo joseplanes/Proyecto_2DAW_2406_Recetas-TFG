@@ -183,8 +183,6 @@ export class GastromicService {
             
             this.recipe = response.data;
           });
-          console.log("DATA ", response.data)
-          console.log("DATA_ID " + JSON.stringify(response.data.id))
         }),
         error: (error => {
           console.error("ERROR: " + error);

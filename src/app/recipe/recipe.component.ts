@@ -15,20 +15,17 @@ export class RecipeComponent implements OnInit {
   recipe : any;
   prueba:any;
 
-  constructor(private GastromicService: GastromicService,
+  constructor(
+    private GastromicService: GastromicService,
     @Inject(AppComponent) private userViewRecipeComponent: UserViewRecipeComponent
-  ) { 
-    let test = this.GastromicService.fetchRecipe(this.recipe_id)
-
-    console.log("GET RECIPE: " , this.getRecipe());
-
-   
+  ) 
+  { 
+    this.GastromicService.fetchRecipe(this.recipe_id)
   }
 
   ngOnInit() {
     
   }
-  
 
 
   getRecipeID() {
@@ -40,8 +37,6 @@ export class RecipeComponent implements OnInit {
   }
 
   getUserById() {
-    // console.log("RECIPE: " + this.GastromicService.fetchUserById(this.getRecipe().user_created));
-
     return this.GastromicService.getUserById();
   }
 }
