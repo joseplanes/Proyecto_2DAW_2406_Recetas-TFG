@@ -37,6 +37,7 @@ export class AppComponent implements AfterViewInit {
     });
 
     // this.datosUsuario = this.gastromic.getCurrentUser();
+    this.gastromic.fetchCurrentUser();
 
     // console.log(" PRUEBA SERVICIO ", this.datosUsuario)
     // console.log("TESTTT2 ", this.gastromic.testtt())

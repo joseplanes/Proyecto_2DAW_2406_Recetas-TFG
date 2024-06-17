@@ -15,6 +15,8 @@ export class RecipeComponent implements OnInit {
   recipe : any;
   prueba:any;
 
+  private user:any;
+
   constructor(
     private GastromicService: GastromicService,
     @Inject(AppComponent) private userViewRecipeComponent: UserViewRecipeComponent
@@ -23,6 +25,7 @@ export class RecipeComponent implements OnInit {
     this.GastromicService.fetchRecipe(this.recipe_id)
     this.GastromicService.fetchRatingRecipes();
     this.GastromicService.fetchUsers();
+    this.GastromicService.fetchRatingComments();
 
     
     this.GastromicService.fetchIngredients();
@@ -31,6 +34,8 @@ export class RecipeComponent implements OnInit {
     this.GastromicService.fetchRecipesComments();
 
     // this.GastromicService.fetchUserById()
+
+    this.getRatingComments();
   }
 
   ngOnInit() {
@@ -48,8 +53,20 @@ export class RecipeComponent implements OnInit {
   getUserById(user_id:any) {
 
     // this.GastromicService.fetchUserById(user_id);
+
+
+    let user:any;
+    this.getUsers().forEach((e:any) => {
+      if(e.id == user_id) {
+        console.log("TESTTT: " + e.username)
+        this.user = e;
+      }
+    });
+
+
+    // console.log("TESTTT2: " + this.getUserById(user).id)
     
-    return this.GastromicService.getUserById();
+    return this.user;
   }
 
   getRecipeIngredients() {
@@ -66,5 +83,26 @@ export class RecipeComponent implements OnInit {
 
   getRecipesComments() {
     return this.GastromicService.getRecipesComments();
+  }
+
+  getUsers() {
+    return this.GastromicService.getUsers();
+  }
+
+  getUserAvatar(user_id:any) {
+    return this.GastromicService.getUserAvatarRecipe(user_id);
+  }
+
+  getRatingComments() {
+
+    let rating_comments = this.GastromicService.getRatingComments();
+
+    let rate = {
+      
+    }
+
+    rating_comments.forEach((e:any) => {
+      console.log("rating_com,mebnts ",  e)
+    });
   }
 }

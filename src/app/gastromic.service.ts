@@ -28,6 +28,7 @@ export class GastromicService {
   private categories: any;
   private ingredients: any;
   private rating_recipes: any;
+  private rating_comments: any;
   private recipes_steps:any;
   private recipes_comments:any;
   private users: any;
@@ -242,6 +243,26 @@ export class GastromicService {
   getRatingRecipes() {
     return this.rating_recipes;
   }
+
+  
+
+  fetchRatingComments() {
+    this.httpClient.get(`${this.url}/items/rating_comments`)
+      .subscribe({
+        next: ((response: any) => {
+          this.rating_recipes = response.data;
+        }),
+        error: ((error) => {
+          console.error("ERROR: " + error);
+        }),
+      });
+  }
+
+  getRatingComments() {
+    return this.rating_recipes;
+  }
+
+  
 
   fetchCategories() {
     this.httpClient.get(
