@@ -1,29 +1,30 @@
 <section class="container md:grid md:grid-cols-1 md:px-24 mt-4 mb-10 sm:flex sm:flex-col px-2 mx-auto">
   <div class="container md:grid md:grid-cols-2 sm:flex sm:flex-col md:mb-8 bg-gray-50 p-4 rounded-xl">
     <div class="md:flex md:flex-col items-center md:mt-20 ">
-      <h1 class="text-5xl font-bold text-primary-600">Paella conejo</h1>
+      <h1 class="text-5xl font-bold text-primary-600">{{this.getRecipe()?.title}}</h1>
       <div class="flex flex-col ml-10 mt-4 gap-5 text-lg items-start  w-1/2 mb-4 ">
         <div class="flex flex-wrap justify-center items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="black" d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/>
           </svg>
-          <span class="ml-1">Fácil</span>
+          <span class="ml-1">{{this.getRecipe()?.difficulty}}</span>
         </div>
         <div class="flex flex-wrap justify-center items-center">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
             <g id="SVGRepo_iconCarrier"><path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 6V12" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M16.24 16.24L12 12" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></g>
         </svg>
-          <span class="ml-1">30 min</span>
+          <span class="ml-1">{{this.getRecipe()?.cooking_time}} min</span>
         </div>
         <div class="flex flex-wrap justify-center items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256">
             <path fill="black" d="M240 112a56.06 56.06 0 0 0-56-56c-1.77 0-3.54.1-5.29.26a56 56 0 0 0-101.42 0C75.54 56.1 73.77 56 72 56a56 56 0 0 0-24 106.59V208a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-45.41A56.09 56.09 0 0 0 240 112m-48 96H64v-40.58a55.5 55.5 0 0 0 8 .58h112a55.5 55.5 0 0 0 8-.58Zm-8-56h-13.75l5.51-22.06a8 8 0 0 0-15.52-3.88L153.75 152H136v-24a8 8 0 0 0-16 0v24h-17.75l-6.49-25.94a8 8 0 1 0-15.52 3.88L85.75 152H72a40 40 0 0 1 0-80h.58a55 55 0 0 0-.58 8a8 8 0 0 0 16 0a40 40 0 0 1 80 0a8 8 0 0 0 16 0a55 55 0 0 0-.58-8h.58a40 40 0 0 1 0 80" />
         </svg>
-          <span class="ml-1">Por Adrian</span>
+          <!--<span class="ml-1">{{this.getUserById()?.username}}</span>-->
+          <span class="ml-1">{{this.getRecipe()?.usuario?.username}}</span>
         </div>
         <div class="flex flex-wrap justify-center items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256"><path fill="black" d="M240 102c0 70-103.79 126.66-108.21 129a8 8 0 0 1-7.58 0C119.79 228.66 16 172 16 102a62.07 62.07 0 0 1 62-62c20.65 0 38.73 8.88 50 23.89C139.27 48.88 157.35 40 178 40a62.07 62.07 0 0 1 62 62"/></svg>
-          <span class="ml-1">200</span>
+          <span class="ml-1">{{this.getRecipe()?.likes}}</span>
         </div>
       </div>
     </div>
@@ -35,13 +36,9 @@
     <div class="col-span-3 pr-6" >
       <div class="w-11/12">
         <h2 class="text-2xl font-semibold">Descripcion</h2>
-        <p class="ml-2 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci nobis eos nisi ab at, architecto cupiditate, quas quae voluptas placeat odit neque labore ullam eum, iure magni explicabo inventore nesciunt.
-        Magnam dolorum cumque maiores ullam. Delectus obcaecati modi temporibus amet, assumenda at animi dolor beatae impedit eligendi quod veritatis sunt saepe consequuntur sint consectetur dicta nihil. Delectus necessitatibus molestiae animi.
-        Dolores cumque consequatur ducimus animi eius consectetur harum delectus quidem provident fuga tempore rem nemo dicta pariatur beatae facere, illo inventore, nisi ad. Vel nemo et ipsam sint saepe? Eligendi?
-        Voluptatum illum explicabo impedit debitis quae perspiciatis enim itaque rerum temporibus totam non et, ducimus nostrum, molestiae quos cum possimus excepturi vitae porro incidunt. Ipsa quasi aliquam quam commodi fugiat?
-        Dignissimos mollitia, veniam placeat atque quisquam beatae in facere illum ex enim eum neque quaerat excepturi perspiciatis harum illo nulla! Doloremque animi quas dolorem dolorum accusantium expedita at, vitae tenetur!
-        Dignissimos deleniti distinctio dolorum. Vero maiores beatae doloribus recusandae eum odit neque quaerat soluta, dolorum nulla eos 
-        </p>
+        <div [innerHTML]="getRecipe()?.description">
+         
+       </div>
       </div>
       <div class="mt-6">
         <div class="grid grid-cols-2">
@@ -60,18 +57,44 @@
           </select>
         </div>
         <ul class="ml-2">
-          <li>100 gr azucar</li>
-          <li>100 gr azucar</li>
-          <li>100 gr azucar</li>
-          <li>100 gr azucar</li>
+
+          @for (item of getRecipe()?.ingredients; track $index) {
+
+            @for (recipes_ingredients of this.getRecipeIngredients(); track $index) {
+
+              @if(recipes_ingredients.id == item) {
+
+                @for (ingredients of this.getIngredients(); track $index) {
+
+                  @if(ingredients.id == recipes_ingredients.ingredients_id) {
+                    <li>
+                      {{ingredients.name}}
+                      {{recipes_ingredients.quantity}}
+                      {{recipes_ingredients.measure_unit}}
+                    </li>
+                  }
+                }
+              }
+
+            }
+          }
+
         </ul>
       </div>
 
       <div class="mt-6">
         <h2 class="text-2xl  font-semibold">Pasos</h2>
         <ul class="ml-2">
-          <li>Precalentar la paellera</li>
-          <li>Cortar Conejo</li>       
+        @for (item of getRecipe()?.steps; track $index) {
+
+          @for (steps of this.getRecipesSteps(); track $index) {
+            @if(steps.id == item) {
+              <li>
+                <div [innerHTML]="steps.instructions"></div>
+              </li>
+            }
+          }
+        }
         </ul>
       </div>
       <h2 class="text-2xl font-semibold mt-4">Comentarios</h2>

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component,Inject, OnInit } from '@angular/core';
 import { GastromicService } from '../gastromic.service';
+import { UserViewRecipeComponent } from '../user-view/user-view-recipe/user-view-recipe.component';
+import { AppComponent } from '../app.component';
 @Component({
   selector: 'app-recipe',
   standalone: true,
@@ -7,18 +9,51 @@ import { GastromicService } from '../gastromic.service';
   templateUrl: './recipe.component.html',
   styleUrl: './recipe.component.css'
 })
-export class RecipeComponent {
+export class RecipeComponent implements OnInit {
 
-  constructor(private GastromicService: GastromicService) { 
-    this.GastromicService.getCollections();
-    this.GastromicService.getCurrentUser();
-    this.GastromicService.getRecipe(1);
+  recipe_id:string = sessionStorage.getItem('recipe_id') || '';
+  recipe : any;
+  prueba:any;
+
+  constructor(
+    private GastromicService: GastromicService,
+    @Inject(AppComponent) private userViewRecipeComponent: UserViewRecipeComponent
+  ) 
+  { 
+    this.GastromicService.fetchRecipe(this.recipe_id)
+    this.GastromicService.fetchRatingRecipes();
+
     
-
+    this.GastromicService.fetchIngredients();
+    this.GastromicService.fetchRecipesIngredients();
+    this.GastromicService.fetchRecipesSteps();
   }
 
   ngOnInit() {
-
   }
-  
+
+
+  getRecipeID() {
+    return this.recipe_id;
+  }
+
+  getRecipe() {
+   return this.GastromicService.getRecipe();
+  }
+
+  getUserById() {
+    return this.GastromicService.getUserById();
+  }
+
+  getRecipeIngredients() {
+    return this.GastromicService.getRecipesIngredients();
+  }
+
+  getIngredients() {
+    return this.GastromicService.getIngredients();
+  }
+
+  getRecipesSteps() {
+    return this.GastromicService.getRecipesSteps();
+  }
 }

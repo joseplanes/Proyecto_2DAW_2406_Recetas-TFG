@@ -1,24 +1,27 @@
 declare var google: any;
-import { Component,  Inject,  inject } from '@angular/core';
+import { Component,  Inject,  inject , AfterViewInit} from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../auth.service';
 import { AppComponent } from '../../app.component';
+import {ValidatorService} from '../../validator.service';
+import {ValidadorViewComponent} from '../../validador-view/validador-view.component';
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [RouterLink, ReactiveFormsModule, ValidadorViewComponent],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
 export class SignInComponent {
+  emailValue = '';
   // private router = inject(Router);
-  emailValue = "";
+  error = false
   signInForm = this.formBuilder.group({
     email: '',
     password: ''
-  });
+  }); 
 
   constructor(
     
@@ -26,8 +29,9 @@ export class SignInComponent {
     private authService : AuthService,
     private router : Router,
     @Inject(AppComponent) private appComponent: AppComponent,
-    
+    private validatorService: ValidatorService
   ) {}
+
 
   ngAfterViewInit(): void {
     
@@ -56,13 +60,32 @@ export class SignInComponent {
       shape: 'circle',
       border: 'none',
     });
-    // location.reload();
+  
   }
 
-
+  
   signIn() {
+    this.validatorService.clearErrors();
+
     const email = this.signInForm.value.email as string;
     const password = this.signInForm.value.password as string
+
+    let hasError = false;
+
+    if(!this.validatorService.validateEmail(email)){
+      hasError = true;
+    }
+  
+    if(!this.validatorService.validatePasswordNotEmpty(password)){
+      hasError = true;
+    }
+
+    
+  
+    if (hasError) {
+      return this.setError();
+    }
+
     this.authService.login(email, password);
     this.router.navigate(['sign-in/succesfull-operation']);
   }
@@ -87,5 +110,9 @@ export class SignInComponent {
     } else {
       localStorage.removeItem('email');
     }
+  }
+
+  setError(){
+    this.error = true;
   }
 }

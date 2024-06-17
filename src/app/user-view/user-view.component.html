@@ -96,17 +96,17 @@
                 <!-- Contenido de la segunda fila de la segunda columna, dividida en 3 columnas -->
                 <div
                     class="col-span-1 border border-gray-100  rounded p-4 flex items-center justify-start tocol sm:gap-1">
-                    <p class="text-xl">{{this.getUserRecipes().counter}} </p>
+                    <p class="text-xl">@if(this.getUserRecipes().counter){{{this.getUserRecipes().counter}}}@else {0}</p>
                     <p class="text-xl">Publicaciones</p>
                 </div>
                 <div
                     class="col-span-1 border border-gray-100 rounded p-4 flex items-center justify-start tocol sm:gap-1">
-                    <p class="text-xl">{{this.getUserFollowers()}} </p>
+                    <p class="text-xl">@if(this.getUserFollowers()){{{this.getUserFollowers()}}}@else {0}</p>
                     <p class="text-xl">Seguidores</p>
                 </div>
                 <div
                     class="col-span-1 border border-gray-100  rounded p-4 flex items-center justify-start tocol sm:gap-1">
-                    <p class="text-xl">@if(this.getUsersFollowed()){this.getUsersFollowed()}@else {0} </p>
+                    <p class="text-xl">@if(this.getUsersFollowed()){{{this.getUsersFollowed()}}}@else {0} </p>
                     <p class="text-xl">Seguidos</p>
                 </div>
             </div>
@@ -166,7 +166,7 @@
         <ng-container *ngIf="tabSeleccionada === 'publicaciones'">
             <!-- For de publicaciones del Usuario -->
 
-            @for (item of getUserRecipes().user_recipes; track $index) {
+            @for (item of this.getUserRecipes().user_recipes; track $index) {
                 <app-user-view-recipe [recipes]="item"></app-user-view-recipe>
             }
         </ng-container>

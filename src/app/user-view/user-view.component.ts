@@ -26,9 +26,8 @@ export class UserViewComponent implements OnInit {
   ngOnInit(): void {
     this.gastromicService.fetchCurrentUser();
 
-    console.log("CURRENT USER: " + this.getCurrentUser())
-
   }
+
 
   constructor(
     private router: Router,
@@ -38,10 +37,6 @@ export class UserViewComponent implements OnInit {
     this.gastromicService.fetchRecipes();
     this.gastromicService.fetchUserFollowers();
     this.gastromicService.getUserRecipes(this.getCurrentUser()?.id);
-
-    // console.log("USER RECIPES: ", this.gastromicService.getUserRecipes(this.getCurrentUser()?.id));
-
-    // console.log("GET USERS FOLOLO0RS: " + this.gastromicService.getUserFollowers())
   }
 
   isLoged() {
@@ -67,12 +62,14 @@ export class UserViewComponent implements OnInit {
     }, 0);
   }
 
-  getCurrentUser() {
+  getCurrentUser() { 
     return this.gastromicService.getCurrentUser();
   }
 
   getRecipes() {
-    return this.gastromicService.getRecipes();
+
+
+    let recipes = this.gastromicService.getRecipes();
   }
 
   getFile() {
@@ -84,7 +81,13 @@ export class UserViewComponent implements OnInit {
   }
 
   getUserRecipes() {
-    return this.gastromicService.getUserRecipes(this.getCurrentUser()?.id)
+    let contenedor = this.gastromicService.getUserRecipes(this.getCurrentUser()?.id);
+
+    contenedor.user_recipes.forEach((e:any) => {
+      e.avatar = this.gastromicService.getUserAvatarRecipe(this.getCurrentUser().avatar);
+    });
+
+    return contenedor;
   }
 
   getUserFollowers() {

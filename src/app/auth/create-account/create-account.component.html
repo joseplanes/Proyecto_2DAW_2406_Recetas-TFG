@@ -13,7 +13,6 @@
 
 
 <section class="relative flex flex-wrap lg:h-screen lg:items-center ">
-  
   <div class="form w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
     <div class="mx-auto max-w-lg text-center">
       <h1 class="text-center text-2xl font-bold text-primary-400 sm:text-3xl">¡Empieza hoy mismo!</h1>
@@ -21,7 +20,10 @@
         Únete a la mayor comunidad online de cocina de España en este momento. Comienza a compartir tus propias recetas y descubre las de otros usuarios.
       </p>
     </div>
-
+    
+    @if(error){
+      <app-validador-view></app-validador-view>
+    }
     <!--<form [formGroup]="signInForm" (ngSubmit)="signIn()" action="#" class="mx-auto mb-0 mt-8 max-w-md space-y-4">-->
     <form [formGroup]="accountCreationForm" action="#" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
       <div>
@@ -118,7 +120,7 @@
 
       <div class="flex items-center justify-between gap-2 mt-5  ">
         <div class="flex items-center">
-          <input id="privacy-policy" name="privacy-policy" type="checkbox"
+          <input (click)="setCheck()" id="privacy-policy" name="privacy-policy" type="checkbox"
             class="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
           <label for="privacy-policy" class="ml-3 block text-sm">
             He leído y acepto la <a class="text-blue-600" [routerLink]="['/privacy-policy']">política de privacidad</a>
