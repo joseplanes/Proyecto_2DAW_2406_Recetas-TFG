@@ -16,6 +16,7 @@ export class GastromicService {
   private file:any;
   private user:any;
   private user_followers:any;
+  private userById:any;
   private recipe_ingredients:any;
   private recipe:any;
   private recipe_created:any;
@@ -113,6 +114,24 @@ export class GastromicService {
     return `http://194.164.166.181:8055/assets/${this.getCurrentUser()?.avatar}?access_token=${this.token}`;
   }
 
+  fetchUserById(id: any) {
+    this.httpClient.get(`${this.url}/users/${id}`)
+      .subscribe({
+        next: ((response: any) => {
+          this.userById = response.data;
+        }),
+        error: ((error) => {
+          console.error("ERROR: " + error);
+        }),
+      });
+
+      return this.userById;
+  }
+
+  getUserById() {
+    return this.userById;
+  }
+
   getUserAvatarRecipe(user_id:any)  {
     return `http://194.164.166.181:8055/assets/${user_id}`;
   }
@@ -156,8 +175,16 @@ export class GastromicService {
     this.httpClient.get(`${this.url}/items/recipes/${id}`)
       .subscribe({
         next: ((response: any) => {
-          this.recipe = response.data;
-          return response.data;
+
+          this.users?.forEach((e:any) => {
+            if(response.data.user_created == e.id) {
+              response.data.usuario = e;
+            }
+            
+            this.recipe = response.data;
+          });
+          console.log("DATA ", response.data)
+          console.log("DATA_ID " + JSON.stringify(response.data.id))
         }),
         error: (error => {
           console.error("ERROR: " + error);
@@ -166,8 +193,18 @@ export class GastromicService {
   }
 
   getRecipe(){
+    // Crear una copia del objeto recipe para mantener la inmutabilidad
+    // let contenedor = { ...this.recipe };
+    
+    // // Añadir la nueva propiedad usuario de manera explícita
+    // // this.fetchUserById(contenedor.user_created);
+    // contenedor.usuario += this.getUserById();
+    
+    // // Retornar el nuevo objeto sin modificar el original
+    // return contenedor;
+
     return this.recipe;
-  }
+}
 
   fetchRatingRecipes() {
     this.httpClient.get(`${this.url}/items/rating_recipes`)
