@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { GastromicService } from '../../gastromic.service';
 import { CommonModule } from '@angular/common'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,10 +15,14 @@ export class UserViewRecipeComponent {
 
   @Input() recipes:any;
 
+  id = '';
+
   constructor(
-    private gastromicService: GastromicService
+    private gastromicService: GastromicService,
+    private router: Router
   ) 
   { 
+    
     // this.gastromicService.fetchRecipes();
 
     // this.recipes = this.getRecipes();
@@ -31,6 +36,17 @@ export class UserViewRecipeComponent {
 
   getUserAvatar() {
     return this.gastromicService.getUserAvatar();
+  }
+
+   setRecipeId (id: string) {
+     sessionStorage.setItem('recipe_id', id);
+  
+  }
+
+
+
+  navigateToRecipe() {
+    this.router.navigate(['/recipe']);
   }
 
 

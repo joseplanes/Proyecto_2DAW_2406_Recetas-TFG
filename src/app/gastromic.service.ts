@@ -17,6 +17,7 @@ export class GastromicService {
   private user:any;
   private user_followers:any;
   private recipe_ingredients:any;
+  private recipe:any;
   private recipe_created:any;
   private categories:any;
   private ingredients:any;
@@ -25,7 +26,6 @@ export class GastromicService {
   private url = 'http://194.164.166.181:8055';
   private token = localStorage.getItem('token');
   private client = createDirectus('http://194.164.166.181:8055/').with(rest()).with(authentication());
-  recipe: any = [];
   
   // Mostrar todas las colecciones
   getCollections() {
@@ -131,17 +131,21 @@ export class GastromicService {
     return this.user_followers;
   }
   
-  getRecipe(id : number){
-    this.httpClient.get(`${this.url}/items/recipes/${id}?access_token=${this.token}`)
+  fetchRecipe(id : string){
+    this.httpClient.get(`${this.url}/items/recipes/${id}`)
       .subscribe({
         next: ((response: any) => {
-          this.recipe.push(response.data);
+          this.recipe = response.data;
           return response.data;
         }),
         error: (error => {
           console.error("ERROR: " + error);
         })
       });
+  }
+
+  getRecipe(){
+    return this.recipe;
   }
 
   fetchRatingRecipes() {

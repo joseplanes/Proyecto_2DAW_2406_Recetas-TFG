@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component,Inject } from '@angular/core';
 import { GastromicService } from '../gastromic.service';
+import { UserViewRecipeComponent } from '../user-view/user-view-recipe/user-view-recipe.component';
+import { AppComponent } from '../app.component';
 @Component({
   selector: 'app-recipe',
   standalone: true,
@@ -9,16 +11,29 @@ import { GastromicService } from '../gastromic.service';
 })
 export class RecipeComponent {
 
-  constructor(private GastromicService: GastromicService) { 
-    this.GastromicService.getCollections();
-    this.GastromicService.getCurrentUser();
-    this.GastromicService.getRecipe(1);
-    
+  recipe_id:string = sessionStorage.getItem('recipe_id') || '';
+  recipe : any;
 
+  constructor(private GastromicService: GastromicService,
+    @Inject(AppComponent) private userViewRecipeComponent: UserViewRecipeComponent
+  ) { 
+    this.GastromicService.fetchRecipe(this.recipe_id);
+
+   
   }
 
   ngOnInit() {
-
+    this.getRecipe();
+    
   }
   
+
+
+  getRecipeID() {
+    return this.recipe_id;
+  }
+
+  getRecipe() {
+   return this.GastromicService.getRecipe();
+  }
 }
