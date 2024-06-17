@@ -42,7 +42,7 @@ export class HeaderComponent {
   onButtonClick() {
     setTimeout(() => {
       this.router.navigate(['/sign-in']);
-    }, 0);
+    }, 100);
   }
 
   
