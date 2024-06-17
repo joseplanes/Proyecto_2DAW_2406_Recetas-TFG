@@ -41,13 +41,6 @@ export class AppComponent implements AfterViewInit {
 
     if(!this.auth.isTokenExpired())
       this.gastromic.fetchCurrentUser();
-
-    // console.log(" PRUEBA SERVICIO ", this.datosUsuario)
-    // console.log("TESTTT2 ", this.gastromic.testtt())
-
-    // this.gastromic.testtt().forEach((e:any) => {
-    //   console.log("elemento: " + e)
-    // });
   }
 
   // Necesario para que se cargue el JS de la plantilla de Preline
