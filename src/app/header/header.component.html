@@ -1,123 +1,251 @@
 
 <nav class="flex items-center justify-between font-sans px-24 py-5  mx-auto width-resposive"> <!-- container -->
-  <a [routerLink]="['']" class="font-bold tracking-wide flex items-center gap-2">
-    <img src="../../assets/logo_gastromic.svg" class="h-[70px]" alt="Gastromic Logo" />
-    <span class="logo_text">Gastro<span class="text-primary-500">mic</span></span>
-  </a>
-  <div class="flex items-center space-x-6 hidden sm:flex">
-    <ul class="flex items-center justify-center space-x-4">
-      <li class="font-medium group">
-        <div class=" p-2">
-          <a [routerLink]="['']" class="flex items-center justify-center space-x-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
-              <path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="20.15" d="M80 212v236a16 16 0 0 0 16 16h96V328a24 24 0 0 1 24-24h80a24 24 0 0 1 24 24v136h96a16 16 0 0 0 16-16V212" />
-              <path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="20.15" d="M480 256L266.89 52c-5-5.28-16.69-5.34-21.78 0L32 256m368-77V64h-48v69" />
-            </svg>
-            <span>Inicio</span>
-          </a>
-        </div>
-        <div [ngClass]="isActive('/') ? 'active' : 'subrayado'"></div>
-      </li> 
-
-      <li class="font-medium group">
-        <div class="p-2">
-          <a [routerLink]="['/browse-recipes']" class="flex items-center justify-center space-x-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256">
-              <path fill="black" d="M240 112a56.06 56.06 0 0 0-56-56c-1.77 0-3.54.1-5.29.26a56 56 0 0 0-101.42 0C75.54 56.1 73.77 56 72 56a56 56 0 0 0-24 106.59V208a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-45.41A56.09 56.09 0 0 0 240 112m-48 96H64v-40.58a55.5 55.5 0 0 0 8 .58h112a55.5 55.5 0 0 0 8-.58Zm-8-56h-13.75l5.51-22.06a8 8 0 0 0-15.52-3.88L153.75 152H136v-24a8 8 0 0 0-16 0v24h-17.75l-6.49-25.94a8 8 0 1 0-15.52 3.88L85.75 152H72a40 40 0 0 1 0-80h.58a55 55 0 0 0-.58 8a8 8 0 0 0 16 0a40 40 0 0 1 80 0a8 8 0 0 0 16 0a55 55 0 0 0-.58-8h.58a40 40 0 0 1 0 80" />
-            </svg>
-            <span>Recetas</span>
-          </a>
-        </div>
-        <div [ngClass]="isActive('/browse-recipes') ? 'active' : 'subrayado'"></div>
-      </li>
-      
-      <li class="font-medium group">
-        <div class="p-2">
-          <a href="" class="flex items-center justify-center space-x-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 16 16">
-              <path fill="black" d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742c-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
-            </svg>
-            <span>Avisos</span>
-          </a>
-        </div>
-        <div class="subrayado"></div>  
-      </li>
-        
-      <li class="font-medium group cursor-pointer">
-        <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          
-          <!-- @if (isAuthenticated()) {
-            <details class="dropdown">
-                <summary class="m-1 btn_profile">
-                    <p>Mi Perfil</p>
-                    @if(getImageProfile()){
-                      <img class="w-7 h-7 rounded-full" src="{{getImageProfile()}}" alt="user photo">
-                    }
-                    @else{
-                      <img class="w-7 h-7 rounded-full" src="../../assets/profile_default.png" alt="user photo">
-                    }
-                </summary>
-                <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-36">
-                  <li><a [routerLink]="['/user-view']">Ver Perfil</a></li>
-                  <li><a [routerLink]="['/recipe-create']" >Crear receta</a></li>
-                    <li><a>Configuracion</a></li>
-                    <li><a (click)="signOut()">Cerrar Sesion</a></li>
-                </ul>
-            </details>
-          } -->
-          <div class="hs-dropdown relative inline-flex" *ngIf="isAuthenticated()">
-            <button id="hs-dropdown-custom-trigger" type="button" class="hs-dropdown-toggle py-1 ps-1 pe-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none ">
-              <img class="w-8 h-auto rounded-full" src="{{this.getUserAvatar() || ''}}" alt="{{this.getCurrentUser()?.first_name}}">
-              <span class="text-gray-600 font-medium truncate max-w-[7.5rem] ">{{this.getCurrentUser()?.username}}</span>
-              <svg class="hs-dropdown-open:rotate-180 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-            </button>
-          
-            <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg p-2 mt-2 z-[1]" aria-labelledby="hs-dropdown-custom-trigger">
-              <div class="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg mb-2">
-                <p class="text-sm text-gray-500 ">Inicio de sesión como</p>
-                <p class="text-sm font-medium text-gray-800 ">{{this.getCurrentUser()?.email}}</p>
-              </div>
-              <a class="flex items-center gap-x-1.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" [routerLink]="['/user-view']">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 56 56">
-                  <path fill="black" d="M28.012 28.023c5.578 0 10.125-4.968 10.125-11.015c0-6-4.5-10.711-10.125-10.711c-5.555 0-10.125 4.805-10.125 10.758c.023 6.023 4.57 10.968 10.125 10.968m0-3.539c-3.422 0-6.352-3.28-6.352-7.43c0-4.077 2.883-7.218 6.352-7.218c3.515 0 6.351 3.094 6.351 7.172c0 4.148-2.883 7.476-6.351 7.476m-14.719 25.22h29.438c3.89 0 5.742-1.173 5.742-3.75c0-6.142-7.735-15.024-20.461-15.024c-12.727 0-20.485 8.883-20.485 15.023c0 2.578 1.852 3.75 5.766 3.75m-1.125-3.54c-.61 0-.867-.164-.867-.656c0-3.844 5.953-11.04 16.71-11.04c10.759 0 16.688 7.196 16.688 11.04c0 .492-.234.656-.843.656Z" />
+  
+    
+      <a [routerLink]="['']" class="font-bold  flex items-center gap-2">
+        <img src="../../assets/logo_gastromic.svg" class="h-[40px] sm:h-[70px]" alt="Gastromic Logo" />
+        <span class="text-2xl sm:text-3xl">Gastro<span class="text-primary-500">mic</span></span>
+      </a>
+      <div class="flex items-center space-x-6 hidden lg:flex">
+        <ul class="flex items-center justify-center space-x-4">
+          <li class="font-medium group">
+            <div class=" p-2">
+              <a [routerLink]="['']" class="flex items-center justify-center space-x-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
+                  <path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="20.15" d="M80 212v236a16 16 0 0 0 16 16h96V328a24 24 0 0 1 24-24h80a24 24 0 0 1 24 24v136h96a16 16 0 0 0 16-16V212" />
+                  <path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="20.15" d="M480 256L266.89 52c-5-5.28-16.69-5.34-21.78 0L32 256m368-77V64h-48v69" />
                 </svg>
-                Mi Perfil
-              </a>
-              <a class="flex items-center gap-x-1.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" [routerLink]="['/recipe-create']">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 56 56">
-                  <path fill="black" d="M46.867 9.262c-2.39-2.39-5.765-2.766-9.75-2.766H18.836c-3.937 0-7.312.375-9.703 2.766c-2.39 2.39-2.742 5.742-2.742 9.656v18.094c0 4.008.351 7.336 2.742 9.726c2.39 2.39 5.766 2.766 9.773 2.766h18.211c3.985 0 7.36-.375 9.75-2.766c2.391-2.39 2.742-5.718 2.742-9.726V18.988c0-4.008-.351-7.36-2.742-9.726m-1.031 9.07v19.313c0 2.437-.305 4.921-1.71 6.351c-1.43 1.406-3.962 1.734-6.376 1.734h-19.5c-2.414 0-4.945-.328-6.351-1.734c-1.43-1.43-1.735-3.914-1.735-6.352V18.403c0-2.46.305-4.992 1.711-6.398c1.43-1.43 3.984-1.734 6.445-1.734h19.43c2.414 0 4.945.328 6.375 1.734c1.406 1.43 1.711 3.914 1.711 6.328M28 40.504c.938 0 1.688-.727 1.688-1.664v-9.164h9.164c.937 0 1.687-.797 1.687-1.664c0-.914-.75-1.688-1.687-1.688h-9.164v-9.187c0-.938-.75-1.664-1.688-1.664a1.64 1.64 0 0 0-1.664 1.664v9.187h-9.164c-.938 0-1.688.774-1.688 1.688c0 .867.75 1.664 1.688 1.664h9.164v9.164c0 .937.727 1.664 1.664 1.664" />
-                </svg>
-                Crear receta
-              </a>
-              <a class="flex items-center gap-x-1.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48">
-                  <path fill="black" d="M24 16.5a7.5 7.5 0 1 0 0 15a7.5 7.5 0 0 0 0-15M19 24a5 5 0 1 1 10 0a5 5 0 0 1-10 0m.494 19.468c1.479.353 2.993.531 4.513.531a19.4 19.4 0 0 0 4.503-.534a1.94 1.94 0 0 0 1.474-1.672l.338-3.071a2.32 2.32 0 0 1 2.183-2.075c.367-.016.732.053 1.068.2l2.807 1.231a1.92 1.92 0 0 0 1.554.01c.247-.105.468-.261.65-.458a20.4 20.4 0 0 0 4.51-7.779a1.94 1.94 0 0 0-.7-2.133l-2.494-1.84a2.326 2.326 0 0 1 0-3.764l2.486-1.836a1.94 1.94 0 0 0 .7-2.138a20.3 20.3 0 0 0-4.515-7.777a1.94 1.94 0 0 0-2.192-.45l-2.806 1.236c-.29.131-.606.2-.926.2a2.34 2.34 0 0 1-2.32-2.088l-.34-3.06a1.94 1.94 0 0 0-1.5-1.681a21.7 21.7 0 0 0-4.469-.519a22 22 0 0 0-4.5.52a1.935 1.935 0 0 0-1.5 1.677l-.34 3.062a2.35 2.35 0 0 1-.768 1.488a2.53 2.53 0 0 1-1.569.6a2.3 2.3 0 0 1-.923-.194l-2.8-1.236a1.94 1.94 0 0 0-2.2.452a20.35 20.35 0 0 0-4.51 7.775a1.94 1.94 0 0 0 .7 2.137l2.488 1.836a2.344 2.344 0 0 1 .701 2.938a2.34 2.34 0 0 1-.7.829l-2.49 1.839a1.94 1.94 0 0 0-.7 2.135a20.3 20.3 0 0 0 4.51 7.782a1.93 1.93 0 0 0 2.193.454l2.818-1.237c.291-.128.605-.194.923-.194h.008a2.34 2.34 0 0 1 2.32 2.074l.338 3.057a1.94 1.94 0 0 0 1.477 1.673m8.064-2.345c-2.34.5-4.76.5-7.1 0l-.304-2.662a4.84 4.84 0 0 0-4.8-4.3h-.01a4.7 4.7 0 0 0-1.926.4l-2.446 1.073a17.8 17.8 0 0 1-3.56-6.147l2.165-1.6a4.84 4.84 0 0 0 0-7.791l-2.164-1.6a17.9 17.9 0 0 1 3.561-6.14l2.432 1.072a4.7 4.7 0 0 0 1.931.407h.01a4.85 4.85 0 0 0 4.81-4.312l.3-2.66a19.4 19.4 0 0 1 3.562-.376c1.187.015 2.37.14 3.534.375l.3 2.659a4.835 4.835 0 0 0 4.8 4.314a4.34 4.34 0 0 0 1.946-.41l2.43-1.071a17.8 17.8 0 0 1 3.562 6.141l-2.157 1.593a4.826 4.826 0 0 0 0 7.8l2.165 1.6a17.9 17.9 0 0 1-3.56 6.14l-2.44-1.07a4.82 4.82 0 0 0-6.748 3.9z" />
-                </svg>
-                Configuración
-              </a>
-              <a (click)="signOut()" class="flex items-center gap-x-1.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                  <g fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.1">
-                    <path d="M14 8V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-2" />
-                    <path d="M9 12h12l-3-3m0 6l3-3" />
-                  </g>
-                </svg>
-                Cerrar Sesión
+                <span>Inicio</span>
               </a>
             </div>
-          </div>
-        </div>
-      </li>
+            <div [ngClass]="isActive('/') ? 'active' : 'subrayado'"></div>
+          </li> 
 
-      <li>
-        @if (!isAuthenticated()) {
-          <button class="flex justify-center items-center h-12 px-7 font-medium text-white bg-primary-500 rounded-xl hover:shadow-lg transition-shadow duration-300"
-          [routerLink]="['/sign-in']">
-          EMPEZAR
-          </button>
-        }
-      </li>
-    </ul>
-  </div>
+          <li class="font-medium group">
+            <div class="p-2">
+              <a [routerLink]="['/browse-recipes']" class="flex items-center justify-center space-x-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256">
+                  <path fill="black" d="M240 112a56.06 56.06 0 0 0-56-56c-1.77 0-3.54.1-5.29.26a56 56 0 0 0-101.42 0C75.54 56.1 73.77 56 72 56a56 56 0 0 0-24 106.59V208a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-45.41A56.09 56.09 0 0 0 240 112m-48 96H64v-40.58a55.5 55.5 0 0 0 8 .58h112a55.5 55.5 0 0 0 8-.58Zm-8-56h-13.75l5.51-22.06a8 8 0 0 0-15.52-3.88L153.75 152H136v-24a8 8 0 0 0-16 0v24h-17.75l-6.49-25.94a8 8 0 1 0-15.52 3.88L85.75 152H72a40 40 0 0 1 0-80h.58a55 55 0 0 0-.58 8a8 8 0 0 0 16 0a40 40 0 0 1 80 0a8 8 0 0 0 16 0a55 55 0 0 0-.58-8h.58a40 40 0 0 1 0 80" />
+                </svg>
+                <span>Recetas</span>
+              </a>
+            </div>
+            <div [ngClass]="isActive('/browse-recipes') ? 'active' : 'subrayado'"></div>
+          </li>
+          
+          <li class="font-medium group">
+            <div class="p-2">
+              <a href="" class="flex items-center justify-center space-x-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 16 16">
+                  <path fill="black" d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742c-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
+                </svg>
+                <span>Avisos</span>
+              </a>
+            </div>
+            <div class="subrayado"></div>  
+          </li>
+            
+          <li class="font-medium group cursor-pointer">
+            <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+              
+              <!-- @if (isAuthenticated()) {
+                <details class="dropdown">
+                    <summary class="m-1 btn_profile">
+                        <p>Mi Perfil</p>
+                        @if(getImageProfile()){
+                          <img class="w-7 h-7 rounded-full" src="{{getImageProfile()}}" alt="user photo">
+                        }
+                        @else{
+                          <img class="w-7 h-7 rounded-full" src="../../assets/profile_default.png" alt="user photo">
+                        }
+                    </summary>
+                    <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-36">
+                      <li><a [routerLink]="['/user-view']">Ver Perfil</a></li>
+                      <li><a [routerLink]="['/recipe-create']" >Crear receta</a></li>
+                        <li><a>Configuracion</a></li>
+                        <li><a (click)="signOut()">Cerrar Sesion</a></li>
+                    </ul>
+                </details>
+              } -->
+              <div class="hs-dropdown relative inline-flex" *ngIf="isAuthenticated()">
+                <button id="hs-dropdown-custom-trigger" type="button" class="hs-dropdown-toggle py-1 ps-1 pe-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none ">
+                  <img class="w-8 h-auto rounded-full" src="{{this.getUserAvatar() || ''}}" alt="{{this.getCurrentUser()?.first_name}}">
+                  <span class="text-gray-600 font-medium truncate max-w-[7.5rem] ">{{this.getCurrentUser()?.username}}</span>
+                  <svg class="hs-dropdown-open:rotate-180 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+              
+                <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg p-2 mt-2 z-[1]" aria-labelledby="hs-dropdown-custom-trigger">
+                  <div class="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg mb-2">
+                    <p class="text-sm text-gray-500 ">Inicio de sesión como</p>
+                    <p class="text-sm font-medium text-gray-800 ">{{this.getCurrentUser()?.email}}</p>
+                  </div>
+                  <a class="flex items-center gap-x-1.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" [routerLink]="['/user-view']">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 56 56">
+                      <path fill="black" d="M28.012 28.023c5.578 0 10.125-4.968 10.125-11.015c0-6-4.5-10.711-10.125-10.711c-5.555 0-10.125 4.805-10.125 10.758c.023 6.023 4.57 10.968 10.125 10.968m0-3.539c-3.422 0-6.352-3.28-6.352-7.43c0-4.077 2.883-7.218 6.352-7.218c3.515 0 6.351 3.094 6.351 7.172c0 4.148-2.883 7.476-6.351 7.476m-14.719 25.22h29.438c3.89 0 5.742-1.173 5.742-3.75c0-6.142-7.735-15.024-20.461-15.024c-12.727 0-20.485 8.883-20.485 15.023c0 2.578 1.852 3.75 5.766 3.75m-1.125-3.54c-.61 0-.867-.164-.867-.656c0-3.844 5.953-11.04 16.71-11.04c10.759 0 16.688 7.196 16.688 11.04c0 .492-.234.656-.843.656Z" />
+                    </svg>
+                    Mi Perfil
+                  </a>
+                  <a class="flex items-center gap-x-1.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" [routerLink]="['/recipe-create']">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 56 56">
+                      <path fill="black" d="M46.867 9.262c-2.39-2.39-5.765-2.766-9.75-2.766H18.836c-3.937 0-7.312.375-9.703 2.766c-2.39 2.39-2.742 5.742-2.742 9.656v18.094c0 4.008.351 7.336 2.742 9.726c2.39 2.39 5.766 2.766 9.773 2.766h18.211c3.985 0 7.36-.375 9.75-2.766c2.391-2.39 2.742-5.718 2.742-9.726V18.988c0-4.008-.351-7.36-2.742-9.726m-1.031 9.07v19.313c0 2.437-.305 4.921-1.71 6.351c-1.43 1.406-3.962 1.734-6.376 1.734h-19.5c-2.414 0-4.945-.328-6.351-1.734c-1.43-1.43-1.735-3.914-1.735-6.352V18.403c0-2.46.305-4.992 1.711-6.398c1.43-1.43 3.984-1.734 6.445-1.734h19.43c2.414 0 4.945.328 6.375 1.734c1.406 1.43 1.711 3.914 1.711 6.328M28 40.504c.938 0 1.688-.727 1.688-1.664v-9.164h9.164c.937 0 1.687-.797 1.687-1.664c0-.914-.75-1.688-1.687-1.688h-9.164v-9.187c0-.938-.75-1.664-1.688-1.664a1.64 1.64 0 0 0-1.664 1.664v9.187h-9.164c-.938 0-1.688.774-1.688 1.688c0 .867.75 1.664 1.688 1.664h9.164v9.164c0 .937.727 1.664 1.664 1.664" />
+                    </svg>
+                    Crear receta
+                  </a>
+                  <a class="flex items-center gap-x-1.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48">
+                      <path fill="black" d="M24 16.5a7.5 7.5 0 1 0 0 15a7.5 7.5 0 0 0 0-15M19 24a5 5 0 1 1 10 0a5 5 0 0 1-10 0m.494 19.468c1.479.353 2.993.531 4.513.531a19.4 19.4 0 0 0 4.503-.534a1.94 1.94 0 0 0 1.474-1.672l.338-3.071a2.32 2.32 0 0 1 2.183-2.075c.367-.016.732.053 1.068.2l2.807 1.231a1.92 1.92 0 0 0 1.554.01c.247-.105.468-.261.65-.458a20.4 20.4 0 0 0 4.51-7.779a1.94 1.94 0 0 0-.7-2.133l-2.494-1.84a2.326 2.326 0 0 1 0-3.764l2.486-1.836a1.94 1.94 0 0 0 .7-2.138a20.3 20.3 0 0 0-4.515-7.777a1.94 1.94 0 0 0-2.192-.45l-2.806 1.236c-.29.131-.606.2-.926.2a2.34 2.34 0 0 1-2.32-2.088l-.34-3.06a1.94 1.94 0 0 0-1.5-1.681a21.7 21.7 0 0 0-4.469-.519a22 22 0 0 0-4.5.52a1.935 1.935 0 0 0-1.5 1.677l-.34 3.062a2.35 2.35 0 0 1-.768 1.488a2.53 2.53 0 0 1-1.569.6a2.3 2.3 0 0 1-.923-.194l-2.8-1.236a1.94 1.94 0 0 0-2.2.452a20.35 20.35 0 0 0-4.51 7.775a1.94 1.94 0 0 0 .7 2.137l2.488 1.836a2.344 2.344 0 0 1 .701 2.938a2.34 2.34 0 0 1-.7.829l-2.49 1.839a1.94 1.94 0 0 0-.7 2.135a20.3 20.3 0 0 0 4.51 7.782a1.93 1.93 0 0 0 2.193.454l2.818-1.237c.291-.128.605-.194.923-.194h.008a2.34 2.34 0 0 1 2.32 2.074l.338 3.057a1.94 1.94 0 0 0 1.477 1.673m8.064-2.345c-2.34.5-4.76.5-7.1 0l-.304-2.662a4.84 4.84 0 0 0-4.8-4.3h-.01a4.7 4.7 0 0 0-1.926.4l-2.446 1.073a17.8 17.8 0 0 1-3.56-6.147l2.165-1.6a4.84 4.84 0 0 0 0-7.791l-2.164-1.6a17.9 17.9 0 0 1 3.561-6.14l2.432 1.072a4.7 4.7 0 0 0 1.931.407h.01a4.85 4.85 0 0 0 4.81-4.312l.3-2.66a19.4 19.4 0 0 1 3.562-.376c1.187.015 2.37.14 3.534.375l.3 2.659a4.835 4.835 0 0 0 4.8 4.314a4.34 4.34 0 0 0 1.946-.41l2.43-1.071a17.8 17.8 0 0 1 3.562 6.141l-2.157 1.593a4.826 4.826 0 0 0 0 7.8l2.165 1.6a17.9 17.9 0 0 1-3.56 6.14l-2.44-1.07a4.82 4.82 0 0 0-6.748 3.9z" />
+                    </svg>
+                    Configuración
+                  </a>
+                  <a (click)="signOut()" class="flex items-center gap-x-1.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                      <g fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.1">
+                        <path d="M14 8V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-2" />
+                        <path d="M9 12h12l-3-3m0 6l3-3" />
+                      </g>
+                    </svg>
+                    Cerrar Sesión
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            @if (!isAuthenticated()) {
+              <button class="flex justify-center items-center h-12 px-7 font-medium text-white bg-primary-500 rounded-xl hover:shadow-lg transition-shadow duration-300"
+              [routerLink]="['/sign-in']">
+              EMPEZAR
+              </button>
+            }
+          </li>
+        </ul>
+      </div>
+    
+
+    <div class="lg:hidden cursor-pointer ml-[100px]">
+      <svg data-hs-overlay="#modal-right" xmlns="http://www.w3.org/2000/svg" width="35px" height="35px" viewBox="0 0 24 24">
+        <path fill="black" d="M3 18v-2h18v2zm0-5v-2h18v2zm0-5V6h18v2z" />
+      </svg>
+    </div>
+  
+
+    <div id="modal-right"
+    class="hs-overlay hs-overlay-open:translate-x-0 hidden translate-x-full fixed top-0 end-0 transition-all duration-300 transform h-full max-w-[400px]  w-full z-[80] bg-white border-s "
+    tabindex="-1">
+    <div class="flex justify-between items-center py-3 px-4 border-b ">
+        <h3 class="font-bold text-gray-800 flex items-center gap-1 text-2xl">
+          <img src="../../assets/logo_gastromic.svg" class="h-[55px]" alt="Gastromic Logo" />
+            Gastromic
+        </h3>
+        <button type="button"
+            class="flex justify-center items-center size-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none "
+            data-hs-overlay="#modal-right">
+            <span class="sr-only">Cerrar modal</span>
+            <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+            </svg>
+        </button>
+    </div>
+    <div class="flex flex-col gap-8 p-4">
+        <ul class="flex flex-col items-start gap-5">
+          <li class="font-medium group">
+            <div class=" p-2">
+              <a [routerLink]="['']" class="flex items-center justify-center space-x-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
+                  <path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="20.15" d="M80 212v236a16 16 0 0 0 16 16h96V328a24 24 0 0 1 24-24h80a24 24 0 0 1 24 24v136h96a16 16 0 0 0 16-16V212" />
+                  <path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="20.15" d="M480 256L266.89 52c-5-5.28-16.69-5.34-21.78 0L32 256m368-77V64h-48v69" />
+                </svg>
+                <span>Inicio</span>
+              </a>
+            </div>
+            <div [ngClass]="isActive('/') ? 'active' : 'subrayado'"></div>
+          </li> 
+
+          <li class="font-medium group">
+            <div class="p-2">
+              <a [routerLink]="['/browse-recipes']" class="flex items-center justify-center space-x-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256">
+                  <path fill="black" d="M240 112a56.06 56.06 0 0 0-56-56c-1.77 0-3.54.1-5.29.26a56 56 0 0 0-101.42 0C75.54 56.1 73.77 56 72 56a56 56 0 0 0-24 106.59V208a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-45.41A56.09 56.09 0 0 0 240 112m-48 96H64v-40.58a55.5 55.5 0 0 0 8 .58h112a55.5 55.5 0 0 0 8-.58Zm-8-56h-13.75l5.51-22.06a8 8 0 0 0-15.52-3.88L153.75 152H136v-24a8 8 0 0 0-16 0v24h-17.75l-6.49-25.94a8 8 0 1 0-15.52 3.88L85.75 152H72a40 40 0 0 1 0-80h.58a55 55 0 0 0-.58 8a8 8 0 0 0 16 0a40 40 0 0 1 80 0a8 8 0 0 0 16 0a55 55 0 0 0-.58-8h.58a40 40 0 0 1 0 80" />
+                </svg>
+                <span>Recetas</span>
+              </a>
+            </div>
+            <div [ngClass]="isActive('/browse-recipes') ? 'active' : 'subrayado'"></div>
+          </li>
+
+          <li class="font-medium group">
+            <div class="p-2">
+              <a href="" class="flex items-center justify-center space-x-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 16 16">
+                  <path fill="black" d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742c-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
+                </svg>
+                <span>Avisos</span>
+              </a>
+            </div>
+            <div class="subrayado"></div>  
+          </li>
+
+          <li class="font-medium group cursor-pointer">
+            <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+              <div class="hs-dropdown relative inline-flex" *ngIf="isAuthenticated()">
+                <button id="hs-dropdown-custom-trigger" type="button" class="hs-dropdown-toggle py-1 ps-1 pe-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none ">
+                  <img class="w-8 h-auto rounded-full" src="{{this.getUserAvatar() || ''}}" alt="{{this.getCurrentUser()?.first_name}}">
+                  <span class="text-gray-600 font-medium truncate max-w-[7.5rem] ">{{this.getCurrentUser()?.username}}</span>
+                  <svg class="hs-dropdown-open:rotate-180 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+              
+                <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg p-2 mt-2 z-[1]" aria-labelledby="hs-dropdown-custom-trigger">
+                  <div class="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg mb-2">
+                    <p class="text-sm text-gray-500 ">Inicio de sesión como</p>
+                    <p class="text-sm font-medium text-gray-800 ">{{this.getCurrentUser()?.email}}</p>
+                  </div>
+                  <a class="flex items-center gap-x-1.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" [routerLink]="['/user-view']">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 56 56">
+                      <path fill="black" d="M28.012 28.023c5.578 0 10.125-4.968 10.125-11.015c0-6-4.5-10.711-10.125-10.711c-5.555 0-10.125 4.805-10.125 10.758c.023 6.023 4.57 10.968 10.125 10.968m0-3.539c-3.422 0-6.352-3.28-6.352-7.43c0-4.077 2.883-7.218 6.352-7.218c3.515 0 6.351 3.094 6.351 7.172c0 4.148-2.883 7.476-6.351 7.476m-14.719 25.22h29.438c3.89 0 5.742-1.173 5.742-3.75c0-6.142-7.735-15.024-20.461-15.024c-12.727 0-20.485 8.883-20.485 15.023c0 2.578 1.852 3.75 5.766 3.75m-1.125-3.54c-.61 0-.867-.164-.867-.656c0-3.844 5.953-11.04 16.71-11.04c10.759 0 16.688 7.196 16.688 11.04c0 .492-.234.656-.843.656Z" />
+                    </svg>
+                    Mi Perfil
+                  </a>
+                  <a class="flex items-center gap-x-1.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" [routerLink]="['/recipe-create']">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 56 56">
+                      <path fill="black" d="M46.867 9.262c-2.39-2.39-5.765-2.766-9.75-2.766H18.836c-3.937 0-7.312.375-9.703 2.766c-2.39 2.39-2.742 5.742-2.742 9.656v18.094c0 4.008.351 7.336 2.742 9.726c2.39 2.39 5.766 2.766 9.773 2.766h18.211c3.985 0 7.36-.375 9.75-2.766c2.391-2.39 2.742-5.718 2.742-9.726V18.988c0-4.008-.351-7.36-2.742-9.726m-1.031 9.07v19.313c0 2.437-.305 4.921-1.71 6.351c-1.43 1.406-3.962 1.734-6.376 1.734h-19.5c-2.414 0-4.945-.328-6.351-1.734c-1.43-1.43-1.735-3.914-1.735-6.352V18.403c0-2.46.305-4.992 1.711-6.398c1.43-1.43 3.984-1.734 6.445-1.734h19.43c2.414 0 4.945.328 6.375 1.734c1.406 1.43 1.711 3.914 1.711 6.328M28 40.504c.938 0 1.688-.727 1.688-1.664v-9.164h9.164c.937 0 1.687-.797 1.687-1.664c0-.914-.75-1.688-1.687-1.688h-9.164v-9.187c0-.938-.75-1.664-1.688-1.664a1.64 1.64 0 0 0-1.664 1.664v9.187h-9.164c-.938 0-1.688.774-1.688 1.688c0 .867.75 1.664 1.688 1.664h9.164v9.164c0 .937.727 1.664 1.664 1.664" />
+                    </svg>
+                    Crear receta
+                  </a>
+                  <a class="flex items-center gap-x-1.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48">
+                      <path fill="black" d="M24 16.5a7.5 7.5 0 1 0 0 15a7.5 7.5 0 0 0 0-15M19 24a5 5 0 1 1 10 0a5 5 0 0 1-10 0m.494 19.468c1.479.353 2.993.531 4.513.531a19.4 19.4 0 0 0 4.503-.534a1.94 1.94 0 0 0 1.474-1.672l.338-3.071a2.32 2.32 0 0 1 2.183-2.075c.367-.016.732.053 1.068.2l2.807 1.231a1.92 1.92 0 0 0 1.554.01c.247-.105.468-.261.65-.458a20.4 20.4 0 0 0 4.51-7.779a1.94 1.94 0 0 0-.7-2.133l-2.494-1.84a2.326 2.326 0 0 1 0-3.764l2.486-1.836a1.94 1.94 0 0 0 .7-2.138a20.3 20.3 0 0 0-4.515-7.777a1.94 1.94 0 0 0-2.192-.45l-2.806 1.236c-.29.131-.606.2-.926.2a2.34 2.34 0 0 1-2.32-2.088l-.34-3.06a1.94 1.94 0 0 0-1.5-1.681a21.7 21.7 0 0 0-4.469-.519a22 22 0 0 0-4.5.52a1.935 1.935 0 0 0-1.5 1.677l-.34 3.062a2.35 2.35 0 0 1-.768 1.488a2.53 2.53 0 0 1-1.569.6a2.3 2.3 0 0 1-.923-.194l-2.8-1.236a1.94 1.94 0 0 0-2.2.452a20.35 20.35 0 0 0-4.51 7.775a1.94 1.94 0 0 0 .7 2.137l2.488 1.836a2.344 2.344 0 0 1 .701 2.938a2.34 2.34 0 0 1-.7.829l-2.49 1.839a1.94 1.94 0 0 0-.7 2.135a20.3 20.3 0 0 0 4.51 7.782a1.93 1.93 0 0 0 2.193.454l2.818-1.237c.291-.128.605-.194.923-.194h.008a2.34 2.34 0 0 1 2.32 2.074l.338 3.057a1.94 1.94 0 0 0 1.477 1.673m8.064-2.345c-2.34.5-4.76.5-7.1 0l-.304-2.662a4.84 4.84 0 0 0-4.8-4.3h-.01a4.7 4.7 0 0 0-1.926.4l-2.446 1.073a17.8 17.8 0 0 1-3.56-6.147l2.165-1.6a4.84 4.84 0 0 0 0-7.791l-2.164-1.6a17.9 17.9 0 0 1 3.561-6.14l2.432 1.072a4.7 4.7 0 0 0 1.931.407h.01a4.85 4.85 0 0 0 4.81-4.312l.3-2.66a19.4 19.4 0 0 1 3.562-.376c1.187.015 2.37.14 3.534.375l.3 2.659a4.835 4.835 0 0 0 4.8 4.314a4.34 4.34 0 0 0 1.946-.41l2.43-1.071a17.8 17.8 0 0 1 3.562 6.141l-2.157 1.593a4.826 4.826 0 0 0 0 7.8l2.165 1.6a17.9 17.9 0 0 1-3.56 6.14l-2.44-1.07a4.82 4.82 0 0 0-6.748 3.9z" />
+                    </svg>
+                    Configuración
+                  </a>
+                  <a (click)="signOut()" class="flex items-center gap-x-1.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                      <g fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.1">
+                        <path d="M14 8V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-2" />
+                        <path d="M9 12h12l-3-3m0 6l3-3" />
+                      </g>
+                    </svg>
+                    Cerrar Sesión
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            @if (!isAuthenticated()) {
+              <button class="flex justify-center items-center h-12 px-7 font-medium text-white bg-primary-500 rounded-xl hover:shadow-lg transition-shadow duration-300 disabled:opacity-50"
+              data-hs-overlay="#modal-right"
+              (click)="onButtonClick()">
+              EMPEZAR
+              </button>
+            }
+          </li>
+        </ul>
+    </div> 
+</div>
 </nav>
 

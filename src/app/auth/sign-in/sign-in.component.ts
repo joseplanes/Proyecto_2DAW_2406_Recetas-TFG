@@ -24,6 +24,7 @@ export class SignInComponent {
   }); 
 
   constructor(
+    
     private formBuilder : FormBuilder,
     private authService : AuthService,
     private router : Router,
@@ -33,6 +34,7 @@ export class SignInComponent {
 
 
   ngAfterViewInit(): void {
+    
     // Oculto el header y footer
     setTimeout(() => {
       this.appComponent.isShowHeaderFooter = false;
@@ -57,7 +59,6 @@ export class SignInComponent {
       type: "icon",
       shape: 'circle',
       border: 'none',
-
     });
   
   }
